@@ -1,0 +1,88 @@
+#N canvas 9 54 1349 681 10;
+#X obj -1031 168 soundfiler;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array \$0-array1 352800 float 2;
+#X coords 0 1 352800 -1 200 140 1;
+#X restore -941 373 graph;
+#X obj -337 93 loadbang;
+#X obj -390 328 phasor~;
+#X obj -882 233 *;
+#X obj -917 249 *;
+#X obj -917 286 -;
+#X obj -885 263 t b f;
+#X obj -390 189 pack f f;
+#X msg -390 214 \$2 \$1;
+#X obj -390 238 /;
+#X obj -391 420 *~;
+#X obj -391 457 +~;
+#X obj -346 557 line~;
+#X msg -346 533 \$1 10;
+#X floatatom -346 511 5 0 0 0 - - -;
+#X obj -391 589 *~;
+#X obj -390 307 *;
+#X obj -373 277 t b f;
+#X obj -392 619 outlet~;
+#X msg -337 157 44100;
+#X obj -882 43 inlet loopstart;
+#X obj -1031 104 inlet filepath;
+#X obj -863 68 inlet loopend;
+#X obj -682 103 inlet speed;
+#X obj -391 368 *~;
+#X obj -619 131 inlet toggle;
+#X obj -559 161 inlet volume;
+#X obj -1031 125 pack s \$0;
+#X msg -1031 147 read -resize \$1 \$2-array1;
+#X obj -391 488 tabread4~ \$0-array1;
+#X text -941 576 abstraction basée sur un modèle construit par mmb
+;
+#X text -869 290 on calcule la longueur de la boucle en samples;
+#X text -280 158 on intialise le samplerate;
+#X text -348 242 frequence = samplerate / nombre de samples;
+#X text -361 356 ici en fonction de la valeur de l'interface le phasor
+passe tel quel ou ne passe pas du tout (on multiplie par 1 = on \,
+0= off );
+#X text -362 421 on ajuste le phasor a la longueur de boucle;
+#X text -362 454 décalage causé par le loopstart (mais ici 0);
+#X text -240 488 on lit la table \$0-array1;
+#X text -300 559 on ajuste le volume;
+#X text -585 -42;
+#X text -1039 -55 Il n'est pas nécessaire de tout comprendre dans
+cette abstraction pour l'instant. Sachez juste qu'elle fait intervenir
+de notions assez avancées comme l'abstraction \, l'utilisation des
+préfixes \$0- pour les noms \, ainsi que l'écriture et la lecutre
+de tables. Vous pouvez vous référer à la documentation de pure data
+ou aux ressources sur le site de stereolux pour en savoir plus;
+#X connect 0 0 4 1;
+#X connect 0 0 5 1;
+#X connect 2 0 20 0;
+#X connect 3 0 25 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;
+#X connect 6 0 11 1;
+#X connect 7 0 6 0;
+#X connect 7 1 6 1;
+#X connect 7 1 12 1;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 17 0;
+#X connect 11 0 12 0;
+#X connect 12 0 30 0;
+#X connect 13 0 16 1;
+#X connect 14 0 13 0;
+#X connect 15 0 14 0;
+#X connect 16 0 19 0;
+#X connect 17 0 3 0;
+#X connect 18 0 17 0;
+#X connect 18 1 17 1;
+#X connect 20 0 8 1;
+#X connect 21 0 4 0;
+#X connect 22 0 28 0;
+#X connect 23 0 5 0;
+#X connect 24 0 18 0;
+#X connect 25 0 11 0;
+#X connect 26 0 25 1;
+#X connect 27 0 15 0;
+#X connect 28 0 29 0;
+#X connect 29 0 0 0;
+#X connect 30 0 16 0;

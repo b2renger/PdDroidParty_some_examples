@@ -1,0 +1,44 @@
+#N canvas 0 0 550 388 10;
+#X obj 98 -72 delay;
+#X obj 125 -94 r Dur;
+#X msg 98 -52 0;
+#X obj 98 -113 sel 1;
+#X obj 66 138 outlet;
+#X obj 66 -158 r \$1;
+#X obj 98 -32 s \$1.r;
+#X obj 66 -6 * \$2;
+#X obj 66 73 t f f;
+#X obj 66 93 pack f f;
+#X obj 66 116 route \$2;
+#X text 117 -158 -> on reçoit le message donné en argument lorsque
+l'on crée l'objet. C'est à dire C \, C sharp \, D etc.;
+#X text 173 -53 après ce délais on renvoit un 0 \, qui permet de rétablir
+l'objet à son état initial.;
+#X text 109 -12 -> on reçoit le message donné en second argument lorsque
+l'on crée l'objet. C'est à dire 36 \, 37 \, 38 etc. C'est la valeur
+de la note en midi : 36 correspond à un Do \, 48 aussi mais à l'octave
+au dessus.;
+#X text 126 67 -> ici on met en oeuvre une petite astuce permettant
+de filtrer les 0 \, car on ne va pas les envoyer au synthétiseur sous
+peine d'avoir un artefact sonore (une note de fréquence 0 qui serait
+alors jouée);
+#X text 128 119 on doit alors dupliquer la note à l'aide de l'objet
+[pack] \, puis on va utiliser [route] pour passer la note.;
+#X text 169 -114 si on reçoit un 1 on va appliquer un delay de la durée
+"Dur" renseignée dans l'interface principale. On sélectionne 1 : [sel
+1] va envoyer un bang à sa première sortie si un 1 arrive en entrée
+sinon il va envoyer un bang sur sa seconde sortie.;
+#X text 130 146 [route] fonctionne comme [sel] sauf qu'il va utiliser
+le premier argument d'une liste pour choisir à quelle sortie il va
+envoyer le reste des valeurs de cette liste.;
+#X connect 0 0 2 0;
+#X connect 1 0 0 1;
+#X connect 2 0 6 0;
+#X connect 3 0 0 0;
+#X connect 5 0 3 0;
+#X connect 5 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 8 1 9 1;
+#X connect 9 0 10 0;
+#X connect 10 0 4 0;

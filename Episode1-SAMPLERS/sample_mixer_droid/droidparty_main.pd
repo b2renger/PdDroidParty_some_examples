@@ -1,0 +1,552 @@
+#N canvas 386 181 397 300 10;
+#N canvas 0 54 1366 696 audio 0;
+#N canvas 8 54 1350 384 envoyer_des_messages_pour_charger_les_sons_banque1
+0;
+#X obj -55 -233 b;
+#X obj -54 -278 r bank_selector;
+#X obj -54 -256 select 0 1;
+#X obj -55 -159 s b1s1;
+#X obj 6 -122 s b1s2;
+#X obj 92 -88 s b1s3;
+#X obj 191 -55 s b1s4;
+#X text 63 -291 on reçoit la valeur de bank_selector envoyé par la
+boîte nombre située dans l'interface.;
+#X text 31 -254 lorsque 1 arrive on envoie un bang qui va envoyer les
+chemins des fichiers à nos abstractions;
+#X text 624 -131 les boucles sont dans le meme dossier que le patch
+\, mais dans un dossier spécifique on y accède en tapant son nom
+suivi d'un /;
+#X text 625 -87 Attention une faute de frappe résultera en une erreur
+de chargement.;
+#X text 244 -51 on envoie chacun des chemins à travers un send spécifique
+b1s1 = bank 1 sample 1;
+#X msg -55 -185 freesound/18550__sonicfire__ambienza_beatloop_04_120.wav
+;
+#X msg 6 -161 freesound/18567__sonicfire__ambienza_sequencer_07_120bpm_cmin.wav
+;
+#X msg 92 -126 freesound/18571__sonicfire__ambienza_synthetic_line_01_Cmin.wav
+;
+#X msg 191 -93 freesound/18573__sonicfire__ambienza_synthetic_line_02_Cmin.wav
+;
+#X connect 0 0 12 0;
+#X connect 0 0 13 0;
+#X connect 0 0 14 0;
+#X connect 0 0 15 0;
+#X connect 1 0 2 0;
+#X connect 2 1 0 0;
+#X connect 12 0 3 0;
+#X connect 13 0 4 0;
+#X connect 14 0 5 0;
+#X connect 15 0 6 0;
+#X restore -289 -347 pd envoyer_des_messages_pour_charger_les_sons_banque1
+;
+#X obj -289 49 mon_sampler_synch;
+#X obj -99 20 r Synch;
+#X obj -289 87 s bang;
+#X obj -290 -245 b;
+#X msg -290 -219 0;
+#X msg -258 -219 1;
+#X msg -220 -220 1;
+#X obj -290 -270 r bank_selector;
+#X obj -290 -193 s loopstart;
+#X obj -259 -166 s loopend;
+#X obj -220 -142 s speed;
+#N canvas 0 0 860 280 envoyer_des_messages_pour_charger_les_sons_banque2
+0;
+#X obj -55 -233 b;
+#X obj -54 -278 r bank_selector;
+#X text 63 -291 on reçoit la valeur de bank_selector envoyé par la
+boîte nombre située dans l'interface.;
+#X text 418 -199 les boucles sont dans le meme dossier que le patch
+\, mais dans un dossier spécifique on y accède en tapant son nom
+suivi d'un /;
+#X text 419 -155 Attention une faute de frappe résultera en une erreur
+de chargement.;
+#X text 244 -51 on envoie chacun des chemins à travers un send spécifique
+;
+#X obj -54 -256 select 0 2;
+#X obj -55 -159 s b2s1;
+#X obj 6 -122 s b2s2;
+#X obj 92 -88 s b2s3;
+#X obj 191 -55 s b2s4;
+#X text 31 -254 lorsque 2 arrive on envoie un bang qui va envoyer les
+chemins des fichiers à nos abstractions;
+#X msg -55 -207 Christ_church_AF/Christ_church_AF_01.wav;
+#X msg 6 -159 Christ_church_AF/Christ_church_AF_03.wav;
+#X msg 92 -114 Christ_church_AF/Christ_church_AF_04.wav;
+#X msg 191 -83 Christ_church_AF/Christ_church_AF_06.wav;
+#X connect 0 0 12 0;
+#X connect 0 0 13 0;
+#X connect 0 0 14 0;
+#X connect 0 0 15 0;
+#X connect 1 0 6 0;
+#X connect 6 1 0 0;
+#X connect 12 0 7 0;
+#X connect 13 0 8 0;
+#X connect 14 0 9 0;
+#X connect 15 0 10 0;
+#X restore -288 -326 pd envoyer_des_messages_pour_charger_les_sons_banque2
+;
+#X obj -186 -55 r loopstart;
+#X obj -157 -33 r loopend;
+#X obj -128 -9 r speed;
+#X obj -289 -98 r b1s1;
+#X obj -289 -78 r b2s1;
+#X text -172 -272 <- à chaque changement de banque de sons en envoie
+de nouveau ces valeurs;
+#X text -174 -241 ceci est du au fait que l'on utilise un phasor~ pour
+lire les tableaux dans lesquelles on a chargé les sons. Le phasor~
+est une source primaire de sont générant une ligne continue allant
+de 0 à 1 en un temps délimité qui est défini par sa fréquence.
+En fonction la durée de chaque son on doit donc recalculer la fréquence
+de lecture : si le son dure 8 sec le phasor~ doit aller de 0 à 1 en
+8 secondes.;
+#X text -243 -94 <- on reçoit les chemins pour charger les sons;
+#X text -76 -48 <- on reçoit les valeurs précédentes pour effectuer
+les calculs;
+#X text -37 22 <- on reçoit une information de l'interface;
+#X text -86 44 <- abstraction qui va juste servir de témoin et envoyer
+un bang à chaque cycle de lecture. Il s'agit de charger le fichier
+qui va permettre la synchronisation avec les autres.;
+#N canvas 177 0 1064 603 programme 0;
+#X obj 312 250 dac~;
+#X obj 100 -33 r S1-onoff;
+#X obj 78 15 r S1-vol;
+#X obj 271 9 r S2-onoff;
+#X obj 249 93 r S2-vol;
+#X obj 420 90 r S3-vol;
+#X obj 590 90 r S4-vol;
+#X obj 442 25 r S3-onoff;
+#X obj 612 29 r S4-onoff;
+#X obj 516 110 mon_sampler;
+#N canvas 0 22 450 300 armfloat 0;
+#X obj 119 84 inlet bang;
+#X obj 222 83 inlet trig;
+#X obj 119 387 f;
+#X obj 119 410 change;
+#X obj 119 435 outlet trig;
+#X obj 355 83 inlet wait;
+#X obj 284 262 f;
+#X msg 299 220 0;
+#X obj 284 287 + 1;
+#X obj 119 195 spigot;
+#X msg 152 160 0;
+#X msg 184 159 1;
+#X obj 222 113 t b b;
+#X obj 355 195 moses 1;
+#X obj 284 310 sel 1;
+#X connect 0 0 9 0;
+#X connect 1 0 2 1;
+#X connect 1 0 12 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 13 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 1;
+#X connect 8 0 6 1;
+#X connect 8 0 14 0;
+#X connect 9 0 6 0;
+#X connect 10 0 9 1;
+#X connect 11 0 9 1;
+#X connect 12 0 11 0;
+#X connect 12 1 7 0;
+#X connect 13 1 14 1;
+#X connect 14 0 2 0;
+#X connect 14 0 10 0;
+#X restore 63 -10 pd armfloat;
+#N canvas 0 22 450 300 armfloat 0;
+#X obj 119 84 inlet bang;
+#X obj 222 83 inlet trig;
+#X obj 119 387 f;
+#X obj 119 410 change;
+#X obj 119 435 outlet trig;
+#X obj 355 83 inlet wait;
+#X obj 284 262 f;
+#X msg 299 220 0;
+#X obj 284 287 + 1;
+#X obj 119 195 spigot;
+#X msg 152 160 0;
+#X msg 184 159 1;
+#X obj 222 113 t b b;
+#X obj 355 195 moses 1;
+#X obj 284 310 sel 1;
+#X connect 0 0 9 0;
+#X connect 1 0 2 1;
+#X connect 1 0 12 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 13 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 1;
+#X connect 8 0 6 1;
+#X connect 8 0 14 0;
+#X connect 9 0 6 0;
+#X connect 10 0 9 1;
+#X connect 11 0 9 1;
+#X connect 12 0 11 0;
+#X connect 12 1 7 0;
+#X connect 13 1 14 1;
+#X connect 14 0 2 0;
+#X connect 14 0 10 0;
+#X restore 234 30 pd armfloat;
+#N canvas 0 22 450 300 armfloat 0;
+#X obj 119 84 inlet bang;
+#X obj 222 83 inlet trig;
+#X obj 119 387 f;
+#X obj 119 410 change;
+#X obj 119 435 outlet trig;
+#X obj 355 83 inlet wait;
+#X obj 284 262 f;
+#X msg 299 220 0;
+#X obj 284 287 + 1;
+#X obj 119 195 spigot;
+#X msg 152 160 0;
+#X msg 184 159 1;
+#X obj 222 113 t b b;
+#X obj 355 195 moses 1;
+#X obj 284 310 sel 1;
+#X connect 0 0 9 0;
+#X connect 1 0 2 1;
+#X connect 1 0 12 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 13 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 1;
+#X connect 8 0 6 1;
+#X connect 8 0 14 0;
+#X connect 9 0 6 0;
+#X connect 10 0 9 1;
+#X connect 11 0 9 1;
+#X connect 12 0 11 0;
+#X connect 12 1 7 0;
+#X connect 13 1 14 1;
+#X connect 14 0 2 0;
+#X connect 14 0 10 0;
+#X restore 405 45 pd armfloat;
+#N canvas 0 22 450 300 armfloat 0;
+#X obj 119 84 inlet bang;
+#X obj 222 83 inlet trig;
+#X obj 119 387 f;
+#X obj 119 410 change;
+#X obj 119 435 outlet trig;
+#X obj 355 83 inlet wait;
+#X obj 284 262 f;
+#X msg 299 220 0;
+#X obj 284 287 + 1;
+#X obj 119 195 spigot;
+#X msg 152 160 0;
+#X msg 184 159 1;
+#X obj 222 113 t b b;
+#X obj 355 195 moses 1;
+#X obj 284 310 sel 1;
+#X connect 0 0 9 0;
+#X connect 1 0 2 1;
+#X connect 1 0 12 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 13 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 1;
+#X connect 8 0 6 1;
+#X connect 8 0 14 0;
+#X connect 9 0 6 0;
+#X connect 10 0 9 1;
+#X connect 11 0 9 1;
+#X connect 12 0 11 0;
+#X connect 12 1 7 0;
+#X connect 13 1 14 1;
+#X connect 14 0 2 0;
+#X connect 14 0 10 0;
+#X restore 575 50 pd armfloat;
+#X obj 63 -55 r bang;
+#X obj 234 -14 r bang;
+#X obj 405 -7 r bang;
+#X obj 575 2 r bang;
+#X obj 18 -134 r loopstart;
+#X obj 33 -112 r loopend;
+#X obj 48 -88 r speed;
+#X obj 4 -256 r b1s1;
+#X obj 4 -238 r b2s1;
+#X obj 189 -111 r loopstart;
+#X obj 204 -89 r loopend;
+#X obj 219 -65 r speed;
+#X obj 175 -243 r b1s2;
+#X obj 175 -225 r b2s2;
+#X obj 360 -107 r loopstart;
+#X obj 375 -85 r loopend;
+#X obj 390 -61 r speed;
+#X obj 346 -246 r b1s3;
+#X obj 346 -228 r b2s3;
+#X obj 530 -84 r loopstart;
+#X obj 545 -62 r loopend;
+#X obj 560 -38 r speed;
+#X obj 516 -246 r b1s4;
+#X obj 516 -228 r b2s4;
+#X text 579 -132 On reçoit les chemins des fichiers que l'on va lire
+;
+#X text 623 -66 On reçoit les valeurs permettant d'initialiser les
+calculs pour la lecture;
+#X text 628 2 <- bang de synchronisation envoyer par [mon_sampler_synch]
+;
+#X text 692 30 <- information de l'interface;
+#X text 666 90 <- information de l'interface;
+#X text 661 49 <- sous patch permettant d'attendre le bang de synchronisation
+avant de permettre le passage d'information provenant de l'interface.
+;
+#X obj 4 108 mon_sampler;
+#X obj 175 113 mon_sampler;
+#X obj 346 110 mon_sampler;
+#X obj 4 -220 r b3s1;
+#X obj 4 -202 r b4s1;
+#X obj 4 -184 r b5s1;
+#X obj 175 -208 r b3s2;
+#X obj 175 -190 r b4s2;
+#X text -2 -322 Vous pouvez � tout moment dupliquer une colonne en
+adaptant les messages � votre nouvelle configuration. Il faut bien
+penser outre la lecture des samples � ajouter les controles dans la
+fenetre principale \, les liens avec bank_selector (charger les sons).
+;
+#X obj 175 -172 r b5s2;
+#X obj 346 -211 r b3s3;
+#X obj 346 -193 r b4s3;
+#X obj 346 -176 r b5s3;
+#X obj 516 -211 r b3s4;
+#X obj 516 -194 r b4s4;
+#X obj 516 -177 r b5s4;
+#X text 353 251 <- la sortie audio;
+#X connect 1 0 10 1;
+#X connect 2 0 44 5;
+#X connect 3 0 11 1;
+#X connect 4 0 45 5;
+#X connect 5 0 46 5;
+#X connect 6 0 9 5;
+#X connect 7 0 12 1;
+#X connect 8 0 13 1;
+#X connect 9 0 0 0;
+#X connect 9 0 0 1;
+#X connect 10 0 44 4;
+#X connect 11 0 45 4;
+#X connect 12 0 46 4;
+#X connect 13 0 9 4;
+#X connect 14 0 10 0;
+#X connect 15 0 11 0;
+#X connect 16 0 12 0;
+#X connect 17 0 13 0;
+#X connect 18 0 44 1;
+#X connect 19 0 44 2;
+#X connect 20 0 44 3;
+#X connect 21 0 44 0;
+#X connect 22 0 44 0;
+#X connect 24 0 45 2;
+#X connect 25 0 45 3;
+#X connect 26 0 45 0;
+#X connect 27 0 45 0;
+#X connect 28 0 46 1;
+#X connect 29 0 46 2;
+#X connect 30 0 46 3;
+#X connect 31 0 46 0;
+#X connect 32 0 46 0;
+#X connect 33 0 9 1;
+#X connect 34 0 9 2;
+#X connect 35 0 9 3;
+#X connect 36 0 9 0;
+#X connect 37 0 9 0;
+#X connect 44 0 0 0;
+#X connect 44 0 0 1;
+#X connect 45 0 0 0;
+#X connect 45 0 0 1;
+#X connect 46 0 0 0;
+#X connect 46 0 0 1;
+#X connect 47 0 44 0;
+#X connect 48 0 44 0;
+#X connect 49 0 44 0;
+#X connect 50 0 45 0;
+#X connect 51 0 45 0;
+#X connect 53 0 45 0;
+#X connect 54 0 46 0;
+#X connect 55 0 46 0;
+#X connect 56 0 46 0;
+#X connect 57 0 9 0;
+#X connect 58 0 9 0;
+#X connect 59 0 9 0;
+#X restore -288 121 pd programme;
+#X text -291 -366 1- CHARGER LES SONS;
+#X text -291 -118 2- ABSTRACTION ET SYNCHRONISATION;
+#X text -291 104 3- LE PROGRAMME;
+#X text -289 -453 Ce petit programme va nous permettre de lire 4 boucles
+de sons en lecture synchronisée \, de démarrer et stopper la lecture
+des boucles une par une ainsi que de régler leur volume indépendament.
+Vous pouvez à tout moment cliquer-droit sur un objet pour obtenir
+de l'aide (n'hésitez pas non plus à vous référer au ressources
+citées dans l'article);
+#X text -288 171 abstraction \, sous-patch \, phasor~ \, send \, receive
+\, dac~ \, bang \, soundfiler \, snapshot~ \, toggles et sliders \,
+select \, samplerate;
+#X text 372 -344 <- dupliquez cet objet et modifiez sont contenu pour
+ajouter des banques de sons (il faut modifier le [select 0 1] \, le
+chemin d'accés aux sons \, et les objets [s b1s1]);
+#X text -291 156 4- NOTIONS ET OBJETS ABORDES;
+#N canvas 8 54 1350 681 envoyer_des_messages_pour_charger_les_sons_banque3
+0;
+#X obj -55 -233 b;
+#X obj -54 -278 r bank_selector;
+#X text 63 -291 on reçoit la valeur de bank_selector envoyé par la
+boîte nombre située dans l'interface.;
+#X text 624 -131 les boucles sont dans le meme dossier que le patch
+\, mais dans un dossier spécifique on y accède en tapant son nom
+suivi d'un /;
+#X text 625 -87 Attention une faute de frappe résultera en une erreur
+de chargement.;
+#X text 244 -51 on envoie chacun des chemins à travers un send spécifique
+;
+#X msg -55 -207 mE_BR/mE_BR_01.wav;
+#X msg 6 -159 mE_BR/mE_BR_02.wav;
+#X msg 92 -114 mE_BR/mE_BR_03.wav;
+#X msg 191 -83 mE_BR/mE_BR_04.wav;
+#X obj -55 -159 s b3s1;
+#X obj 6 -122 s b3s2;
+#X obj 92 -88 s b3s3;
+#X obj 191 -55 s b3s4;
+#X obj -54 -256 select 0 3;
+#X text 31 -254 lorsque 3 arrive on envoie un bang qui va envoyer les
+chemins des fichiers à nos abstractions;
+#X connect 0 0 6 0;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 0 0 9 0;
+#X connect 1 0 14 0;
+#X connect 6 0 10 0;
+#X connect 7 0 11 0;
+#X connect 8 0 12 0;
+#X connect 9 0 13 0;
+#X connect 14 1 0 0;
+#X restore -287 -304 pd envoyer_des_messages_pour_charger_les_sons_banque3
+;
+#X text 144 -455 Il est prévu pour fonctionner sur des smartphones
+d'entrée de gamme. Avec des smartphones plus puissant il est possible
+gérer beaucoup plus de boucles et beaucoup plus de banques de sons.
+Vous pouvez donc vous amuser à l'adapter en ajoutant des voix \, des
+sons etc ...;
+#N canvas 12 7 1036 384 envoyer_des_messages_pour_charger_les_sons_banque4
+0;
+#X obj -55 -233 b;
+#X obj -54 -278 r bank_selector;
+#X text 63 -291 on reçoit la valeur de bank_selector envoyé par la
+boîte nombre située dans l'interface.;
+#X text 624 -131 les boucles sont dans le meme dossier que le patch
+\, mais dans un dossier spécifique on y accède en tapant son nom
+suivi d'un /;
+#X text 625 -87 Attention une faute de frappe résultera en une erreur
+de chargement.;
+#X text 244 -51 on envoie chacun des chemins à travers un send spécifique
+b1s1 = bank 1 sample 1;
+#X msg -55 -185 patchwerk/patchwerk_addingblips.wav;
+#X msg 6 -161 patchwerk/patchwerk_fanning.wav;
+#X msg 92 -126 patchwerk/patchwerk_musiqueconceptuelle.wav;
+#X msg 191 -93 patchwerk/patchwerk_fumunt.wav;
+#X obj -54 -256 select 0 4;
+#X text 31 -254 lorsque 4 arrive on envoie un bang qui va envoyer les
+chemins des fichiers à nos abstractions;
+#X obj -55 -159 s b4s1;
+#X obj 6 -122 s b4s2;
+#X obj 92 -88 s b4s3;
+#X obj 191 -55 s b4s4;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 0 0 9 0;
+#X connect 0 0 6 0;
+#X connect 1 0 10 0;
+#X connect 6 0 12 0;
+#X connect 7 0 13 0;
+#X connect 8 0 14 0;
+#X connect 9 0 15 0;
+#X connect 10 1 0 0;
+#X restore 41 -347 pd envoyer_des_messages_pour_charger_les_sons_banque4
+;
+#N canvas 8 54 1350 681 envoyer_des_messages_pour_charger_les_sons_banque5
+0;
+#X obj -55 -233 b;
+#X obj -54 -278 r bank_selector;
+#X text 63 -291 on reçoit la valeur de bank_selector envoyé par la
+boîte nombre située dans l'interface.;
+#X text 624 -131 les boucles sont dans le meme dossier que le patch
+\, mais dans un dossier spécifique on y accède en tapant son nom
+suivi d'un /;
+#X text 625 -87 Attention une faute de frappe résultera en une erreur
+de chargement.;
+#X text 244 -51 on envoie chacun des chemins à travers un send spécifique
+;
+#X msg -55 -207 vt_BR/vt_BR_01.wav;
+#X msg 6 -159 vt_BR/vt_BR_02.wav;
+#X msg 92 -114 vt_BR/vt_BR_03.wav;
+#X obj -54 -256 select 0 5;
+#X text 31 -254 lorsque 5 arrive on envoie un bang qui va envoyer les
+chemins des fichiers à nos abstractions;
+#X obj -55 -159 s b5s1;
+#X obj 6 -122 s b5s2;
+#X obj 92 -88 s b5s3;
+#X obj 191 -55 s b5s4;
+#X msg 191 -83 vt_BR/vt_BR_05.wav;
+#X connect 0 0 6 0;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 0 0 15 0;
+#X connect 1 0 9 0;
+#X connect 6 0 11 0;
+#X connect 7 0 12 0;
+#X connect 8 0 13 0;
+#X connect 9 1 0 0;
+#X connect 15 0 14 0;
+#X restore 42 -326 pd envoyer_des_messages_pour_charger_les_sons_banque5
+;
+#X obj -289 -61 r b3s1;
+#X obj -289 -43 r b4s1;
+#X obj -289 -25 r b5s1;
+#X obj -289 68 spigot;
+#X connect 1 0 39 0;
+#X connect 2 0 1 4;
+#X connect 2 0 39 1;
+#X connect 4 0 5 0;
+#X connect 4 0 6 0;
+#X connect 4 0 7 0;
+#X connect 5 0 9 0;
+#X connect 6 0 10 0;
+#X connect 7 0 11 0;
+#X connect 8 0 4 0;
+#X connect 13 0 1 1;
+#X connect 14 0 1 2;
+#X connect 15 0 1 3;
+#X connect 16 0 1 0;
+#X connect 17 0 1 0;
+#X connect 36 0 1 0;
+#X connect 37 0 1 0;
+#X connect 38 0 1 0;
+#X connect 39 0 3 0;
+#X restore 38 280 pd audio;
+#X obj 39 33 tgl 35 0 S1-onoff empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 39 73 vsl 35 196 0 1 0 0 S1-vol empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 84 33 tgl 35 0 S2-onoff empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 84 73 vsl 35 196 0 1 0 0 S2-vol empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 130 33 tgl 35 0 S3-onoff empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 130 73 vsl 35 196 0 1 0 0 S3-vol empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 177 33 tgl 35 0 S4-onoff empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 177 73 vsl 35 196 0 1 0 0 S4-vol empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X text 47 12 S1;
+#X text 93 12 S2;
+#X text 140 12 S3;
+#X text 186 12 S4;
+#X floatatom 102 281 5 0 0 0 - - bank_selector;
+#X text 142 281 Choisir_une_banque_de_sons;
+#X obj 246 37 tgl 45 0 Synch empty Synchro 2 20 0 10 -262144 -1 -1
+0 1;
+#X obj 247 89 bng 45 250 50 0 empty bang loop 10 25 0 10 -262144 -1
+-1;
