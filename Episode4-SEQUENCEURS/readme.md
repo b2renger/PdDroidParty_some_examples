@@ -11,6 +11,8 @@ Our groove box is a drum sequencer with an acid bass instrument. This tool will 
 
 ![the raw DroidParty patch as it appears in Pure Data on a desktop machine](../assets/tuto4-2.png)
 
+
+
 ![Groove box : How is that for a change ?](../assets/tuto4-1.png)
 
 
