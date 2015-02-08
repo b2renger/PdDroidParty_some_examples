@@ -11,3 +11,22 @@ Check out the readme in each folder. (for now comments in patchs are in french o
 
 The first three tutorials are basic, they cover basic things in pd and give a few ressources to build on, after that we will look at more advanced stuff, and we will learn how to theme our programms with svg to make them look super-nice !
 
+# A few ressources
+
+Pure Data, and software made around Pure Data
+http://puredata.info/community/projects/software : download Pd Extended.
+http://msp.ucsd.edu/software.html : download latest Pd vanilla
+
+http://mccormick.cx/projects/PdDroidParty/ : download the last version of PdDroidParty.
+
+Pure Data forums et tutorials
+http://puredata.info/docs/workshops/ArtAndCodePdDemo (tuto)
+http://www.obiwannabe.co.uk/ (tuto)
+http://www.pd-tutorial.com/english/index.html (tuto)
+http://en.flossmanuals.net/pure-data/ (manual)
+http://puredata.hurleur.com/index.php (english forum)
+http://codelab.fr/pure-data (french forum, with a very detailed ressource page, as a sticky post)
+
+
+
+
