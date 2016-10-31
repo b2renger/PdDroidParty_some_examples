@@ -224,7 +224,7 @@ Some educational patches made by Tom Erbe : http://musicweb.ucsd.edu/~tre/wordpr
 The soundhack page (externals developed by Tom Erbe as DAW plugins at first the ported to Pure Data (at the bottom of the page on the right are the Pure Data externals) : http://soundhack.henfast.com/freeware/
 
 
-<a name="Sequencer"/>
+<a name="Sequencers"/>
 # SEQUENCERS
 
 In this episode we will start building more evolved programs, using graphical interfaces, and those applications will be able to create real musical content. The sequencing concept is very important to electronic music as it will help you to create instruments that will share the same time line.
@@ -278,7 +278,7 @@ So the principle is classic, as explained, an abstraction will catch all message
 
 This abstraction will also force the right order of operation using [trigger] or [t]. For instance when using [makenote] we have to give the value in order from right to left. It’s imperative to finish by giving the note argument in last for the object to work properly. But we will learn more about that in the next episode.
 
-![This is the abstraction [onestep] it stores every value from the interface to conform them to standard being able to control the synth.](../assets/tuto4-6.png)
+![This is the abstraction [onestep] it stores every value from the interface to conform them to standard being able to control the synth.](assets/tuto4-6.png)
 
 It’s important to notice how the data coming from the [taplist] abstractions is retrieved using the [symbol] object to convert the type of data we are receiving. Beware not to use ‘-‘ and ‘+’ symbols as those will be recognized as indicators to truncate the message.
 
