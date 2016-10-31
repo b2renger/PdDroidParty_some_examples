@@ -16,7 +16,7 @@ The first three tutorials are basic, they cover basic things in pd and give a fe
 
 # A few ressources
 
-Pure Data, and software made around Pure Data
+* Pure Data, and software made around Pure Data
 
 http://puredata.info/community/projects/software : download Pd Extended.
 
@@ -24,7 +24,7 @@ http://msp.ucsd.edu/software.html : download latest Pd vanilla.
 
 http://mccormick.cx/projects/PdDroidParty/ : download the last version of PdDroidParty.
 
-Pure Data forums et tutorials
+* Pure Data forums et tutorials
 
 http://puredata.info/docs/workshops/ArtAndCodePdDemo (tuto)
 
@@ -43,11 +43,19 @@ http://codelab.fr/pure-data (french forum, with a very detailed ressource page, 
 * [Samplers](#Samplers)<br>
 * [Effects](#Effects)<br>
   * [a simple gate object](#Spigot)
-  * [effect-chain](#Effect-chain)
+  * [an effect-chain](#Effect-chain)
   * [a touch object](#touch)
 * [Synths](#Synth)<br>
+  * [initialize values at startup](#loadbang)
+  * [polyphony and the poly object](#poly)
+  * [abstractions and subpatches](#abstractions)
+  * [arguments in abstraction $0 etc](#arguments)
 * [Sequencers](#Sequencers)<br>
 * [Spatialisation an auto-generation](#Spatialisation)<br>
+  * [using the random object](#random)
+  * [panning](#panning)
+  * [the swap object](#swap)
+  * [the switch~ object](#switch)
 * [Application](#Application)<br>
 
 
@@ -169,6 +177,7 @@ Then we have a tremolo effect, a reverb and then our audio output.
 
 It takes a midi pitch for inlet and it needs to have a 'notelength', an 'index', and a 'ratio' parameters set beforehand.
 
+<a name="loadbang">
 ### INITIALIZING PARAMETERS
 
 [loadbang] will send a bang on the startup of the patch, it’s usefull to initiate a lot of parameter such as synth parameters, or effects values etc.
@@ -179,6 +188,7 @@ You can use a big message object to bundle all those initialization parameters, 
 
 Notice that we wait 200 ms before sending everything, it's just to be sure that every object is loaded first.
 
+<a name="poly">
 ### POLYPHONY
 
 Polyphony can be achieved by various ways, it’s much more elegant with dynamic patching, but we will use a simple way of doing it with the [poly] object. This is the way to do it manually in a context where you don't need a lot of voices. (To achieve polyphony with style you can always look up the [u_makepoly] object from the Rj library.)
@@ -187,13 +197,13 @@ Polyphony can be achieved by various ways, it’s much more elegant with dynamic
 
 [poly] uses two arguments, the first one will indicate the number of voices you want the second one is the voice-stealing argument (that is to say, if all your voices are busy, it will “steal”one to output the new incoming value). [poly] receives a couple of value (note,velocity) respectively left and right inlet (beware, if velocity is 0 it will not output anything, and also the order of argument has it’s importance it should receive velocity first), and will return a triplet (voice_id, note, velocity). Then using [pack f f f] and [route 1 2 3 4] (because we 4 for voices : [poly 4 1]) we will be able to send (note,velocity) couples to voices abstractions or subpatches. In this example we leave the velocity values aside, as the touchscreen has no pressure informations. Furthermore our synth are initialized with a default velocity. An important point is that [route] will get rid of the first number of the list to pass it on : if it receives a message [1 60 127( the ouput of the first outlet will be [60 127(.
 
-
+<a name ="abstractions">
 ### ABSTRACTIONS ET SUBPATCHES
 
 As we already discussed it a litle an abstraction is a Pure Data patch, saved in the same folder as the main patch it can be created by just creating an object with the very same name. It’s the case of the [note-onff] patch (shown in the first snapshot of those explanations). This is useful when we use the same bit of code several times in one patch, if you modify save an abstraction changes will apply to all the places it is used. We can also use arguments when developing abstractions, see the next paragraph for that.
 A subpatch is useful to make the code more readable and compact. You just need to create called « pd my_subpatch », a new blank page will popup, you just need to write your code in it, creating inlets and outlets or send and receive will help you to communicate with the rest of your code. You can also just copy/paste a bit of code in it.
 
-
+<a name="arguments">
 ### USE OF ARGUMENTS IN ABSTRACTIONS ($0, $1, $2, …)
 
 ![Use of arguments in the **note-onoff** abstraction](assets/tuto3-6.png)
@@ -314,6 +324,7 @@ Firstofall it’s important to understand that we will not work with something l
 
 The canvas doesn’t support yet the customization of several objects with several svg files. We will have to keep them as rendered by PdDroidParty.
 
+<a name="random">
 ### USING [RANDOM]: TOWARDS PROBABILITIES
 
 [random] is an object that will allow us to generate pseudo-random numbers. If you create a [random N] object, it will generate a number between 0 and N-1. You can then use several mathematical operations afterwards to force the output to be mapped to a specific interval. In the example below we will generate a time value between 0 and 1999ms and to position values between 0 and 279 with the help of a [line] we will then be able to create a movement from the previous position to a new one over a specified time
@@ -324,7 +335,7 @@ It is now easy to build a group of object that will be able to output a bang acc
 
 ![probabilities](assets/tuto5-5.png)
 
-
+<a name="panning">
 ### PANING
 
 The [e_pan] object comes once again from the RJLib. It’s a classic stereo panoramic effect : in the left inlet you can enter a monophonic signal that will be panned to a stereophonic signal using a variable in the right inlet 0 is for left and 1 is for right.
@@ -337,7 +348,7 @@ We use one abstraction for each object, it will receive values from the movement
 
 Each movement parameter xpos1 and ypos1 (for instances) are routed to the right inlets using the move_id parameters. The movement on the x-axis will control stereo placement, and the y-axis will control the volume.
 
-
+<a name="swap">
 ### USING [SWAP] : COLD AND HOT INLETS
 
 For the volume we already get a value from 0 to 1 from the [touch] abstraction, but it outputs a 0 when we are on top of the screen and a 1 at the bottom. What we want is to have the maximum volume (ie 1) in the middle of the screen and 0 on top and at the bottom. We will need to write some code to achieve this :
@@ -350,7 +361,7 @@ For instance if we receive 0.4 at the left inlet and the argument is 1 we will h
 
 We need to use [swap] to do this. This is because of what we call hot inlets and cold inlets. A hot inlet will re-evaluate the output each time a variable is throw at it (it’s generally the first inlet on the left), a cold inlet will just store the value waiting for the output to be evaluated. We already use this with [f ] : for instance we store a number using the right inlet but it’s not passed to the output right away, it will ba only when a bang is received on the left inlet.
 
-
+<a name="switch">
 ### USING [SWITCH~]
 
 [switch~] is used to stop DSP (Digital Signal Processing) calculations within a subpatch or an abstraction. It’s usefull to save some CPU cycles when a subpatch is idle. For instance if we have a [noise~] object it will keep on calculating until we use [switch~] to stop it. You can use a basic audio gate to prevent sound from passing, but this will not stop calculations within [noise~] or others objects.
