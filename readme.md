@@ -3,9 +3,12 @@ ______________________________
 
 
 This repo contains examples for the PdDroidParty framework : http://droidparty.net/
+
 PdDroidparty enables you to run your Pure-Data patches on android, right away. It adds up a lot of wonderfull features such as replicating your sliders, enabling to theme and customize your patch with glorious svgs, deal with multi-touch, multi-window , accelerometer, networking etc.
 
-This is not an introduction to Pure-Data, so this shouldn't be your first tutorials, but it still aims at beginners, it starts easy and finishes with some advanced stuff. It builds on previous work made on 2012, if I find time I'll update this with new examples of the latest features.
+This is not an introduction to Pure-Data, so this shouldn't be your first tutorials, but it still aims at beginners, it starts easy and finishes with some advanced stuff. 
+
+It builds on previous work made on 2012, if I find time I'll update this with new examples of the latest features.
 
 Check out the readme in each folder. (for now comments in patchs are in french only, this should change soon).
 
@@ -14,23 +17,34 @@ The first three tutorials are basic, they cover basic things in pd and give a fe
 # A few ressources
 
 Pure Data, and software made around Pure Data
+
 http://puredata.info/community/projects/software : download Pd Extended.
-http://msp.ucsd.edu/software.html : download latest Pd vanilla
+
+http://msp.ucsd.edu/software.html : download latest Pd vanilla.
 
 http://mccormick.cx/projects/PdDroidParty/ : download the last version of PdDroidParty.
 
 Pure Data forums et tutorials
+
 http://puredata.info/docs/workshops/ArtAndCodePdDemo (tuto)
+
 http://www.obiwannabe.co.uk/ (tuto)
+
 http://www.pd-tutorial.com/english/index.html (tuto)
+
 http://en.flossmanuals.net/pure-data/ (manual)
+
 http://puredata.hurleur.com/index.php (english forum)
+
 http://codelab.fr/pure-data (french forum, with a very detailed ressource page, as a sticky post)
 
 
 # Content
 * [Samplers](#Samplers)<br>
 * [Effects](#Effects)<br>
+  * [a simple gate object](#Spigot)
+  * [effect-chain](#Effect-chain)
+  * [a touch object](#touch)
 * [Synths](#Synth)<br>
 * [Sequencers](#Sequencers)<br>
 * [Spatialisation an auto-generation](#Spatialisation)<br>
@@ -52,19 +66,19 @@ Loops were (for most of them) created from Pd patches available for download on 
 
 For further details, please refer to the comments included in the patch. The goal is not to understand everything but to have an idea how to deal with samples and keep them in synch.
 
-![Main Window of the PdDroidParty patch](../assets/tuto1-1.png)
+![Main Window of the PdDroidParty patch](assets/tuto1-1.png)
 
 The principle is simple, we need to play a pack of pre-recorded audio loops and play them in synch; that is to say that if we want to launch the next loop we will need to wait for the playing one to loop (same principle as in Abbelton Live).
 
-![Content of the subpatch which loads sounds](../assets/tuto1-2.png)
+![Content of the subpatch which loads sounds](assets/tuto1-2.png)
 
 We will load a pack of sounds in tables using the [soundfiler] object. To play back 4 sounds we will use 5 tables, as we will use a table to synch the playback of others, this control table will send a bang each time it loops that will be received by others. We’ll use the toggle to “arm” the playback that will start only when this bang is received.
 
-![Messages received by the sampler abstraction](../assets/tuto1-3.png)
+![Messages received by the sampler abstraction](assets/tuto1-3.png)
 
 Each loop will use a sampler abstraction (it’s simply another Pure Data patch being in the same folder as your main patch) this abstraction can be loaded by creating an object and naming it by its name. It will enable us to use the “$0-“ messaging system, which will be replaced by an unique identifier on creation. For instance a “$0-bang” will be replaced by “1088-bang” in an abstraction and by a “1055-bang” in another; it’s usefull to copy/paste chunck of codes without them interfering with one another
 
-![The content of the sampler abstraction](../assets/tuto1-4.png)
+![The content of the sampler abstraction](assets/tuto1-4.png)
 
 Something important is also to have well prepared samples. They should be the exact same duration, and recorded (or converted) at a 22050Hz, in .wav format.
 
@@ -78,24 +92,25 @@ The application enables you to choose between 3 sound sources (microphone input,
 
 This is a kind of Kaoss pad. It will enable you to use effects with a control surface (the [touch] abstraction by Chris). You’ll just have to move your finger along the pad to modify the values sent. An assignation matrix is available, enabling you to toggle on and off effects and choose which value is sent to control this effect (x position value, y position , or x+y/2). The chain of effect is composed from top to bottom of a band-pass, a ring modulator, a random delay, a comb filter and finally a reverb.
 
-![Main Window of the XY_pad_droid patch](../assets/tuto2-1.png)
+![Main Window of the XY_pad_droid patch](assets/tuto2-1.png)
 
 
 ## MAIN CONCEPTS 
 
 An effect is used to alter an audio stream going through it. In pd it can be seen as a subpatch or an abstraction using audio inlets [inlet~] and outlets [outlet~]. In between the audio signal will be modified using objects like [*~] to multiply an audio signal by another (or even a number), the couple of objects [delread~] et [delwrite~] to write the audio signal in a buffer to be read later on etc. 
 
+<a name="Spigot">
 ### HOW TO PREVENT DATA FROM PASSING THROUGH ?
 
-![spigot use](../assets/tuto2-2.png)
+![spigot use](assets/tuto2-2.png)
 
 [spigot] will help you to block or pass data. The left inlet is for data flow, the right inlet receives à 0 or a 1 (0 blocks data, 1 lets the pass). A toggle object in the Gui send those messages for each effect. The data flow comes from the [touch] abstraction, created this way [touch sizeX sizeY XY] you receive messages by an object [r XY], then you just have to link this object to a [unpack f f] to get X and Y values separately.
 
-![spigot use](../assets/tuto2-3.png)
+![spigot use](assets/tuto2-3.png)
 
 A [spigot~] object exists to deal with audio signals. We’d rather use a different technique to do so : we’ll use the [*~] object instead, in the left inlet comes an audio signal and the right inlet will receive a 0 or 1. If you multiply 0 you get nothing, if you multiply by 1 then you get the exact same message. This is also useful to control output volume of a patch, link a slider ranging from 0 to 1 to the left inlet, and you get a linear control of the volume moving your slide (we used this in the first episode to build the mini loop mixer).
 
-
+<a name="Effect-chain">
 ### AN EFFECT CHAIN
 
 This is the complete effect chain from the XY-pad-droid, we receive audio signals at the top [noise~] and [adc~] objects, those signals will go through each effect to the output.
@@ -103,11 +118,12 @@ This is the complete effect chain from the XY-pad-droid, we receive audio signal
 ADC = analog digital converter = mic.
 DAC = digital analog converter = speakers.
 
-![how to implement an effect chain](../assets/tuto2-4.png)
+![how to implement an effect chain](assets/tuto2-4.png)
 
 Of course the order you put the effects in has its importance, by putting the reverb first you'll get a different set of sonic possibilities.
 
 
+<a name="touch">
 ### THE [TOUCH] abstraction
 
 We use the [touch] abstraction provided by Chris, and [toggles] from the pd gui elements. To make a gui element send its value you need to specify a “send-symbol”, by right-clicking the object, selecting “properties” and specify the name the value will be sent to entering “mysend” in the send-symbol field will enable you to receive the value of the toggle (0 or 1) anywhere in your patch with a simple [r mysend] object. For Chris’ [touch] abstraction you need to create an object [touch 50 50 hello], this will create a surface of 50px X 50px which will send touch events (ie position of a finger in this surface) anywhere in the patch by creating a [r hello] object . Then you can use [unpack f f] to get x and y values and then scale them to your needs.
@@ -139,17 +155,17 @@ This time we will create a kind of mini Piano.
 ## HOW DOES IT WORK ?
 Our patch is a small piano with a GUI, some effects are incorporated to the controls, you can also choose the transposition factor, the note duration, and you can test out the nine sound presets that are available. This synthesizer is adapted from a patch by Tom Erbe.
 
-![Piano patch interface](../assets/tuto3-1.png)
+![Piano patch interface](assets/tuto3-1.png)
 
 ## MAIN CONCEPTS 
 Appart from sound synthesis several important points will be explained there (as a synthetizer needs to reveive informations to play). Please refere to comments inside the patches.
 
-![The guts of our piano](../assets/tuto3-2.png)
+![The guts of our piano](assets/tuto3-2.png)
 
 At the top we have a custom made abstraction to receive data from our interface, it will listen to a specific gui object (one of the piano "keys"), and will toggle messages to play notes with our synth.
 Then we have a tremolo effect, a reverb and then our audio output.
 
-![The fm audio engine](../assets/tuto3-3.png)
+![The fm audio engine](assets/tuto3-3.png)
 
 It takes a midi pitch for inlet and it needs to have a 'notelength', an 'index', and a 'ratio' parameters set beforehand.
 
@@ -157,7 +173,7 @@ It takes a midi pitch for inlet and it needs to have a 'notelength', an 'index',
 
 [loadbang] will send a bang on the startup of the patch, it’s usefull to initiate a lot of parameter such as synth parameters, or effects values etc.
 
-![The fm audio engine](../assets/tuto3-4.png)
+![The fm audio engine](assets/tuto3-4.png)
 
 You can use a big message object to bundle all those initialization parameters, you just need to put ';' at the begining and one after each message.
 
@@ -167,7 +183,7 @@ Notice that we wait 200 ms before sending everything, it's just to be sure that 
 
 Polyphony can be achieved by various ways, it’s much more elegant with dynamic patching, but we will use a simple way of doing it with the [poly] object. This is the way to do it manually in a context where you don't need a lot of voices. (To achieve polyphony with style you can always look up the [u_makepoly] object from the Rj library.)
 
-![The [poly] object](../assets/tuto3-5.png)
+![The **poly** object](assets/tuto3-5.png)
 
 [poly] uses two arguments, the first one will indicate the number of voices you want the second one is the voice-stealing argument (that is to say, if all your voices are busy, it will “steal”one to output the new incoming value). [poly] receives a couple of value (note,velocity) respectively left and right inlet (beware, if velocity is 0 it will not output anything, and also the order of argument has it’s importance it should receive velocity first), and will return a triplet (voice_id, note, velocity). Then using [pack f f f] and [route 1 2 3 4] (because we 4 for voices : [poly 4 1]) we will be able to send (note,velocity) couples to voices abstractions or subpatches. In this example we leave the velocity values aside, as the touchscreen has no pressure informations. Furthermore our synth are initialized with a default velocity. An important point is that [route] will get rid of the first number of the list to pass it on : if it receives a message [1 60 127( the ouput of the first outlet will be [60 127(.
 
@@ -180,7 +196,7 @@ A subpatch is useful to make the code more readable and compact. You just need t
 
 ### USE OF ARGUMENTS IN ABSTRACTIONS ($0, $1, $2, …)
 
-![Use of arguments in the [note-onoff] abstraction](../assets/tuto3-6.png)
+![Use of arguments in the **note-onoff** abstraction](assets/tuto3-6.png)
 
 The $0 argument is a bit of a special one. It is used INSIDE abstractions to help us deal with messages inside the abstraction, so that a message sent inside one abstraction stays in it, we will then use $0- as a prefix to those messages. When loading the abstraction $0 will be replaced by a random number (not-redundant), that is to say that one abstraction will then use a “1088-bang” whether the next one will use a “1158-bang”. In the first episode we use this in the [mon_sampleur] abstraction, in the example above we receive [r Dur] it will the same value (coming from the Gui) for all copies of this abstraction.
 Using $1, $2, $3 etc is different. It enables you to specify creation arguments. Above in the [note-onoff] abstraction we use $1 and $2. If you create un object called [note-onff C 60], $1 will be replaced by “C” and $2 by “60”. In this case $1 will be used to specify messages names to communicate with the GUI : a 1 will be received when you’ll toggle the toggle labeled “C”, after a delay specified by “Dur”a 0 will be sent back to it to reinitiate it using “C.r”. The same goes for $2 which will be replaced by “60”.
@@ -210,11 +226,10 @@ The application proposed here, will synthesize what we’ve been discovering in 
 
 Our groove box is a drum sequencer with an acid bass instrument. This tool will enable you to build a real rhythmic base for an electro track. After the recent updates on the DroidParty project, we can now use svg templates to improve the visual aspects of our programs. 
 
-![the raw DroidParty patch as it appears in Pure Data on a desktop machine](../assets/tuto4-2.png)
+![the raw DroidParty patch as it appears in Pure Data on a desktop machine](assets/tuto4-2.png)
 
 
-
-![Groove box : How is that for a change ?](../assets/tuto4-1.png)
+![Groove box : How is that for a change ?](assets/tuto4-1.png)
 
 
 ## MAIN CONCEPTS 
@@ -228,15 +243,16 @@ The group of five lines controls a bass synthesizer. The first one will control 
 Right below there is to ‘touch’ surfaces to apply effects on both the drums and the bass synth. On the right there are three sliders to help you change the sound of the synth.
 
 ### A DRUM SEQUENCER ?
+
 A sequencer is in most case a series of instructions that will be played in synch with a metronome. A sequencer has a number of step a 16 step sequencer will count from 0 to 15, so you will have sixteen steps to edit synthesis parameters for a given sound.
 
 In pd terms we will be have to build a line of sixteen controllers (ie toggles, sliders or whatever…) to input values, we will then need an object to store each step’s value (usually the right inlet of a [f]object), this value will then be output only when requested by a the combination of a counter (group of object counting from 0 to 15 at a specified tempo) and the object [select 0 1 2 … 15]. So we only have to link each output of the [sel] object to the left inlet of the [f] corresponding to its step and the bang output by [sel] will pass on the value to the output of [f].
 
-![Here’s an example of the counter built for this application. The message in the lower right hand corner will allow us to move the red canvas in the main interface.](../assets/tuto4-3.png)
+![Here’s an example of the counter built for this application. The message in the lower right hand corner will allow us to move the red canvas in the main interface.](assets/tuto4-3.png)
 
 In the drum sequencer example we will complicate things a little. As we will store values into an indexed table. This will help us to use less space on our display to control the drumming part. We will only have one line of toggles and a button will enable us to cycle between four voices (potentially a lot more). So every time we press the button we will be able to edit another voice.
 
-![The table used to store drum sequencing events.](../assets/tuto4-4.png)
+![The table used to store drum sequencing events.](assets/tuto4-4.png)
 
 To read the table we will have to use several objects, to read from the different indexes. If the retrieved value is zero we will not read the sample if it’s one we will. This method is a little too advanced for this introduction but it was worth mentioning considering the size of the screens we work on. I will not extend on the subject but check out the code to know more. You will learn more about ‘classic-sequencer’ in the next paragraph.
 
@@ -248,7 +264,7 @@ We will receive the ‘pos’ value sent by the counter, and we will “bang” 
 
 So the principle is classic, as explained, an abstraction will catch all messages from the interface using floats (=[f]) for a given step. When it’s “banged” it will output all those values in message.
 
-![The synth sequencer : outputting the midi pitch, velocity and duration plus a 0 or a 1 to indicate glissando](../assets/tuto4-5.png)
+![The synth sequencer : outputting the midi pitch, velocity and duration plus a 0 or a 1 to indicate glissando](assets/tuto4-5.png)
 
 This abstraction will also force the right order of operation using [trigger] or [t]. For instance when using [makenote] we have to give the value in order from right to left. It’s imperative to finish by giving the note argument in last for the object to work properly. But we will learn more about that in the next episode.
 
@@ -283,9 +299,9 @@ We will control one bird (with several voices), crickets, frogs, critters and ci
 
 Under the 'auto-move' button you can choose to move all of them randomly in one click, or move one according to the buttonyou hit.
 
-![the raw DroidParty patch as it appears in Pure Data on a desktop machine](../assets/tuto5-2.png)
+![the raw DroidParty patch as it appears in Pure Data on a desktop machine](assets/tuto5-2.png)
 
-![android interface](../assets/tuto5-1.png)
+![android interface](assets/tuto5-1.png)
 
 
 ## MAIN CONCEPTS
@@ -294,7 +310,7 @@ Once again please refer to the comment in the code to have further information .
 
 Firstofall it’s important to understand that we will not work with something like an image. At the time I'm writing this I can safely state that most of the object cannot be moved under android (this function of pd hasn’t been ported for droidparty yet). We will only depend on the [canvas] object for this kind of interaction (as we have successfully moved one in the 4th episode). We will use the same code : we use a [*300] object to adjust the output of a [touch] abstraction to the size of our surface.
 
-![How to move a pd object](../assets/tuto5-3.png)
+![How to move a pd object](assets/tuto5-3.png)
 
 The canvas doesn’t support yet the customization of several objects with several svg files. We will have to keep them as rendered by PdDroidParty.
 
@@ -302,11 +318,11 @@ The canvas doesn’t support yet the customization of several objects with sever
 
 [random] is an object that will allow us to generate pseudo-random numbers. If you create a [random N] object, it will generate a number between 0 and N-1. You can then use several mathematical operations afterwards to force the output to be mapped to a specific interval. In the example below we will generate a time value between 0 and 1999ms and to position values between 0 and 279 with the help of a [line] we will then be able to create a movement from the previous position to a new one over a specified time
 
-![use of random](../assets/tuto5-4.png)
+![use of random](assets/tuto5-4.png)
 
 It is now easy to build a group of object that will be able to output a bang according to a probability set by the user. You just need to link a [random 100] to a [moses my_probability]. The example below illustrates this principle if you click on the bang on top you’ll have a 20% chance that the second bang will light up, unless you have changed the number inside the numberbox (which I did) so now it’s a 36% chance.
 
-![probabilities](../assets/tuto5-5.png)
+![probabilities](assets/tuto5-5.png)
 
 
 ### PANING
@@ -317,7 +333,7 @@ The [e_pan] object comes once again from the RJLib. It’s a classic stereo pano
 
 We use one abstraction for each object, it will receive values from the movements of the interface through the routing system illustrated right below.
 
-![routing system](../assets/tuto5-7.png)
+![routing system](assets/tuto5-7.png)
 
 Each movement parameter xpos1 and ypos1 (for instances) are routed to the right inlets using the move_id parameters. The movement on the x-axis will control stereo placement, and the y-axis will control the volume.
 
@@ -326,7 +342,7 @@ Each movement parameter xpos1 and ypos1 (for instances) are routed to the right 
 
 For the volume we already get a value from 0 to 1 from the [touch] abstraction, but it outputs a 0 when we are on top of the screen and a 1 at the bottom. What we want is to have the maximum volume (ie 1) in the middle of the screen and 0 on top and at the bottom. We will need to write some code to achieve this :
 
-![swap](../assets/tuto5-8.png)
+![swap](assets/tuto5-8.png)
 
 From (0,1) we multiply by 2 to get to (0,2) then we substract 1 to have a range of (-1,1). So after two objects we now have -1 on top and at the bottom, and 0 when we are in the middle of the screen. We can use [abs] to get the absolute value so now we have 1 on top and at the bottom , and still 0 in the middle. We are almost there… since we just have to calculate ones’ complement of this value. We can use [swap 1] to achieve this. [swap] will exchange inputs and outputs the number in the left inlet will be output to second outlet and vice versa. 
 
@@ -341,7 +357,7 @@ We need to use [swap] to do this. This is because of what we call hot inlets and
 
 You only have to create the object in a subpatch and send it a 0 or a 1. Zero will stop calculations, one will enable them.
 
-![using [switch~]](../assets/tuto5-9.png)
+![using **switch~**](assets/tuto5-9.png)
 
 So we have discovered a few new concepts that will enable us to build more complex interfaces, creating movement, with several levers for interactivity. The use of [random] will be precious in the creation of generative systems.
 
@@ -361,7 +377,7 @@ This time we will create a much more complex application : a musical app that wi
 
 ## HOW DOES IT WORK ?
 
-![android interface](../assets/tuto6-1.png)
+![android interface](assets/tuto6-1.png)
 
 We have the possibility to change the tempo (at very high speed it can create nice textures). The screen can be split in three areas : the bar on top of the screen (switch the sequencer on/off, enter the speed, a audio/visual feedback of the metronome, and a button to reset everything, the left hand side of the screen (grey squares a line of four for 4 drum sounds, and 2*2 lines of six covering each a full octave for a both synths available) which is the playing area, and the right side of the screen which will enable us to control volumes/choose sounds/ choose the play mode and control effects.
 
@@ -373,7 +389,7 @@ Two other modes are available : the training mode   and the improvisation mode  
 
 The vertical sliders are for the effects,  the right ones are reverbs, the left one is a bitcrusher for the drum section, for both other instruments it’s a delay. Horizontal sliders control the volume of each instrument.
 
-![raw interface](../assets/tuto6-2.png)
+![raw interface](assets/tuto6-2.png)
 
 ## MARKOV CHAINS
 
@@ -383,7 +399,7 @@ It can sound a little complicated, but we will use abstractions from the Rjlib [
 
 So we will need two implementations one for the rhythm and one for the melody. For the melody we will receive through the left inlet synchronization data (rythmics bangs to play a melody), then the second inlet will receive the notes played, the third and fourth inlets will turn on or off the “training” and “play” modes (0 or 1). Concerning the rhythm we will receive through the left inlet a 1 if a note is played a 0 if no note is played.
 
-![Both subpatches used for the markov chain implementation](../assets/tuto6-3.png)
+![Both subpatches used for the markov chain implementation](assets/tuto6-3.png)
 
 [m_markovanal] will analyze a list of values and give us a histogram of the probabilities for each note in the list. In the training mode we will append all thoses notes in a message, once the training mode is off this list is dumped to [m_markovanal] that will output  all the histograms ready to be used in the right inlet of [c_markov]. A [reset( message can be used to clear everything.
 
@@ -391,7 +407,7 @@ So we will need two implementations one for the rhythm and one for the melody. F
 
 We will use both objects two time for each synth : once for the rhythm and one for the harmony, that is to say four times in the whole patch.
 
-![The couple [m_markovanal] and [c_markov] together, with the list of notes and the histogram](../assets/tuto6-4.png)
+![The couple **m_markovanal** and **c_markov** together, with the list of notes and the histogram](assets/tuto6-4.png)
 
 ## RESSOURCES
 
