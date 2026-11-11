@@ -1,33 +1,24 @@
-#N canvas 85 242 474 262 10;
-#X obj 2 9 cnv 15 460 90 empty empty empty 20 12 0 14 -233017 -66577
-0;
-#X obj 79 11 tgl 25 0 T-bypass empty empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X obj 82 39 hsl 60 25 0 1 0 0 T-freq freq.r empty -2 -8 0 10 -262144
--1 -1 1180 1;
+#N canvas 85 242 474 263 10;
+#X obj 2 9 cnv 15 460 90 empty empty empty 20 12 0 14 #e0e0e0 #404040 0;
+#X obj 79 11 tgl 25 0 T-bypass empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 82 39 hsl 60 25 0 1 0 0 T-freq freq.r empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 149 41 Frequence;
-#X obj 82 67 hsl 60 25 0 1 0 0 T-phase phase.r empty -2 -8 0 10 -262144
--1 -1 0 1;
+#X obj 82 67 hsl 60 25 0 1 0 0 T-phase phase.r empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 150 69 Phase;
-#X obj 224 40 hsl 60 25 0 1 0 0 T-depth depth.r empty -2 -8 0 10 -262144
--1 -1 4720 1;
+#X obj 224 40 hsl 60 25 0 1 0 0 T-depth depth.r empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 292 42 Depth;
-#X obj 224 68 hsl 60 25 0 1 0 0 T-gain gain.r empty -2 -8 0 10 -262144
--1 -1 3245 1;
+#X obj 224 68 hsl 60 25 0 1 0 0 T-gain gain.r empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 292 70 Gain;
-#X obj 354 41 hsl 60 25 0 100 0 0 verbness verbness.r empty -2 -8 0
-10 -262144 -1 -1 3835 1;
+#X obj 354 41 hsl 60 25 0 100 0 0 verbness verbness.r empty -2 -8 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 422 43 Reverb;
-#X obj 2 102 cnv 15 460 120 empty empty empty 20 12 0 14 -191407 -66577
-0;
-#X obj 2 225 cnv 15 460 30 empty empty empty 20 12 0 14 -162280 -66577
-0;
-#N canvas 533 133 686 515 audio 1;
-#X obj 272 16 loadbang;
-#X obj 4 416 dac~;
-#X obj 62 250 r transpose;
-#X obj 62 272 * 12;
-#X floatatom 18 301 5 0 0 1 Note_length Dur notelength;
+#X obj 2 102 cnv 15 460 120 empty empty empty 20 12 0 14 #b8b8b8 #404040 0;
+#X obj 2 225 cnv 15 460 30 empty empty empty 20 12 0 14 #9c9c9c #404040 0;
+#N canvas 460 22 804 598 audio 1;
+#X obj 315 72 loadbang;
+#X obj 46 527 dac~;
+#X obj 105 306 r transpose;
+#X obj 105 328 * 12;
+#X floatatom 61 357 5 0 0 1 Note_length Dur notelength 0;
 #N canvas 0 0 943 217 presets 0;
 #X msg 414 115 \; ratio 7 \; index 9;
 #X msg 174 117 \; ratio 2 \; index 3;
@@ -52,20 +43,20 @@
 #X connect 11 7 8 0;
 #X connect 11 8 3 0;
 #X connect 11 9 6 0;
-#X restore 219 406 pd presets;
+#X restore 262 462 pd presets;
 #N canvas 571 83 708 508 synth 0;
 #X obj 52 41 inlet;
 #X obj 146 436 outlet~;
 #N canvas 0 22 540 401 voice 0;
-#X floatatom 38 74 5 0 0 0 midi-note - -;
+#X floatatom 38 74 5 0 0 0 midi-note - - 0;
 #X obj 36 114 mtof;
 #X obj 223 205 osc~;
-#X floatatom 253 73 5 0 0 0 ratio - -;
+#X floatatom 253 73 5 0 0 0 ratio - - 0;
 #X obj 254 148 *;
-#X floatatom 231 180 5 0 0 0 - - -;
-#X floatatom 33 182 5 0 0 0 - - -;
+#X floatatom 231 180 5 0 0 0 - - - 0;
+#X floatatom 33 182 5 0 0 0 - - - 0;
 #X obj 171 275 osc~;
-#X floatatom 174 74 5 0 0 0 index - -;
+#X floatatom 174 74 5 0 0 0 index - - 0;
 #X obj 200 230 *~;
 #X obj 172 253 +~;
 #X obj 154 175 line~;
@@ -129,15 +120,15 @@
 #X obj 52 276 route 1 2 3 4;
 #X obj 52 109 poly 4 1;
 #N canvas 0 22 540 401 voice 0;
-#X floatatom 38 74 5 0 0 0 midi-note - -;
+#X floatatom 38 74 5 0 0 0 midi-note - - 0;
 #X obj 36 114 mtof;
 #X obj 223 205 osc~;
-#X floatatom 253 73 5 0 0 0 ratio - -;
+#X floatatom 253 73 5 0 0 0 ratio - - 0;
 #X obj 254 148 *;
-#X floatatom 231 180 5 0 0 0 - - -;
-#X floatatom 33 182 5 0 0 0 - - -;
+#X floatatom 231 180 5 0 0 0 - - - 0;
+#X floatatom 33 182 5 0 0 0 - - - 0;
 #X obj 171 275 osc~;
-#X floatatom 174 74 5 0 0 0 index - -;
+#X floatatom 174 74 5 0 0 0 index - - 0;
 #X obj 200 230 *~;
 #X obj 172 253 +~;
 #X obj 154 175 line~;
@@ -199,15 +190,15 @@
 #X connect 30 0 28 0;
 #X restore 53 367 pd voice;
 #N canvas 0 22 540 401 voice 0;
-#X floatatom 38 74 5 0 0 0 midi-note - -;
+#X floatatom 38 74 5 0 0 0 midi-note - - 0;
 #X obj 36 114 mtof;
 #X obj 223 205 osc~;
-#X floatatom 253 73 5 0 0 0 ratio - -;
+#X floatatom 253 73 5 0 0 0 ratio - - 0;
 #X obj 254 148 *;
-#X floatatom 231 180 5 0 0 0 - - -;
-#X floatatom 33 182 5 0 0 0 - - -;
+#X floatatom 231 180 5 0 0 0 - - - 0;
+#X floatatom 33 182 5 0 0 0 - - - 0;
 #X obj 171 275 osc~;
-#X floatatom 174 74 5 0 0 0 index - -;
+#X floatatom 174 74 5 0 0 0 index - - 0;
 #X obj 200 230 *~;
 #X obj 172 253 +~;
 #X obj 154 175 line~;
@@ -269,15 +260,15 @@
 #X connect 30 0 23 1;
 #X restore 167 367 pd voice;
 #N canvas 659 175 540 401 voice 0;
-#X floatatom 33 70 5 0 0 0 midi-note - -;
+#X floatatom 33 70 5 0 0 0 midi-note - - 0;
 #X obj 33 114 mtof;
 #X obj 288 175 osc~;
-#X floatatom 288 78 5 0 0 0 ratio - -;
+#X floatatom 288 78 5 0 0 0 ratio - - 0;
 #X obj 288 131 *;
-#X floatatom 288 154 5 0 0 0 - - -;
-#X floatatom 33 210 5 0 0 0 - - -;
+#X floatatom 288 154 5 0 0 0 - - - 0;
+#X floatatom 33 210 5 0 0 0 - - - 0;
 #X obj 204 268 osc~;
-#X floatatom 195 78 5 0 0 0 index - -;
+#X floatatom 195 78 5 0 0 0 index - - 0;
 #X obj 221 223 *~;
 #X obj 205 246 +~;
 #X obj 219 169 line~;
@@ -344,23 +335,11 @@
 #X msg 97 83 127;
 #X text 100 39 on reçoit la note midi qui va être jouée;
 #X text 129 81 on fixe la velocité à 127 (en norme MIDI toujours);
-#X text 119 108 L'objet poly va permettre de gérer l'arrivée de plusieurs
-notes en même temps. Il reçoit un couple (note \, velocité) il va sortir
-un triplet (numéro_de_voix \, note \, velocité). l'argument 4 signifie
-qu'il va prendre en compte jusqu'à 4 notes \, et l'argument 1 signifie
-que si tous les index sont occupés il va "voler" (voice stealing) une
-voix pour prendre en compte la nouvelle note.;
-#X text 124 213 on va encapsuler le numéro de voix et la note (on ignore
-la velocité car l'écran tactile n'est pas sensible à la pression);
-#X text 149 259 on utilise route pour envoyer les notes au différentes
-voix qui vont synthétiser les sons. Le numéro de voix sert juste à
-diriger la note \, il va être coupé au moment du routage pour ne laisser
-que la note sortir à la sortie correspondante;
-#X text 204 411 On diminue le volume sonore car les voix vont s'ajouter
-les unes aux autres.;
-#X text 280 365 Les 4 voix sont ici \, dans un sous patch on aurait
-aussi pu utiliser une abstraction. Double cliquer pour voir l'intérieur.
-;
+#X text 119 108 L'objet poly va permettre de gérer l'arrivée de plusieurs notes en même temps. Il reçoit un couple (note \, velocité) il va sortir un triplet (numéro_de_voix \, note \, velocité). l'argument 4 signifie qu'il va prendre en compte jusqu'à 4 notes \, et l'argument 1 signifie que si tous les index sont occupés il va "voler" (voice stealing) une voix pour prendre en compte la nouvelle note.;
+#X text 124 213 on va encapsuler le numéro de voix et la note (on ignore la velocité car l'écran tactile n'est pas sensible à la pression);
+#X text 149 259 on utilise route pour envoyer les notes au différentes voix qui vont synthétiser les sons. Le numéro de voix sert juste à diriger la note \, il va être coupé au moment du routage pour ne laisser que la note sortir à la sortie correspondante;
+#X text 204 411 On diminue le volume sonore car les voix vont s'ajouter les unes aux autres.;
+#X text 280 365 Les 4 voix sont ici \, dans un sous patch on aurait aussi pu utiliser une abstraction. Double cliquer pour voir l'intérieur.;
 #X connect 0 0 4 0;
 #X connect 2 0 8 0;
 #X connect 3 0 5 0;
@@ -376,12 +355,12 @@ aussi pu utiliser une abstraction. Double cliquer pour voir l'intérieur.
 #X connect 9 0 3 0;
 #X connect 10 0 11 0;
 #X connect 11 0 4 1;
-#X restore -10 323 pd synth;
-#X obj -11 -45 note-onoff C 36;
-#X obj -10 289 + 0;
+#X restore 33 379 pd synth;
+#X obj 32 11 note-onoff C 36;
+#X obj 33 345 + 0;
 #N canvas 515 16 555 679 AM-Tremolo 0;
-#X obj 127 -126 inlet~ signal;
-#X obj 129 444 outlet~;
+#X obj 92 47 inlet~ signal;
+#X obj 94 617 outlet~;
 #N canvas 0 22 462 312 rh_scalelog 0;
 #X obj 20 155 exp;
 #X obj 20 107 *;
@@ -406,15 +385,15 @@ aussi pu utiliser une abstraction. Double cliquer pour voir l'intérieur.
 #X connect 8 0 1 0;
 #X connect 9 0 3 0;
 #X connect 10 0 4 0;
-#X restore 209 406 pd rh_scalelog;
-#X msg 256 382 0.1;
-#X msg 302 382 10;
-#X obj 129 417 *~;
-#X obj 163 289 osc~;
-#X obj 160 318 expr~ (($v1-1) / 2 * $v2) + 1;
-#X obj 349 289 vline~;
-#X msg 349 266 \$1 10;
-#X obj 130 365 *~;
+#X restore 174 579 pd rh_scalelog;
+#X msg 221 555 0.1;
+#X msg 267 555 10;
+#X obj 94 590 *~;
+#X obj 128 462 osc~;
+#X obj 125 491 expr~ (($v1-1) / 2 * $v2) + 1;
+#X obj 314 462 vline~;
+#X msg 314 439 \$1 10;
+#X obj 95 538 *~;
 #N canvas 0 22 462 312 rh_scalelog 0;
 #X obj 20 155 exp;
 #X obj 20 107 *;
@@ -439,16 +418,16 @@ aussi pu utiliser une abstraction. Double cliquer pour voir l'intérieur.
 #X connect 8 0 1 0;
 #X connect 9 0 3 0;
 #X connect 10 0 4 0;
-#X restore 183 197 pd rh_scalelog;
-#X msg 230 173 0.1;
-#X msg 276 173 10000;
-#X obj 256 354 r \$0-loadbang;
-#X obj 230 145 r \$0-loadbang;
-#X obj 210 271 + 0.25;
-#X obj 177 45 r T-freq;
-#X obj 219 70 r T-phase;
-#X obj 250 100 r T-depth;
-#X obj 327 112 r T-gain;
+#X restore 148 370 pd rh_scalelog;
+#X msg 195 346 0.1;
+#X msg 241 346 10000;
+#X obj 221 527 r \$0-loadbang;
+#X obj 195 318 r \$0-loadbang;
+#X obj 175 444 + 0.25;
+#X obj 142 218 r T-freq;
+#X obj 184 243 r T-phase;
+#X obj 215 273 r T-depth;
+#X obj 292 285 r T-gain;
 #N canvas 0 22 450 300 bypass~ 0;
 #X obj 35 32 inlet~;
 #X obj 251 35 inlet;
@@ -489,8 +468,8 @@ aussi pu utiliser une abstraction. Double cliquer pour voir l'intérieur.
 #X connect 16 1 11 0;
 #X connect 19 0 5 0;
 #X connect 19 0 12 0;
-#X restore 126 -28 pd bypass~;
-#X obj 183 -60 r T-bypass;
+#X restore 91 145 pd bypass~;
+#X obj 148 113 r T-bypass;
 #X connect 0 0 21 0;
 #X connect 2 0 5 1;
 #X connect 3 0 2 1;
@@ -516,7 +495,7 @@ aussi pu utiliser une abstraction. Double cliquer pour voir l'intérieur.
 #X connect 21 0 10 0;
 #X connect 21 1 10 0;
 #X connect 22 0 21 1;
-#X restore -9 359 pd AM-Tremolo;
+#X restore 34 431 pd AM-Tremolo;
 #N canvas 0 22 305 244 fxout 0;
 #X msg 122 97 /feedback \$1;
 #X obj 23 121 hip~ 20;
@@ -629,38 +608,38 @@ aussi pu utiliser une abstraction. Double cliquer pour voir l'intérieur.
 #X connect 9 0 3 0;
 #X connect 9 0 0 0;
 #X connect 13 0 9 0;
-#X restore -9 379 pd fxout;
-#X obj 272 38 delay 200;
-#X text 108 -46 <- abstraction contenant les messages reçus depuis
-le GUI;
-#X obj 16 -2 note-onoff D 38;
-#X obj 43 44 note-onoff E 40;
-#X obj 55 66 note-onoff F 41;
-#X obj 78 109 note-onoff G 43;
-#X obj 99 150 note-onoff A 45;
-#X obj 120 194 note-onoff B 47;
-#X obj 2 -24 note-onoff Csharp 37;
-#X obj 30 21 note-onoff Dsharp 39;
-#X obj 67 89 note-onoff Fsharp 42;
-#X obj 89 131 note-onoff Gsharp 44;
-#X obj 109 172 note-onoff Asharp 46;
-#X text 141 247 <- si on reçoit un 1 \, on va ajouter 12 à la note
-reçue et donc la transposer d'une octave. Si on reçoit un 2 on va ajouter
-24 et donc décaler de 2 octave etc.;
-#X text 53 321 <- le coeur de la synthèse sonore;
-#X text 288 406 <- des messages permettant d'initialiser différentes
-sonorités.;
-#X msg 272 63 \; freq.r 0.2 \; phase.r 0 \; depth.r 0.8 \; gain.r 0.55
-\; verbness.r 65 \; transpose.r 2 \; Dur.r 2000 \; preset.r 1 \; pd
-dsp 1;
-#X text 333 14 <- on initialise l'ensemble des valeurs pour le synthétiseur
-et les effets. La plupart de ces valeurs sont envoyées à l'interface.
-;
-#X text 77 359 <- des effets...;
+#X restore 34 451 pd fxout;
+#X obj 315 94 delay 200;
+#X text 151 10 <- abstraction contenant les messages reçus depuis le GUI;
+#X obj 59 54 note-onoff D 38;
+#X obj 86 100 note-onoff E 40;
+#X obj 98 122 note-onoff F 41;
+#X obj 121 165 note-onoff G 43;
+#X obj 142 206 note-onoff A 45;
+#X obj 163 250 note-onoff B 47;
+#X obj 45 32 note-onoff Csharp 37;
+#X obj 73 77 note-onoff Dsharp 39;
+#X obj 110 145 note-onoff Fsharp 42;
+#X obj 132 187 note-onoff Gsharp 44;
+#X obj 152 228 note-onoff Asharp 46;
+#X text 184 303 <- si on reçoit un 1 \, on va ajouter 12 à la note reçue et donc la transposer d'une octave. Si on reçoit un 2 on va ajouter 24 et donc décaler de 2 octave etc.;
+#X text 96 377 <- le coeur de la synthèse sonore;
+#X text 331 462 <- des messages permettant d'initialiser différentes sonorités.;
+#X msg 315 119 \; freq.r 0.2 \; phase.r 0 \; depth.r 0.8 \; gain.r 0.55 \; verbness.r 65 \; transpose.r 2 \; Dur.r 2000 \; preset.r 1 \; pd dsp 1;
+#X text 376 70 <- on initialise l'ensemble des valeurs pour le synthétiseur et les effets. La plupart de ces valeurs sont envoyées à l'interface.;
+#X text 120 431 <- des effets...;
+#X obj 445 166 r open-web;
+#X obj 33 406 *~, f 56;
+#X obj 388 354 r volume;
+#X obj 388 377 pow 2;
+#X msg 388 400 \$1 10;
+#X obj 388 423 line~;
+#X msg 445 189 gotoUrl https://github.com/b2renger/PdDroidParty_some_examples;
+#X obj 445 225 s sys-rcv;
 #X connect 0 0 11 0;
 #X connect 2 0 3 0;
 #X connect 3 0 8 1;
-#X connect 6 0 9 0;
+#X connect 6 0 31 0;
 #X connect 7 0 8 0;
 #X connect 8 0 6 0;
 #X connect 9 0 10 0;
@@ -678,34 +657,38 @@ et les effets. La plupart de ces valeurs sont envoyées à l'interface.
 #X connect 21 0 8 0;
 #X connect 22 0 8 0;
 #X connect 23 0 8 0;
+#X connect 30 0 36 0;
+#X connect 31 0 9 0;
+#X connect 32 0 33 0;
+#X connect 33 0 34 0;
+#X connect 34 0 35 0;
+#X connect 35 0 31 1;
+#X connect 36 0 37 0;
 #X restore 351 17 pd audio;
-#X obj 76 168 tgl 50 0 C C.r C 22 25 0 10 -262144 -1 -1 0 1;
+#X obj 76 168 tgl 50 0 C C.r C 22 25 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 76 230 Transpose;
 #X text 200 233 DurÃ©e;
-#X obj 131 168 tgl 50 0 D D.r D 22 25 0 10 -262144 -1 -1 0 1;
-#X obj 186 168 tgl 50 0 E E.r E 22 25 0 10 -262144 -1 -1 0 1;
-#X obj 241 168 tgl 50 0 F F.r F 22 25 0 10 -262144 -1 -1 0 1;
-#X obj 295 168 tgl 50 0 G G.r G 22 25 0 10 -262144 -1 -1 0 1;
-#X obj 350 168 tgl 50 0 A A.r A 22 25 0 10 -262144 -1 -1 0 1;
-#X obj 406 168 tgl 50 0 B B.r B 22 25 0 10 -262144 -1 -1 0 1;
-#X obj 101 111 tgl 50 0 Csharp Csharp.r C+ 22 25 0 10 -1 -262144 -262144
-0 1;
-#X obj 161 111 tgl 50 0 Dsharp Dsharp.r Eb 22 25 0 10 -1 -262144 -262144
-0 1;
-#X obj 264 113 tgl 50 0 Fsharp Fsharp.r F+ 22 25 0 10 -1 -262144 -262144
-0 1;
-#X obj 323 113 tgl 50 0 Gsharp Gsharp.r G+ 22 25 0 10 -1 -262144 -262144
-0 1;
-#X obj 382 113 tgl 50 0 Asharp Asharp.r Bb 22 25 0 10 -1 -262144 -262144
-0 1;
-#X obj 138 231 nbx 5 20 -1e+037 1e+037 0 0 transpose transpose.r empty
-0 -8 0 10 -262144 -1 -1 2 256;
-#X obj 242 232 nbx 5 20 -1e+037 1e+037 0 0 Dur Dur.r empty 0 -8 0 10
--262144 -1 -1 2000 256;
-#X obj 349 232 nbx 5 20 -1e+037 1e+037 0 0 preset preset.r empty 0
--8 0 10 -262144 -1 -1 1 256;
+#X obj 131 168 tgl 50 0 D D.r D 22 25 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 186 168 tgl 50 0 E E.r E 22 25 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 241 168 tgl 50 0 F F.r F 22 25 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 295 168 tgl 50 0 G G.r G 22 25 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 350 168 tgl 50 0 A A.r A 22 25 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 406 168 tgl 50 0 B B.r B 22 25 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 101 111 tgl 50 0 Csharp Csharp.r C+ 22 25 0 10 #000000 #fcfcfc #fcfcfc 0 1;
+#X obj 161 111 tgl 50 0 Dsharp Dsharp.r Eb 22 25 0 10 #000000 #fcfcfc #fcfcfc 0 1;
+#X obj 264 113 tgl 50 0 Fsharp Fsharp.r F+ 22 25 0 10 #000000 #fcfcfc #fcfcfc 0 1;
+#X obj 323 113 tgl 50 0 Gsharp Gsharp.r G+ 22 25 0 10 #000000 #fcfcfc #fcfcfc 0 1;
+#X obj 382 113 tgl 50 0 Asharp Asharp.r Bb 22 25 0 10 #000000 #fcfcfc #fcfcfc 0 1;
+#X obj 138 231 nbx 5 20 -1e+37 1e+37 0 0 transpose transpose.r empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 242 232 nbx 5 20 -1e+37 1e+37 0 0 Dur Dur.r empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 349 232 nbx 5 20 -1e+37 1e+37 0 0 preset preset.r empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
 #X text 309 235 Preset;
 #X text 13 110 PIANO;
 #X text 1 230 SYNTH PARAM;
 #X text 10 12 EFFETS;
 #X text 110 14 Bypass;
+#X obj 7 201 bng 18 250 50 0 open-web empty website 20 9 0 10 #fcfcfc #000000 #000000;
+#X text 6 169 b2renger;
+#X text 6 183 2015-2016;
+#X obj 216 276 droidsystem sys;
+#X obj 10 132 hsl 60 25 0 1 0 0 volume empty volume 4 12 0 10 #fcfcfc #000000 #000000 0 1;

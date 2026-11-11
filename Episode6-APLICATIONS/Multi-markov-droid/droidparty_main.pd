@@ -1,101 +1,79 @@
-#N canvas 207 60 499 332 10;
+#N canvas 46 152 499 332 10;
 #X declare -path rj;
-#X obj 2 35 cnv 15 315 290 empty empty empty 20 12 0 14 -191407 -66577
-0;
-#X obj 13 50 tgl 70 0 hihat hihat.r empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 86 50 tgl 70 0 snare snare.r empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 160 50 tgl 70 0 kick kick.r empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 234 50 tgl 70 0 cymbal cymbal.r empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X obj 13 124 tgl 45 0 c c.r empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 62 124 tgl 45 0 csharp csharp.r empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X obj 111 124 tgl 45 0 d d.r empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 160 124 tgl 45 0 dsharp dsharp.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 209 124 tgl 45 0 e e.r empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 258 124 tgl 45 0 f f.r empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 13 171 tgl 45 0 fsharp fsharp.r empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X obj 62 171 tgl 45 0 g g.r empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 111 171 tgl 45 0 gsharp gsharp.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 160 171 tgl 45 0 a a.r empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 258 171 tgl 45 0 b b.r empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 209 171 tgl 45 0 asharp asharp.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 13 221 tgl 45 0 c-1 c-1.r empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 62 221 tgl 45 0 csharp-1 csharp-1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 111 221 tgl 45 0 d-1 d-1.r empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 160 221 tgl 45 0 dsharp-1 dsharp-1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 209 221 tgl 45 0 e-1 e-1.r empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 258 221 tgl 45 0 f-1 f-1.r empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 13 268 tgl 45 0 fsharp-1 fsharp-1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 62 268 tgl 45 0 g-1 g-1.r empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 111 268 tgl 45 0 gsharp-1 gsharp-1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 160 268 tgl 45 0 a-1 a-1.r empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 258 268 tgl 45 0 b-1 b-1.r empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 209 268 tgl 45 0 asharp-1 asharp-1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 321 35 cnv 15 175 290 empty empty empty 20 12 0 14 -191407 -66577
-0;
-#N canvas 247 85 870 466 audio 0;
-#N canvas 753 140 487 323 beats 0;
-#X obj -88 -53 r bpm;
-#X obj 104 112 s pos;
-#X obj -87 -12 s notetime;
-#X floatatom -75 45 5 0 0 0 - - -;
-#X obj 11 75 mod 16;
-#X obj 11 135 mod 4;
-#X obj 11 159 s beat;
-#X obj 88 239 s bar;
-#X obj 104 92 s step;
-#X obj 88 136 mod 4;
-#X obj 88 156 sel 0;
-#X obj 88 177 f 0;
-#X obj 118 177 + 1;
-#X obj 88 219 f;
-#X obj 88 198 t b f;
-#X obj -88 -33 expr 60000/$f1;
-#X obj 224 155 osc~;
-#X msg 224 46 880;
-#X msg 281 45 1010;
-#X obj 224 183 *~;
-#X obj 262 155 line;
-#X msg 262 125 1 5;
-#X obj 224 65 t f b b;
-#X obj 281 64 t f b b;
-#X obj 291 103 del 50;
-#X msg 291 125 0 5;
-#X obj 224 226 s~ metro-audio;
-#X obj 225 16 sel 0 1 2 3;
-#X obj 225 -45 r beat;
-#X obj 225 -5 spigot;
-#X obj 272 -46 r metro-on;
-#X obj 225 205 *~ 0.06;
-#X symbolatom 103 -82 10 0 0 0 - - -;
-#X obj 11 -99 r play-pause;
-#X obj 11 -78 sel Play Stop;
-#X msg 11 -56 0;
-#X msg 48 -56 1;
-#X obj 11 6 metro 500;
-#X obj 109 -23 r notetime;
-#X obj 11 36 f 0;
-#X obj 36 36 + 1;
+#X declare -path droidparty-abstractions;
+#X obj 2 35 cnv 15 315 290 empty empty empty 20 12 0 14 #b8b8b8 #404040 0;
+#X obj 15 48 tgl 70 0 hihat hihat.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 88 48 tgl 70 0 snare snare.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 162 48 tgl 70 0 kick kick.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 236 48 tgl 70 0 cymbal cymbal.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 15 122 tgl 45 0 c c.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 64 122 tgl 45 0 csharp csharp.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 113 122 tgl 45 0 d d.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 162 122 tgl 45 0 dsharp dsharp.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 211 122 tgl 45 0 e e.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 260 122 tgl 45 0 f f.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 15 169 tgl 45 0 fsharp fsharp.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 64 169 tgl 45 0 g g.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 113 169 tgl 45 0 gsharp gsharp.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 162 169 tgl 45 0 a a.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 260 169 tgl 45 0 b b.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 211 169 tgl 45 0 asharp asharp.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 15 219 tgl 45 0 c-1 c-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 64 219 tgl 45 0 csharp-1 csharp-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 113 219 tgl 45 0 d-1 d-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 162 219 tgl 45 0 dsharp-1 dsharp-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 211 219 tgl 45 0 e-1 e-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 260 219 tgl 45 0 f-1 f-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 15 266 tgl 45 0 fsharp-1 fsharp-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 64 266 tgl 45 0 g-1 g-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 113 266 tgl 45 0 gsharp-1 gsharp-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 162 266 tgl 45 0 a-1 a-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 260 266 tgl 45 0 b-1 b-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 211 266 tgl 45 0 asharp-1 asharp-1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 321 35 cnv 15 175 290 empty empty empty 20 12 0 14 #b8b8b8 #404040 0;
+#N canvas 806 45 531 466 audio 1;
+#N canvas 753 140 477 409 beats 0;
+#X obj 12 80 r bpm;
+#X obj 204 245 s pos;
+#X obj 13 121 s notetime;
+#X floatatom 25 178 5 0 0 0 - - - 0;
+#X obj 111 208 mod 16;
+#X obj 111 268 mod 4;
+#X obj 111 292 s beat;
+#X obj 188 372 s bar;
+#X obj 204 225 s step;
+#X obj 188 269 mod 4;
+#X obj 188 289 sel 0;
+#X obj 188 310 f 0;
+#X obj 218 310 + 1;
+#X obj 188 352 f;
+#X obj 188 331 t b f;
+#X obj 12 100 expr 60000/$f1;
+#X obj 324 288 osc~;
+#X msg 324 179 880;
+#X msg 381 178 1010;
+#X obj 324 316 *~;
+#X obj 362 288 line;
+#X msg 362 258 1 5;
+#X obj 324 198 t f b b;
+#X obj 381 197 t f b b;
+#X obj 391 236 del 50;
+#X msg 391 258 0 5;
+#X obj 324 359 s~ metro-audio;
+#X obj 325 149 sel 0 1 2 3;
+#X obj 325 88 r beat;
+#X obj 325 128 spigot;
+#X obj 372 87 r metro-on;
+#X obj 325 338 *~ 0.06;
+#X symbolatom 203 51 10 0 0 0 - - - 0;
+#X obj 111 34 r play-pause;
+#X obj 111 55 sel Play Stop;
+#X msg 111 77 0;
+#X msg 148 77 1;
+#X obj 111 139 metro 500;
+#X obj 209 110 r notetime;
+#X obj 111 169 f 0;
+#X obj 136 169 + 1;
 #X connect 0 0 15 0;
 #X connect 4 0 5 0;
 #X connect 4 0 1 0;
@@ -147,22 +125,24 @@
 #X connect 39 0 40 0;
 #X connect 39 0 4 0;
 #X connect 40 0 39 1;
-#X restore 33 -173 pd beats;
-#X obj 144 226 dac~;
+#X restore 24 33 pd beats;
+#X obj 135 432 dac~;
 #N canvas 215 82 509 346 drums-page 0;
-#X obj -338 4 r step;
-#X msg -94 71 clear;
-#X obj -338 212 outlet~;
-#X obj -338 192 *~ 0.4;
-#X obj -94 52 b;
-#X obj -94 6 r wordbutton-Reset;
-#X obj -84 27 r wordbutton-Drums-reset;
-#X msg -155 -20 dump;
-#X obj -155 -40 r save_everything;
+#X obj 60 79 r step;
+#X msg 304 146 clear;
+#X obj 60 287 outlet~;
+#X obj 60 267 *~ 0.4;
+#X obj 304 127 b;
+#X obj 304 81 r wordbutton-Reset;
+#X obj 314 102 r wordbutton-Drums-reset;
+#X msg 243 55 dump;
+#X obj 243 35 r save_everything;
 #N canvas 0 0 796 488 taptap-cymbal 0;
 #X obj 368 236 c_taptap 16;
 #N canvas 0 22 454 304 (subpatch) 0;
 #X array Sample4 213831 float 0;
+#A color 0;
+#A width 1;
 #X coords 0 1 213830 -1 50 50 1;
 #X restore 389 298 graph;
 #X obj 368 354 tabplay~ Sample4;
@@ -181,11 +161,13 @@
 #X connect 5 0 4 0;
 #X connect 7 0 0 0;
 #X connect 8 0 0 1;
-#X restore -187 151 pd taptap-cymbal;
+#X restore 211 226 pd taptap-cymbal;
 #N canvas 0 0 467 407 taptap-kick 0;
 #X obj 69 225 c_taptap 16;
 #N canvas 0 22 458 308 (subpatch) 0;
 #X array Sample3 24346 float 0;
+#A color 0;
+#A width 1;
 #X coords 0 1 24345 -1 50 50 1;
 #X restore 89 288 graph;
 #X obj 69 344 tabplay~ Sample3;
@@ -204,11 +186,13 @@
 #X connect 5 0 4 0;
 #X connect 7 0 0 0;
 #X connect 8 0 0 1;
-#X restore -236 130 pd taptap-kick;
+#X restore 162 205 pd taptap-kick;
 #N canvas 0 0 467 512 taptap-snare 0;
 #X obj -113 224 c_taptap 16;
 #N canvas 0 22 458 308 (subpatch) 0;
 #X array Sample2 31010 float 0;
+#A color 0;
+#A width 1;
 #X coords 0 1 31009 -1 50 50 1;
 #X restore -94 289 graph;
 #X obj -113 343 tabplay~ Sample2;
@@ -227,11 +211,13 @@
 #X connect 6 0 2 0;
 #X connect 7 0 0 0;
 #X connect 8 0 0 1;
-#X restore -301 109 pd taptap-snare;
+#X restore 97 184 pd taptap-snare;
 #N canvas 0 0 450 300 taptap-hihat 0;
 #X obj -227 133 c_taptap 16;
 #N canvas 0 22 454 304 (subpatch) 0;
 #X array Sample1 60378 float 0;
+#A color 0;
+#A width 1;
 #X coords 0 1 60377 -1 50 50 1;
 #X restore -206 199 graph;
 #X obj -227 253 tabplay~ Sample1;
@@ -250,7 +236,7 @@
 #X connect 6 0 0 1;
 #X connect 7 0 0 0;
 #X connect 8 0 0 1;
-#X restore -338 88 pd taptap-hihat;
+#X restore 60 163 pd taptap-hihat;
 #X connect 0 0 9 0;
 #X connect 0 0 10 0;
 #X connect 0 0 11 0;
@@ -272,7 +258,7 @@
 #X connect 10 0 3 0;
 #X connect 11 0 3 0;
 #X connect 12 0 3 0;
-#X restore 32 -77 pd drums-page;
+#X restore 23 129 pd drums-page;
 #N canvas 0 0 614 545 synth-page 0;
 #N canvas 221 178 991 509 Synth_Pads________________ 0;
 #X obj 205 302 *~;
@@ -295,8 +281,7 @@
 #X obj 456 225 delay 5;
 #X text 102 283 Attack : sends a 1 to get to in A msec;
 #X text 529 224 wait the end of the attack;
-#X text 538 254 Length+Decay : 0 to get to in D msec \, after L msec
-;
+#X text 538 254 Length+Decay : 0 to get to in D msec \, after L msec;
 #X connect 0 0 9 0;
 #X connect 0 0 15 0;
 #X connect 2 0 10 1;
@@ -480,10 +465,10 @@
 #X connect 11 1 9 1;
 #X connect 14 0 2 0;
 #X connect 15 0 1 0;
-#X restore 46 438 pd Synth_Pads________________;
-#X obj 91 413 r vel;
-#X obj 131 416 r A;
-#X obj 217 416 r D;
+#X restore 119 433 pd Synth_Pads________________;
+#X obj 164 408 r vel;
+#X obj 204 411 r A;
+#X obj 290 411 r D;
 #N canvas 0 22 697 471 stampblips 0;
 #N canvas 0 22 528 439 blip 0;
 #X obj 153 236 osc~;
@@ -495,7 +480,7 @@
 #X msg 190 202 1 2 0 \, 0 \$1 3;
 #X obj 190 108 log;
 #X obj 190 85 pow 4;
-#X obj 190 151 * 1e+006;
+#X obj 190 151 * 1e+06;
 #X obj 190 130 pow -3;
 #X obj 190 174 * 2;
 #X obj 259 25 inlet;
@@ -537,7 +522,7 @@
 #X msg 190 202 1 2 0 \, 0 \$1 3;
 #X obj 190 108 log;
 #X obj 190 85 pow 4;
-#X obj 190 151 * 1e+006;
+#X obj 190 151 * 1e+06;
 #X obj 190 130 pow -3;
 #X obj 190 174 * 2;
 #X obj 259 25 inlet;
@@ -579,7 +564,7 @@
 #X msg 190 202 1 2 0 \, 0 \$1 3;
 #X obj 190 108 log;
 #X obj 190 85 pow 4;
-#X obj 190 151 * 1e+006;
+#X obj 190 151 * 1e+06;
 #X obj 190 130 pow -3;
 #X obj 190 174 * 2;
 #X obj 259 25 inlet;
@@ -621,7 +606,7 @@
 #X msg 190 202 1 2 0 \, 0 \$1 3;
 #X obj 190 108 log;
 #X obj 190 85 pow 4;
-#X obj 190 151 * 1e+006;
+#X obj 190 151 * 1e+06;
 #X obj 190 130 pow -3;
 #X obj 190 174 * 2;
 #X obj 259 25 inlet;
@@ -664,8 +649,7 @@
 #X obj 387 82 r decay;
 #X obj 344 111 f;
 #X obj 352 37 inlet decay;
-#X obj 389 135 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X obj 389 135 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 143 251 *~ 0.15;
 #X obj 299 16 inlet vel;
 #X connect 0 0 16 0;
@@ -691,14 +675,14 @@
 #X connect 15 0 13 0;
 #X connect 16 0 4 0;
 #X connect 17 0 9 1;
-#X restore 237 438 pd stampblips;
-#X obj 274 409 r vel;
-#X obj 46 274 pack f f;
-#X obj 46 254 f;
-#X obj 46 205 t b f;
-#X text 102 277 7- routage selon le synthé choisi;
-#X text 331 440 8- les synthés;
-#X obj 47 488 outlet~;
+#X restore 310 433 pd stampblips;
+#X obj 347 404 r vel;
+#X obj 119 269 pack f f;
+#X obj 119 249 f;
+#X obj 119 200 t b f;
+#X text 175 272 7- routage selon le synthé choisi;
+#X text 404 435 8- les synthés;
+#X obj 120 483 outlet~;
 #N canvas 75 149 975 317 fmsynth 0;
 #X msg 467 95 \; ratio 7 \; index 9;
 #X msg 543 41 \; ratio 2 \; index 3;
@@ -996,27 +980,27 @@
 #X connect 15 8 6 0;
 #X connect 15 9 7 0;
 #X connect 16 0 17 0;
-#X restore 422 439 pd fmsynth;
-#X obj 445 412 r vel;
-#X obj 46 320 route 0 1 2 3 4 5 6 7 8 9 10 11;
-#X obj 164 64 sel P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11;
-#X obj 164 17 r synthpreset;
-#X msg 164 42 symbol \$1;
-#X msg 164 92 0;
-#X msg 184 113 1;
-#X msg 204 134 2;
-#X msg 225 155 3;
-#X msg 245 93 4;
-#X msg 265 114 5;
-#X msg 285 135 6;
-#X msg 306 156 7;
-#X msg 328 92 8;
-#X msg 348 113 9;
-#X msg 368 134 10;
-#X msg 389 155 11;
-#X obj 163 237 t f;
-#X obj 174 416 r notetime;
-#X obj -50 142 t f;
+#X restore 495 434 pd fmsynth;
+#X obj 518 407 r vel;
+#X obj 119 315 route 0 1 2 3 4 5 6 7 8 9 10 11;
+#X obj 237 59 sel P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11;
+#X obj 237 12 r synthpreset;
+#X msg 237 37 symbol \$1;
+#X msg 237 87 0;
+#X msg 257 108 1;
+#X msg 277 129 2;
+#X msg 298 150 3;
+#X msg 318 88 4;
+#X msg 338 109 5;
+#X msg 358 130 6;
+#X msg 379 151 7;
+#X msg 401 87 8;
+#X msg 421 108 9;
+#X msg 441 129 10;
+#X msg 462 150 11;
+#X obj 236 232 t f;
+#X obj 247 411 r notetime;
+#X obj 23 137 t f;
 #N canvas 0 0 1277 612 mode_piano 0;
 #X obj 6 51 b;
 #X obj 35 51 b;
@@ -1130,28 +1114,17 @@
 #X connect 46 0 21 0;
 #X connect 47 0 22 0;
 #X connect 48 0 23 0;
-#X restore -50 116 pd mode_piano;
-#X obj -50 205 s notes-piano1;
+#X restore 23 111 pd mode_piano;
+#X obj 23 200 s notes-piano1;
 #N canvas 158 61 886 598 markov1 0;
 #N canvas 0 0 1349 696 markov-mel 0;
 #X obj 54 819 + 0;
-#X msg 264 230 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \,
-0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \,
-8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \,
-10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \,
-5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \,
-8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \,
-3 \, 10 \, 10 \, 5 \, 5 \,;
+#X msg 264 230 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \, 0 \, 0 \, 8 \, 8 \, 3 \, 3 \, 10 \, 10 \, 5 \, 5 \,;
 #X obj 264 209 u_cocollect;
 #X msg 361 144 reset;
 #X obj 351 398 t b b;
 #X obj 264 480 u_cocollect;
-#X msg 264 502 11 0 0 0 0 0 0 0 0 0 0 0 0 \, 10 0 0 0 0 0 16 0 0 0
-0 16 0 \, 9 0 0 0 0 0 0 0 0 0 0 0 0 \, 8 0 0 0 16 0 0 0 0 16 0 0 0
-\, 7 0 0 0 0 0 0 0 0 0 0 0 0 \, 6 0 0 0 0 0 0 0 0 0 0 0 0 \, 5 15 0
-0 0 0 16 0 0 0 0 0 0 \, 4 0 0 0 0 0 0 0 0 0 0 0 0 \, 3 0 0 0 16 0 0
-0 0 0 0 16 0 \, 2 0 0 0 0 0 0 0 0 0 0 0 0 \, 1 0 0 0 0 0 0 0 0 0 0
-0 0 \, 0 16 0 0 0 0 0 0 0 16 0 0 0 \,;
+#X msg 264 502 11 0 0 0 0 0 0 0 0 0 0 0 0 \, 10 0 0 0 0 0 16 0 0 0 0 16 0 \, 9 0 0 0 0 0 0 0 0 0 0 0 0 \, 8 0 0 0 16 0 0 0 0 16 0 0 0 \, 7 0 0 0 0 0 0 0 0 0 0 0 0 \, 6 0 0 0 0 0 0 0 0 0 0 0 0 \, 5 15 0 0 0 0 16 0 0 0 0 0 0 \, 4 0 0 0 0 0 0 0 0 0 0 0 0 \, 3 0 0 0 16 0 0 0 0 0 0 16 0 \, 2 0 0 0 0 0 0 0 0 0 0 0 0 \, 1 0 0 0 0 0 0 0 0 0 0 0 0 \, 0 16 0 0 0 0 0 0 0 16 0 0 0 \,;
 #X msg 351 419 dump;
 #X msg 401 427 reset;
 #X text 359 478 Histograms;
@@ -1215,7 +1188,7 @@
 #X obj 443 618 u_cocollect;
 #X msg 443 640 1 80 80 \, 0 175 80 \,;
 #X msg 485 557 dump;
-#X floatatom 210 611 5 0 0 0 - - -;
+#X floatatom 210 611 5 0 0 0 - - - 0;
 #X msg 527 577 reset;
 #X text 538 616 Histograms;
 #X text 100 -19 numbers from 0 to <max - 1>;
@@ -1233,22 +1206,7 @@
 #X obj 390 580 m_markovanal 2;
 #X obj 251 612 c_markov 2;
 #X obj 265 575 f;
-#X msg 491 366 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0
-\, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \,
-0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1
-\, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \,
-0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1
-\, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \,
-0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0
-\, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \,
-0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0
-\, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \,
-0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1
-\, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \,
-0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1
-\, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \,
-1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0
-\, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \,;
+#X msg 491 366 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \,;
 #X obj 1042 263 inlet load;
 #X obj 1040 426 outlet save;
 #X connect 1 0 25 0;
@@ -1331,7 +1289,7 @@
 #X connect 17 0 0 1;
 #X connect 20 0 2 0;
 #X connect 20 0 0 1;
-#X restore -51 74 pd markov1;
+#X restore 22 69 pd markov1;
 #N canvas 260 0 836 680 messages-retro-eclairage 0;
 #X obj -127 113 b;
 #X obj -127 134 s c.r;
@@ -1371,8 +1329,7 @@
 #X obj 106 502 r tatap1-p9;
 #X obj 106 543 r tatap1-p10;
 #X obj 106 585 r tatap1-p11;
-#X text 214 31 on reçoit les notes de markov pour le rétro éclairage
-lorsque le mode jeu est enclenché.;
+#X text 214 31 on reçoit les notes de markov pour le rétro éclairage lorsque le mode jeu est enclenché.;
 #X connect 0 0 1 0;
 #X connect 2 0 3 0;
 #X connect 4 0 5 0;
@@ -1410,7 +1367,7 @@ lorsque le mode jeu est enclenché.;
 #X connect 35 0 18 0;
 #X connect 36 0 19 0;
 #X connect 37 0 22 0;
-#X restore -50 54 pd messages-retro-eclairage;
+#X restore 23 49 pd messages-retro-eclairage;
 #N canvas 0 0 797 680 mode-loop 0;
 #X obj 105 177 b;
 #X obj 134 177 b;
@@ -1591,7 +1548,7 @@ lorsque le mode jeu est enclenché.;
 #X connect 71 0 59 0;
 #X connect 72 0 18 0;
 #X connect 72 0 60 0;
-#X restore 46 115 pd mode-loop;
+#X restore 119 110 pd mode-loop;
 #X connect 0 0 11 0;
 #X connect 1 0 0 1;
 #X connect 2 0 0 2;
@@ -1649,53 +1606,38 @@ lorsque le mode jeu est enclenché.;
 #X connect 32 0 34 0;
 #X connect 33 0 32 0;
 #X connect 37 0 8 0;
-#X restore 130 -77 pd synth-page;
+#X restore 121 129 pd synth-page;
 #N canvas 0 0 450 300 soundbanks 0;
-#X obj 113 -158 r soundpack;
-#X msg 113 -131 symbol \$1;
-#X msg 111 -79 0;
-#X msg 144 -79 1;
-#X msg 176 -77 2;
+#X obj 90 61 r soundpack;
+#X msg 90 88 symbol \$1;
+#X msg 88 140 0;
+#X msg 121 140 1;
+#X msg 153 142 2;
 #N canvas 617 0 625 648 soundbanks 0;
-#X msg -160 153 read -resize 44857_stomachache_crashbrushtap.wav Sample4
-;
+#X msg -160 153 read -resize 44857_stomachache_crashbrushtap.wav Sample4;
 #X obj -184 616 soundfiler;
 #X obj -184 43 r init;
-#X msg -118 243 read -resize 14519_blaster78_revkickbuzz1.wav Sample4
-;
-#X msg -140 186 read -resize 14518_blaster78_quietglitch1.wav Sample1
-;
-#X msg -133 205 read -resize 14510_blaster78_clapchord1.wav Sample2
-;
-#X msg -125 224 read -resize 14515_blaster78_kickclapchord1.wav Sample3
-;
+#X msg -118 243 read -resize 14519_blaster78_revkickbuzz1.wav Sample4;
+#X msg -140 186 read -resize 14518_blaster78_quietglitch1.wav Sample1;
+#X msg -133 205 read -resize 14510_blaster78_clapchord1.wav Sample2;
+#X msg -125 224 read -resize 14515_blaster78_kickclapchord1.wav Sample3;
 #X obj -134 19 inlet;
-#X msg 18 459 read -resize 22738_FranciscoPadilla_35_Bass_Drum_BasketBall.wav
-Sample1;
-#X msg 27 491 read -resize 22740_FranciscoPadilla_37_Click_Finger.wav
-Sample2;
-#X msg 36 523 read -resize 22745_FranciscoPadilla_42_Closed_High_Hat.wav
-Sample3;
-#X msg 44 555 read -resize 22755_FranciscoPadilla_52_Chinese_Cymbal.wav
-Sample4;
-#X msg -38 360 read -resize 22772_FranciscoPadilla_69_Cabasa.wav Sample1
-;
-#X msg -32 379 read -resize 22773_FranciscoPadilla_70_Maracas.wav Sample2
-;
-#X msg -24 398 read -resize 22778_FranciscoPadilla_75_Claves.wav Sample3
-;
+#X msg 18 459 read -resize 22738_FranciscoPadilla_35_Bass_Drum_BasketBall.wav Sample1;
+#X msg 27 491 read -resize 22740_FranciscoPadilla_37_Click_Finger.wav Sample2;
+#X msg 36 523 read -resize 22745_FranciscoPadilla_42_Closed_High_Hat.wav Sample3;
+#X msg 44 555 read -resize 22755_FranciscoPadilla_52_Chinese_Cymbal.wav Sample4;
+#X msg -38 360 read -resize 22772_FranciscoPadilla_69_Cabasa.wav Sample1;
+#X msg -32 379 read -resize 22773_FranciscoPadilla_70_Maracas.wav Sample2;
+#X msg -24 398 read -resize 22778_FranciscoPadilla_75_Claves.wav Sample3;
 #X obj -134 40 sel 0 1 2 3 4;
 #X msg -88 274 read -resize 5983_user_56891b_drum52.wav Sample1;
 #X msg -65 331 read -resize 5976_user_56891b_drum42.wav Sample4;
 #X msg -73 312 read -resize 5986_user_56891b_drum65.wav Sample3;
 #X msg -80 293 read -resize 5987_user_56891b_drum70.wav Sample2;
-#X msg -15 417 read -resize 22784_FranciscoPadilla_81_Open_Triagle.wav
-Sample4;
+#X msg -15 417 read -resize 22784_FranciscoPadilla_81_Open_Triagle.wav Sample4;
 #X msg -184 83 read -resize 44855_stomachache_bd2.wav Sample1;
-#X msg -177 102 read -resize 44859_stomachache_hihatbrushtight2.wav
-Sample2;
-#X msg -169 121 read -resize 44867_stomachache_snarebrushlighttap.wav
-Sample3;
+#X msg -177 102 read -resize 44859_stomachache_hihatbrushtight2.wav Sample2;
+#X msg -169 121 read -resize 44867_stomachache_snarebrushlighttap.wav Sample3;
 #X connect 0 0 1 0;
 #X connect 2 0 21 0;
 #X connect 2 0 22 0;
@@ -1741,10 +1683,10 @@ Sample3;
 #X connect 21 0 1 0;
 #X connect 22 0 1 0;
 #X connect 23 0 1 0;
-#X restore 144 -3 pd soundbanks;
-#X msg 208 -77 3;
-#X msg 241 -77 4;
-#X obj 113 -105 sel SB1 SB2 SB3 SB4 SB5;
+#X restore 121 216 pd soundbanks;
+#X msg 185 142 3;
+#X msg 218 142 4;
+#X obj 90 114 sel SB1 SB2 SB3 SB4 SB5;
 #X connect 0 0 1 0;
 #X connect 1 0 8 0;
 #X connect 2 0 5 0;
@@ -1757,41 +1699,40 @@ Sample3;
 #X connect 8 2 4 0;
 #X connect 8 3 6 0;
 #X connect 8 4 7 0;
-#X restore 33 -133 pd soundbanks;
-#N canvas 683 1 667 369 synth-page2 0;
-#X obj -349 289 outlet~;
-#X msg -218 19 symbol \$1;
-#X msg -218 69 0;
-#X msg -197 90 1;
-#X msg -175 111 2;
-#X msg -154 132 3;
-#X msg -132 70 4;
-#X msg -111 91 5;
-#X msg -89 112 6;
-#X obj -218 224 t f;
-#X obj -218 -6 r synth1preset;
-#X obj -347 189 t f b;
-#N canvas 0 0 1366 696 rj_chip_synth 0;
-#X obj 121 154 r \$0-control;
-#X obj 366 347 s \$0-GUI;
-#X obj 21 454 outlet~;
-#X obj 27 -126 inlet;
-#X obj 64 -126 inlet;
+#X restore 24 73 pd soundbanks;
+#N canvas 683 1 667 369 synth-page2 1;
+#X obj 129 333 outlet~;
+#X msg 260 63 symbol \$1;
+#X msg 260 113 0;
+#X msg 281 134 1;
+#X msg 303 155 2;
+#X msg 324 176 3;
+#X msg 346 114 4;
+#X msg 367 135 5;
+#X msg 389 156 6;
+#X obj 260 268 t f;
+#X obj 260 38 r synth1preset;
+#X obj 131 233 t f b;
+#N canvas 0 0 897 696 rj_chip_synth 0;
+#X obj 151 317 r \$0-control;
+#X obj 396 510 s \$0-GUI;
+#X obj 51 617 outlet~;
+#X obj 57 37 inlet;
+#X obj 94 37 inlet;
 #N canvas 612 69 473 495 \$0-Gui 0;
 #X obj -22 5 r \$0-GUI;
 #X obj -22 473 s \$0-control;
 #X obj -22 23 g_synthcontrol;
-#X obj -22 3 cnv 15 200 20 empty empty Rj_Chip 2 10 0 14 -86853 -262144
-0;
+#X obj -22 3 cnv 15 200 20 empty empty Rj_Chip 2 10 0 14 #543410 #fcfcfc 0;
 #X connect 0 0 2 0;
 #X connect 2 0 1 0;
-#X restore 686 -56 pd \$0-Gui;
-#X obj 383 -34 inlet;
-#X obj 26 -22 poly 4 1;
-#X obj 27 2 pack f f f;
-#X obj 28 25 route 1 2 3 4;
-#X obj 27 -47 makenote;
-#X obj 80 -72 r notetime;
+#X restore 716 107 pd \$0-Gui;
+#X obj 413 129 inlet;
+#X obj 56 141 poly 4 1;
+#X obj 57 165 pack f f f;
+#X obj 58 188 route 1 2 3 4;
+#X obj 57 116 makenote;
+#X obj 110 91 r notetime;
 #N canvas 0 0 990 677 czz_presets 0;
 #X obj 91 26 inlet;
 #X obj 91 50 sel 0 1 2 3 4 5 6 7 8;
@@ -1799,117 +1740,19 @@ Sample3;
 #X obj 83 630 symbol;
 #X obj 166 652 outlet parms;
 #X obj 83 582 route name;
-#X msg 57 187 name FB-String-Brass1 \, mod3d 0.165354 \, mod3c 0.181102
-\, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701
-\, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.299213 \, mod1c 0.125984
-\, mod1b 0.19685 \, mod1a 0.133858 \, osc3d 0.314961 \, osc3c 0.220472
-\, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669
-\, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.377953 \, osc1c 0.307087
-\, osc1b 0.614173 \, osc1a 0.866142 \, env3r 0.133858 \, env3s 0.15748
-\, env3d 0.314961 \, env3a 0.259843 \, env2r 0.637795 \, env2s 0.401575
-\, env2d 0.338583 \, env2a 0.299213 \, env1r 0.149606 \, env1s 0.110236
-\, env1d 0.0551181 \, env1a 0.0551181 \,;
-#X msg 57 172 name Gentle-Sync \, mod3d 0.165354 \, mod3c 0.181102
-\, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701
-\, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.574803 \, mod1c 0.669291
-\, mod1b 0.511811 \, mod1a 0.133858 \, osc3d 0.314961 \, osc3c 0.220472
-\, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669
-\, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.503937 \, osc1c 0.905512
-\, osc1b 0.0629921 \, osc1a 0.401575 \, env3r 0.133858 \, env3s 0.15748
-\, env3d 0.314961 \, env3a 0.259843 \, env2r 0.0866142 \, env2s 0.0866142
-\, env2d 0.251969 \, env2a 0.141732 \, env1r 0.149606 \, env1s 0.110236
-\, env1d 0.952756 \, env1a 0 \,;
-#X msg 59 205 name RoughSync-Bass \, mod3d 0.165354 \, mod3c 0.181102
-\, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701
-\, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.574803 \, mod1c 0.669291
-\, mod1b 0.511811 \, mod1a 0.133858 \, osc3d 0.314961 \, osc3c 0.220472
-\, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669
-\, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.503937 \, osc1c 0.905512
-\, osc1b 0.0629921 \, osc1a 0.401575 \, env3r 0.0472441 \, env3s 0.0629921
-\, env3d 0.0551181 \, env3a 0.0015748 \, env2r 0.0866142 \, env2s 0.0866142
-\, env2d 0.181102 \, env2a 0.0472441 \, env1r 0.149606 \, env1s 0.110236
-\, env1d 0.11811 \, env1a 0 \,;
-#X msg 59 220 name Thin-Short-Bass \, mod3d 0.559055 \, mod3c 0.181102
-\, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701
-\, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.574803 \, mod1c 0.669291
-\, mod1b 0.0708661 \, mod1a 0.409449 \, osc3d 0.314961 \, osc3c 0.220472
-\, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669
-\, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.015748 \, osc1c 0 \,
-osc1b 0 \, osc1a 0 \, env3r 0.0472441 \, env3s 0.0393701 \, env3d 0.0551181
-\, env3a 0.0015748 \, env2r 0.0866142 \, env2s 0.0866142 \, env2d 0.0866142
-\, env2a 0.0472441 \, env1r 0.149606 \, env1s 0.0629921 \, env1d 0.0787402
-\, env1a 0 \,;
-#X msg 57 236 name Full-Square-Lead \, mod3d 0.251969 \, mod3c 0.181102
-\, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701
-\, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0 \, mod1c 0 \, mod1b
-0 \, mod1a 1 \, osc3d 0.314961 \, osc3c 0.220472 \, osc3b 0.527559
-\, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669 \, osc2b 0.543307
-\, osc2a 0.377953 \, osc1d 0.440945 \, osc1c 0 \, osc1b 0 \, osc1a
-0 \, env3r 0.023622 \, env3s 0.527559 \, env3d 0.0551181 \, env3a 0.00944882
-\, env2r 0.0393701 \, env2s 0.637795 \, env2d 0.0866142 \, env2a 0.0472441
-\, env1r 0.0314961 \, env1s 0.708661 \, env1d 0.0787402 \, env1a 0.19685
-\,;
-#X msg 58 253 name Dull-Brass \, mod3d 0.251969 \, mod3c 0.181102 \,
-mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701
-\, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0 \, mod1c 0 \, mod1b
-0 \, mod1a 0.188976 \, osc3d 0.251969 \, osc3c 0.220472 \, osc3b 0.527559
-\, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669 \, osc2b 0.543307
-\, osc2a 0.377953 \, osc1d 0.952756 \, osc1c 0 \, osc1b 0 \, osc1a
-0.440945 \, env3r 0.00787402 \, env3s 0.0866142 \, env3d 0.0944882
-\, env3a 0.0330709 \, env2r 0.0393701 \, env2s 0.102362 \, env2d 0.23622
-\, env2a 0.645669 \, env1r 0.0708661 \, env1s 0.0866142 \, env1d 0.0472441
-\, env1a 0.0551181 \,;
-#X msg 59 268 name Slow-Hollow \, mod3d 0.212598 \, mod3c 0.181102
-\, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701
-\, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.0314961 \, mod1c 0.0314961
-\, mod1b 0.220472 \, mod1a 0.866142 \, osc3d 0.251969 \, osc3c 0.220472
-\, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.19685 \, osc2c 0.228346
-\, osc2b 0.165354 \, osc2a 0.0944882 \, osc1d 0.440945 \, osc1c 0.0629921
-\, osc1b 0.511811 \, osc1a 0.0866142 \, env3r 0.125984 \, env3s 0.244094
-\, env3d 0.354331 \, env3a 0.655118 \, env2r 0.0787402 \, env2s 0.692913
-\, env2d 0.291339 \, env2a 0.393701 \, env1r 0.133858 \, env1s 0.519685
-\, env1d 0.448819 \, env1a 0.771654 \,;
-#X msg 58 282 name Slow-Thin \, mod3d 0.212598 \, mod3c 0.181102 \,
-mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701
-\, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0 \, mod1c 0 \, mod1b
-0.748031 \, mod1a 0.716535 \, osc3d 0.251969 \, osc3c 0.220472 \, osc3b
-0.527559 \, osc3a 0.409449 \, osc2d 0.19685 \, osc2c 0.228346 \, osc2b
-0.165354 \, osc2a 0.0944882 \, osc1d 0.0708661 \, osc1c 0.125984 \,
-osc1b 0.346457 \, osc1a 0.0866142 \, env3r 0.125984 \, env3s 0.244094
-\, env3d 0.354331 \, env3a 0.749606 \, env2r 0.0393701 \, env2s 0.440945
-\, env2d 0.141732 \, env2a 0.0314961 \, env1r 0.133858 \, env1s 0.212598
-\, env1d 0.125984 \, env1a 0.0629921 \,;
+#X msg 57 187 name FB-String-Brass1 \, mod3d 0.165354 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.299213 \, mod1c 0.125984 \, mod1b 0.19685 \, mod1a 0.133858 \, osc3d 0.314961 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669 \, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.377953 \, osc1c 0.307087 \, osc1b 0.614173 \, osc1a 0.866142 \, env3r 0.133858 \, env3s 0.15748 \, env3d 0.314961 \, env3a 0.259843 \, env2r 0.637795 \, env2s 0.401575 \, env2d 0.338583 \, env2a 0.299213 \, env1r 0.149606 \, env1s 0.110236 \, env1d 0.0551181 \, env1a 0.0551181 \,;
+#X msg 57 172 name Gentle-Sync \, mod3d 0.165354 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.574803 \, mod1c 0.669291 \, mod1b 0.511811 \, mod1a 0.133858 \, osc3d 0.314961 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669 \, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.503937 \, osc1c 0.905512 \, osc1b 0.0629921 \, osc1a 0.401575 \, env3r 0.133858 \, env3s 0.15748 \, env3d 0.314961 \, env3a 0.259843 \, env2r 0.0866142 \, env2s 0.0866142 \, env2d 0.251969 \, env2a 0.141732 \, env1r 0.149606 \, env1s 0.110236 \, env1d 0.952756 \, env1a 0 \,;
+#X msg 59 205 name RoughSync-Bass \, mod3d 0.165354 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.574803 \, mod1c 0.669291 \, mod1b 0.511811 \, mod1a 0.133858 \, osc3d 0.314961 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669 \, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.503937 \, osc1c 0.905512 \, osc1b 0.0629921 \, osc1a 0.401575 \, env3r 0.0472441 \, env3s 0.0629921 \, env3d 0.0551181 \, env3a 0.0015748 \, env2r 0.0866142 \, env2s 0.0866142 \, env2d 0.181102 \, env2a 0.0472441 \, env1r 0.149606 \, env1s 0.110236 \, env1d 0.11811 \, env1a 0 \,;
+#X msg 59 220 name Thin-Short-Bass \, mod3d 0.559055 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.574803 \, mod1c 0.669291 \, mod1b 0.0708661 \, mod1a 0.409449 \, osc3d 0.314961 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669 \, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.015748 \, osc1c 0 \, osc1b 0 \, osc1a 0 \, env3r 0.0472441 \, env3s 0.0393701 \, env3d 0.0551181 \, env3a 0.0015748 \, env2r 0.0866142 \, env2s 0.0866142 \, env2d 0.0866142 \, env2a 0.0472441 \, env1r 0.149606 \, env1s 0.0629921 \, env1d 0.0787402 \, env1a 0 \,;
+#X msg 57 236 name Full-Square-Lead \, mod3d 0.251969 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0 \, mod1c 0 \, mod1b 0 \, mod1a 1 \, osc3d 0.314961 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669 \, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.440945 \, osc1c 0 \, osc1b 0 \, osc1a 0 \, env3r 0.023622 \, env3s 0.527559 \, env3d 0.0551181 \, env3a 0.00944882 \, env2r 0.0393701 \, env2s 0.637795 \, env2d 0.0866142 \, env2a 0.0472441 \, env1r 0.0314961 \, env1s 0.708661 \, env1d 0.0787402 \, env1a 0.19685 \,;
+#X msg 58 253 name Dull-Brass \, mod3d 0.251969 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0 \, mod1c 0 \, mod1b 0 \, mod1a 0.188976 \, osc3d 0.251969 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.559055 \, osc2c 0.645669 \, osc2b 0.543307 \, osc2a 0.377953 \, osc1d 0.952756 \, osc1c 0 \, osc1b 0 \, osc1a 0.440945 \, env3r 0.00787402 \, env3s 0.0866142 \, env3d 0.0944882 \, env3a 0.0330709 \, env2r 0.0393701 \, env2s 0.102362 \, env2d 0.23622 \, env2a 0.645669 \, env1r 0.0708661 \, env1s 0.0866142 \, env1d 0.0472441 \, env1a 0.0551181 \,;
+#X msg 59 268 name Slow-Hollow \, mod3d 0.212598 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0.0314961 \, mod1c 0.0314961 \, mod1b 0.220472 \, mod1a 0.866142 \, osc3d 0.251969 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.19685 \, osc2c 0.228346 \, osc2b 0.165354 \, osc2a 0.0944882 \, osc1d 0.440945 \, osc1c 0.0629921 \, osc1b 0.511811 \, osc1a 0.0866142 \, env3r 0.125984 \, env3s 0.244094 \, env3d 0.354331 \, env3a 0.655118 \, env2r 0.0787402 \, env2s 0.692913 \, env2d 0.291339 \, env2a 0.393701 \, env1r 0.133858 \, env1s 0.519685 \, env1d 0.448819 \, env1a 0.771654 \,;
+#X msg 58 282 name Slow-Thin \, mod3d 0.212598 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0 \, mod1c 0 \, mod1b 0.748031 \, mod1a 0.716535 \, osc3d 0.251969 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.19685 \, osc2c 0.228346 \, osc2b 0.165354 \, osc2a 0.0944882 \, osc1d 0.0708661 \, osc1c 0.125984 \, osc1b 0.346457 \, osc1a 0.0866142 \, env3r 0.125984 \, env3s 0.244094 \, env3d 0.354331 \, env3a 0.749606 \, env2r 0.0393701 \, env2s 0.440945 \, env2d 0.141732 \, env2a 0.0314961 \, env1r 0.133858 \, env1s 0.212598 \, env1d 0.125984 \, env1a 0.0629921 \,;
 #X obj 483 146 loadbang;
-#X msg 483 175 env1a color 128 \, env1a label TONE-ATTACK \, env1d
-color 128 \, env1d label TONE-DECAY \, env1r color 128 \, env1r label
-TONE-REL \, env1s color 128 \, env1s label TONE-SUS \, env2a color
-128 \, env2a label WIDTH-ATTACK \, env2d color 128 \, env2d label WIDTH-DECAY
-\, env2r color 128 \, env2r label WIDTH-REL \, env2s color 128 \, env2s
-label WIDTH-SUS \, env3a color 128 \, env3a label AMP-ATTACK \, env3d
-color 128 \, env3d label AMP-DECAY \, env3r color 128 \, env3r label
-AMP-REL \, env3s color 128 \, env3s label AMP-SUS \, mod1a color 128
-\, mod1a label FILTER-AMT \, mod1b color 128 \, mod1b label DETUNE
-\, mod1c color 128 \, mod1c label SYNC-AMT \, mod1d color 2 \, mod2a
-color 2 \, mod2b color 2 \, mod2c color 2 \, mod2d color 2 \, mod3a
-color 2 \, mod3b color 2 \, mod3c color 2 \, mod3d color 128 \, mod3d
-label VOLME \, osc1a color 128 \, osc1a label OSC1-PW \, osc1b color
-128 \, osc1b label OSC2-PW \, osc1c color 128 \, osc1c label OSC1-PWM
-osc1d color 128 \, osc1d label OSC2-PWM \, osc2a color 2 \, osc2b color
-2 \, osc2c color 2 \, osc2d color 2 \, osc3a color 2 \, osc3b color
-2 \, osc3c color 2 \, osc3d color 2 \,;
-#X text 481 92 set up the interface to be human readable and show which
-controls are actually used;
+#X msg 483 175 env1a color 128 \, env1a label TONE-ATTACK \, env1d color 128 \, env1d label TONE-DECAY \, env1r color 128 \, env1r label TONE-REL \, env1s color 128 \, env1s label TONE-SUS \, env2a color 128 \, env2a label WIDTH-ATTACK \, env2d color 128 \, env2d label WIDTH-DECAY \, env2r color 128 \, env2r label WIDTH-REL \, env2s color 128 \, env2s label WIDTH-SUS \, env3a color 128 \, env3a label AMP-ATTACK \, env3d color 128 \, env3d label AMP-DECAY \, env3r color 128 \, env3r label AMP-REL \, env3s color 128 \, env3s label AMP-SUS \, mod1a color 128 \, mod1a label FILTER-AMT \, mod1b color 128 \, mod1b label DETUNE \, mod1c color 128 \, mod1c label SYNC-AMT \, mod1d color 2 \, mod2a color 2 \, mod2b color 2 \, mod2c color 2 \, mod2d color 2 \, mod3a color 2 \, mod3b color 2 \, mod3c color 2 \, mod3d color 128 \, mod3d label VOLME \, osc1a color 128 \, osc1a label OSC1-PW \, osc1b color 128 \, osc1b label OSC2-PW \, osc1c color 128 \, osc1c label OSC1-PWM osc1d color 128 \, osc1d label OSC2-PWM \, osc2a color 2 \, osc2b color 2 \, osc2c color 2 \, osc2d color 2 \, osc3a color 2 \, osc3b color 2 \, osc3c color 2 \, osc3d color 2 \,;
+#X text 481 92 set up the interface to be human readable and show which controls are actually used;
 #X text 483 122 Requires modified [g-hsl];
-#X msg 60 299 name BASSIC \, mod3d 0.212598 \, mod3c 0.181102 \, mod3b
-0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b
-0.220472 \, mod2a 0.472441 \, mod1d 0 \, mod1c 0 \, mod1b 0.0314961
-\, mod1a 0.0629921 \, osc3d 0.251969 \, osc3c 0.220472 \, osc3b 0.527559
-\, osc3a 0.409449 \, osc2d 0.19685 \, osc2c 0.228346 \, osc2b 0.165354
-\, osc2a 0.0944882 \, osc1d 0.566929 \, osc1c 0.0708661 \, osc1b 0.92126
-\, osc1a 0.0551181 \, env3r 0.00787402 \, env3s 0 \, env3d 0.133858
-\, env3a 0.00023622 \, env2r 0.0393701 \, env2s 0.440945 \, env2d 0.661417
-\, env2a 0.314961 \, env1r 0.133858 \, env1s 0.724409 \, env1d 0.015748
-\, env1a 0.669291 \,;
+#X msg 60 299 name BASSIC \, mod3d 0.212598 \, mod3c 0.181102 \, mod3b 0.173228 \, mod3a 0.275591 \, mod2d 0.141732 \, mod2c 0.393701 \, mod2b 0.220472 \, mod2a 0.472441 \, mod1d 0 \, mod1c 0 \, mod1b 0.0314961 \, mod1a 0.0629921 \, osc3d 0.251969 \, osc3c 0.220472 \, osc3b 0.527559 \, osc3a 0.409449 \, osc2d 0.19685 \, osc2c 0.228346 \, osc2b 0.165354 \, osc2a 0.0944882 \, osc1d 0.566929 \, osc1c 0.0708661 \, osc1b 0.92126 \, osc1a 0.0551181 \, env3r 0.00787402 \, env3s 0 \, env3d 0.133858 \, env3a 0.00023622 \, env2r 0.0393701 \, env2s 0.440945 \, env2d 0.661417 \, env2a 0.314961 \, env1r 0.133858 \, env1s 0.724409 \, env1d 0.015748 \, env1a 0.669291 \,;
 #X connect 0 0 1 0;
 #X connect 1 0 6 0;
 #X connect 1 1 7 0;
@@ -1934,13 +1777,13 @@ controls are actually used;
 #X connect 14 0 15 0;
 #X connect 15 0 4 0;
 #X connect 18 0 5 0;
-#X restore 484 281 pd czz_presets;
-#X obj 12 258 s_czz \$0-TAG;
-#X obj 42 278 s_czz \$0-TAG1;
-#X obj 62 297 s_czz \$0-TAG2;
-#X obj 84 323 s_czz \$0-TAG3;
-#X obj 24 393 *~ 0.8;
-#X obj 18 424 tanh~;
+#X restore 514 444 pd czz_presets;
+#X obj 42 421 s_czz \$0-TAG;
+#X obj 72 441 s_czz \$0-TAG1;
+#X obj 92 460 s_czz \$0-TAG2;
+#X obj 114 486 s_czz \$0-TAG3;
+#X obj 54 556 *~ 0.8;
+#X obj 48 587 tanh~;
 #X connect 0 0 13 1;
 #X connect 0 0 14 1;
 #X connect 0 0 15 1;
@@ -1966,19 +1809,18 @@ controls are actually used;
 #X connect 16 0 17 0;
 #X connect 17 0 18 0;
 #X connect 18 0 2 0;
-#X restore -347 241 pd rj_chip_synth;
-#X obj -218 41 sel P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11 P12 P13 P14 P15
-P16;
-#X msg -68 131 7;
-#X msg -46 73 8;
-#X msg -24 94 9;
-#X msg -3 115 10;
-#X msg 19 135 11;
-#X msg 40 70 12;
-#X msg 62 90 13;
-#X msg 83 111 14;
-#X msg 105 132 15;
-#X msg -320 216 100;
+#X restore 131 285 pd rj_chip_synth;
+#X obj 260 85 sel P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11 P12 P13 P14 P15 P16;
+#X msg 410 175 7;
+#X msg 432 117 8;
+#X msg 454 138 9;
+#X msg 475 159 10;
+#X msg 497 179 11;
+#X msg 518 114 12;
+#X msg 540 134 13;
+#X msg 561 155 14;
+#X msg 583 176 15;
+#X msg 158 260 100;
 #N canvas 0 0 746 536 mode-piano 0;
 #X obj 178 309 b;
 #X obj 207 309 b;
@@ -2090,8 +1932,8 @@ P16;
 #X connect 46 0 17 0;
 #X connect 47 0 18 0;
 #X connect 48 0 19 0;
-#X restore -444 103 pd mode-piano;
-#N canvas 0 0 1015 680 mode-loop 0;
+#X restore 34 147 pd mode-piano;
+#N canvas 0 0 1015 785 mode-loop 0;
 #X obj 135 305 b;
 #X obj 164 305 b;
 #X obj 193 306 b;
@@ -2271,46 +2113,46 @@ P16;
 #X connect 71 0 55 0;
 #X connect 72 0 18 0;
 #X connect 72 0 56 0;
-#X restore -347 103 pd mode-loop;
+#X restore 131 147 pd mode-loop;
 #N canvas 0 0 550 630 messages-retro-eclairage 0;
-#X obj -224 41 b;
-#X obj -210 88 b;
-#X obj -196 134 b;
-#X obj -182 178 b;
-#X obj -168 222 b;
-#X obj -153 265 b;
-#X obj -139 309 b;
-#X obj -125 351 b;
-#X obj -110 393 b;
-#X obj -96 438 b;
-#X obj -82 484 b;
-#X obj -68 535 b;
-#X obj -224 62 s c-1.r;
-#X obj -210 109 s csharp-1.r;
-#X obj -196 155 s d-1.r;
-#X obj -182 199 s dsharp-1.r;
-#X obj -168 243 s e-1.r;
-#X obj -153 286 s f-1.r;
-#X obj -139 330 s fsharp-1.r;
-#X obj -125 372 s g-1.r;
-#X obj -110 414 s gsharp-1.r;
-#X obj -96 459 s a-1.r;
-#X obj -68 556 s b-1.r;
-#X obj -82 505 s asharp-1.r;
-#X obj -224 6 sel 0 1 2 3 4 5 6 7 8 9 10 11;
-#X obj -224 -19 r retro-markov2;
-#X obj 27 24 r tatap2-p0;
-#X obj 27 71 r tatap2-p1;
-#X obj 27 117 r tatap2-p2;
-#X obj 27 161 r tatap2-p3;
-#X obj 26 205 r tatap2-p4;
-#X obj 26 248 r tatap2-p5;
-#X obj 26 292 r tatap2-p6;
-#X obj 26 334 r tatap2-p7;
-#X obj 26 376 r tatap2-p8;
-#X obj 26 421 r tatap2-p9;
-#X obj 26 467 r tatap2-p10;
-#X obj 26 518 r tatap2-p11;
+#X obj 35 78 b;
+#X obj 49 125 b;
+#X obj 63 171 b;
+#X obj 77 215 b;
+#X obj 91 259 b;
+#X obj 106 302 b;
+#X obj 120 346 b;
+#X obj 134 388 b;
+#X obj 149 430 b;
+#X obj 163 475 b;
+#X obj 177 521 b;
+#X obj 191 572 b;
+#X obj 35 99 s c-1.r;
+#X obj 49 146 s csharp-1.r;
+#X obj 63 192 s d-1.r;
+#X obj 77 236 s dsharp-1.r;
+#X obj 91 280 s e-1.r;
+#X obj 106 323 s f-1.r;
+#X obj 120 367 s fsharp-1.r;
+#X obj 134 409 s g-1.r;
+#X obj 149 451 s gsharp-1.r;
+#X obj 163 496 s a-1.r;
+#X obj 191 593 s b-1.r;
+#X obj 177 542 s asharp-1.r;
+#X obj 35 43 sel 0 1 2 3 4 5 6 7 8 9 10 11;
+#X obj 35 18 r retro-markov2;
+#X obj 286 61 r tatap2-p0;
+#X obj 286 108 r tatap2-p1;
+#X obj 286 154 r tatap2-p2;
+#X obj 286 198 r tatap2-p3;
+#X obj 285 242 r tatap2-p4;
+#X obj 285 285 r tatap2-p5;
+#X obj 285 329 r tatap2-p6;
+#X obj 285 371 r tatap2-p7;
+#X obj 285 413 r tatap2-p8;
+#X obj 285 458 r tatap2-p9;
+#X obj 285 504 r tatap2-p10;
+#X obj 285 555 r tatap2-p11;
 #X connect 0 0 12 0;
 #X connect 1 0 13 0;
 #X connect 2 0 14 0;
@@ -2348,164 +2190,155 @@ P16;
 #X connect 35 0 9 0;
 #X connect 36 0 10 0;
 #X connect 37 0 11 0;
-#X restore -445 43 pd messages-retro-eclairage;
-#X obj -444 137 t f;
-#X obj -444 189 s notes-piano2;
+#X restore 33 87 pd messages-retro-eclairage;
+#X obj 34 181 t f;
+#X obj 34 233 s notes-piano2;
 #N canvas 0 0 576 375 markov2 0;
-#N canvas 0 0 1349 696 markov-mel 0;
-#X obj 180 955 + 0;
-#X msg 491 366 0 \, 3 \, 9 \, 8 \, 4 \,;
-#X obj 491 323 u_cocollect;
-#X msg 515 23 reset;
-#X obj 485 529 t b b;
-#X obj 443 618 u_cocollect;
-#X msg 443 640 11 0 0 0 0 0 0 0 0 0 0 0 0 \, 10 0 0 0 0 0 0 0 0 0 0
-0 0 \, 9 0 0 0 0 0 0 0 0 2 0 0 0 \, 8 0 0 0 0 2 0 0 0 0 0 0 0 \, 7
-0 0 0 0 0 0 0 0 0 0 0 0 \, 6 0 0 0 0 0 0 0 0 0 0 0 0 \, 5 0 0 0 0 0
-0 0 0 0 0 0 0 \, 4 1 0 0 0 0 0 0 0 0 0 0 0 \, 3 0 0 0 0 0 0 0 0 0 2
-0 0 \, 2 0 0 0 0 0 0 0 0 0 0 0 0 \, 1 0 0 0 0 0 0 0 0 0 0 0 0 \, 0
-0 0 0 2 0 0 0 0 0 0 0 0 \,;
-#X msg 485 557 dump;
-#X msg 527 577 reset;
-#X text 538 616 Histograms;
-#X text 100 -19 numbers from 0 to <max - 1>;
-#X obj 240 812 outlet;
-#X obj 390 580 m_markovanal 12;
-#X obj 251 612 c_markov 12;
-#X obj 367 -93 inlet;
-#X obj 365 2 route 0;
-#X obj 369 -58 spigot;
-#X obj 435 -47 sel 0;
-#X obj 435 -20 t b b;
-#X obj 249 520 spigot;
-#X obj 492 -19 t b b;
-#X obj 432 -80 inlet train;
-#X obj 674 291 inlet play;
-#X obj 374 24 t a;
-#X obj 252 498 inlet bang;
-#X obj 263 581 f;
-#X obj 376 78 mod 60;
-#X obj 171 587 nbx 5 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
-10 -262144 -1 -1 0 256;
-#X obj 873 322 inlet load;
-#X obj 883 418 outlet save;
-#X msg 284 698;
-#X connect 1 0 12 0;
-#X connect 1 0 29 0;
-#X connect 2 0 1 0;
-#X connect 3 0 2 1;
-#X connect 4 0 7 0;
-#X connect 4 1 5 1;
-#X connect 5 0 6 0;
-#X connect 7 0 12 1;
-#X connect 8 0 12 1;
-#X connect 12 0 5 0;
-#X connect 12 0 13 1;
-#X connect 12 0 30 0;
-#X connect 13 0 11 0;
-#X connect 13 0 25 1;
-#X connect 14 0 16 0;
-#X connect 15 1 23 0;
-#X connect 16 0 15 0;
-#X connect 17 0 18 0;
-#X connect 17 1 20 0;
-#X connect 18 0 4 0;
-#X connect 18 1 1 0;
-#X connect 19 0 25 0;
-#X connect 20 0 8 0;
-#X connect 20 1 3 0;
-#X connect 21 0 16 1;
-#X connect 21 0 17 0;
-#X connect 22 0 19 1;
-#X connect 23 0 26 0;
-#X connect 24 0 19 0;
-#X connect 25 0 13 0;
-#X connect 26 0 2 0;
-#X connect 26 0 12 0;
-#X connect 26 0 25 1;
-#X connect 27 0 13 0;
-#X connect 28 0 1 0;
-#X restore 11 214 pd markov-mel;
-#N canvas 0 0 1349 696 markov-rythm 0;
-#X obj 180 955 + 0;
-#X msg 491 366 0 \, 0 \, 1 \, 0 \, 0 \, 1 \, 0 \, 0 \, 1 \, 1 \, 0
-\, 0 \, 1 \, 0 \, 0 \, 0 \, 0 \, 0 \, 0 \,;
-#X obj 491 323 u_cocollect;
-#X msg 515 23 reset;
-#X obj 485 529 t b b;
-#X obj 443 618 u_cocollect;
-#X msg 443 640 1 8 2 \, 0 19 8 \,;
-#X msg 485 557 dump;
-#X floatatom 210 611 5 0 0 0 - - -;
-#X msg 527 577 reset;
-#X text 538 616 Histograms;
-#X text 100 -19 numbers from 0 to <max - 1>;
-#X obj 240 812 outlet;
-#X obj 367 -93 inlet;
-#X obj 369 -58 spigot;
-#X obj 435 -47 sel 0;
-#X obj 435 -20 t b b;
-#X obj 249 520 spigot;
-#X obj 492 -19 t b b;
-#X obj 432 -80 inlet train;
-#X obj 625 420 inlet play;
-#X obj 255 544 b;
-#X obj 243 472 r pos;
-#X obj 390 580 m_markovanal 2;
-#X obj 251 612 c_markov 2;
-#X obj 285 570 f;
-#X obj 886 316 inlet load;
-#X obj 920 477 outlet save;
-#X connect 1 0 23 0;
-#X connect 1 0 27 0;
-#X connect 2 0 1 0;
-#X connect 3 0 2 1;
-#X connect 4 0 7 0;
-#X connect 4 1 5 1;
-#X connect 5 0 6 0;
-#X connect 7 0 23 1;
-#X connect 8 0 24 0;
-#X connect 9 0 23 1;
-#X connect 13 0 14 0;
-#X connect 14 0 2 0;
-#X connect 14 0 23 0;
-#X connect 14 0 25 1;
-#X connect 15 0 16 0;
-#X connect 15 1 18 0;
-#X connect 16 0 4 0;
-#X connect 16 1 1 0;
-#X connect 17 0 21 0;
-#X connect 18 0 9 0;
-#X connect 18 1 3 0;
-#X connect 19 0 14 1;
-#X connect 19 0 15 0;
-#X connect 20 0 17 1;
-#X connect 21 0 25 0;
-#X connect 22 0 17 0;
-#X connect 23 0 5 0;
-#X connect 23 0 24 1;
+#N canvas 0 0 977 626 markov-mel 0;
+#X msg 443 324 9 \, 10 \, 0 \, 0 \,;
+#X obj 443 281 u_cocollect;
+#X msg 468 158 reset;
+#X obj 471 369 t b b;
+#X obj 429 458 u_cocollect;
+#X msg 429 480 11 0 0 0 0 0 0 0 0 0 0 0 0 \, 10 2 0 0 0 0 0 0 0 0 0 0 0 \, 9 0 0 0 0 0 0 0 0 0 0 2 0 \, 8 0 0 0 0 0 0 0 0 0 0 0 0 \, 7 0 0 0 0 0 0 0 0 0 0 0 0 \, 6 0 0 0 0 0 0 0 0 0 0 0 0 \, 5 0 0 0 0 0 0 0 0 0 0 0 0 \, 4 0 0 0 0 0 0 0 0 0 0 0 0 \, 3 0 0 0 0 0 0 0 0 0 0 0 0 \, 2 0 0 0 0 0 0 0 0 0 0 0 0 \, 1 0 0 0 0 0 0 0 0 0 0 0 0 \, 0 2 0 0 0 0 0 0 0 0 1 0 0 \,;
+#X msg 471 397 dump;
+#X msg 513 417 reset;
+#X text 524 456 Histograms;
+#X text 53 116 numbers from 0 to <max - 1>;
+#X obj 237 529 outlet;
+#X obj 376 420 m_markovanal 12;
+#X obj 237 452 c_markov 12;
+#X obj 320 42 inlet;
+#X obj 318 137 route 0;
+#X obj 322 77 spigot;
+#X obj 388 88 sel 0;
+#X obj 388 115 t b b;
+#X obj 235 360 spigot;
+#X obj 445 116 t b b;
+#X obj 385 55 inlet train;
+#X obj 626 249 inlet play;
+#X obj 327 159 t a;
+#X obj 238 338 inlet bang;
+#X obj 249 421 f;
+#X obj 329 213 mod 60;
+#X obj 157 427 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10 #fcfcfc #000000 #000000 0 256;
+#X obj 825 280 inlet load;
+#X obj 835 376 outlet save;
+#X msg 362 381;
+#X connect 0 0 11 0;
+#X connect 0 0 28 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 1;
+#X connect 3 0 6 0;
+#X connect 3 1 4 1;
+#X connect 4 0 5 0;
+#X connect 6 0 11 1;
+#X connect 7 0 11 1;
+#X connect 11 0 4 0;
+#X connect 11 0 12 1;
+#X connect 11 0 29 0;
+#X connect 12 0 10 0;
+#X connect 12 0 24 1;
+#X connect 13 0 15 0;
+#X connect 14 1 22 0;
+#X connect 15 0 14 0;
+#X connect 16 0 17 0;
+#X connect 16 1 19 0;
+#X connect 17 0 3 0;
+#X connect 17 1 0 0;
+#X connect 18 0 24 0;
+#X connect 19 0 7 0;
+#X connect 19 1 2 0;
+#X connect 20 0 15 1;
+#X connect 20 0 16 0;
+#X connect 21 0 18 1;
+#X connect 22 0 25 0;
+#X connect 23 0 18 0;
 #X connect 24 0 12 0;
-#X connect 24 0 25 1;
-#X connect 25 0 24 0;
-#X connect 26 0 1 0;
-#X restore 126 215 pd markov-rythm;
-#X msg 126 180 1;
-#X obj 10 234 + 48;
-#X msg 194 181 0;
-#X obj 194 159 r pos;
-#X obj 126 236 sel 1;
-#X obj 29 274 random 3;
-#X obj 29 295 * 12;
-#X obj 10 313 + 0;
-#X obj 10 254 t f b b;
-#X obj 47 24 r train2;
-#X obj 104 23 r markovplay2;
-#X obj -97 234 s retro-markov2;
-#X obj 126 159 r b-step2;
-#X obj 29 108 r note-step2;
-#X obj 7 334 s note-markov2;
-#X obj 71 133 r notes-piano2;
-#X obj 71 154 t f b;
+#X connect 25 0 1 0;
+#X connect 25 0 11 0;
+#X connect 25 0 24 1;
+#X connect 26 0 12 0;
+#X connect 27 0 0 0;
+#X restore 164 206 pd markov-mel;
+#N canvas 0 0 1349 696 markov-rythm 0;
+#X msg 462 313 1 \, 1 \, 1 \, 1 \,;
+#X obj 462 270 u_cocollect;
+#X msg 501 189 reset;
+#X obj 456 476 t b b;
+#X obj 414 565 u_cocollect;
+#X msg 414 587 1 0 7 \, 0 0 0 \,;
+#X msg 456 504 dump;
+#X floatatom 181 558 5 0 0 0 - - - 0;
+#X msg 498 524 reset;
+#X text 509 563 Histograms;
+#X text 86 147 numbers from 0 to <max - 1>;
+#X obj 222 591 outlet;
+#X obj 353 73 inlet;
+#X obj 355 108 spigot;
+#X obj 421 119 sel 0;
+#X obj 421 146 t b b;
+#X obj 220 467 spigot;
+#X obj 478 147 t b b;
+#X obj 418 86 inlet train;
+#X obj 596 367 inlet play;
+#X obj 226 491 b;
+#X obj 214 419 r pos;
+#X obj 361 527 m_markovanal 2;
+#X obj 222 559 c_markov 2;
+#X obj 256 517 f;
+#X obj 857 263 inlet load;
+#X obj 891 424 outlet save;
+#X connect 0 0 22 0;
+#X connect 0 0 26 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 1;
+#X connect 3 0 6 0;
+#X connect 3 1 4 1;
+#X connect 4 0 5 0;
+#X connect 6 0 22 1;
+#X connect 7 0 23 0;
+#X connect 8 0 22 1;
+#X connect 12 0 13 0;
+#X connect 13 0 1 0;
+#X connect 13 0 22 0;
+#X connect 13 0 24 1;
+#X connect 14 0 15 0;
+#X connect 14 1 17 0;
+#X connect 15 0 3 0;
+#X connect 15 1 0 0;
+#X connect 16 0 20 0;
+#X connect 17 0 8 0;
+#X connect 17 1 2 0;
+#X connect 18 0 13 1;
+#X connect 18 0 14 0;
+#X connect 19 0 16 1;
+#X connect 20 0 24 0;
+#X connect 21 0 16 0;
+#X connect 22 0 4 0;
+#X connect 22 0 23 1;
+#X connect 23 0 11 0;
+#X connect 23 0 24 1;
+#X connect 24 0 23 0;
+#X connect 25 0 0 0;
+#X restore 279 207 pd markov-rythm;
+#X msg 279 172 1;
+#X obj 163 226 + 48;
+#X msg 347 173 0;
+#X obj 347 151 r pos;
+#X obj 279 228 sel 1;
+#X obj 182 266 random 3;
+#X obj 182 287 * 12;
+#X obj 163 305 + 0;
+#X obj 163 246 t f b b;
+#X obj 200 16 r train2;
+#X obj 257 15 r markovplay2;
+#X obj 56 226 s retro-markov2;
+#X obj 279 151 r b-step2;
+#X obj 182 100 r note-step2;
+#X obj 160 326 s note-markov2;
+#X obj 224 125 r notes-piano2;
+#X obj 224 146 t f b;
 #X connect 0 0 3 0;
 #X connect 0 0 13 0;
 #X connect 1 0 6 0;
@@ -2528,7 +2361,8 @@ P16;
 #X connect 17 0 18 0;
 #X connect 18 0 0 1;
 #X connect 18 1 2 0;
-#X restore -444 64 pd markov2;
+#X restore 34 108 pd markov2;
+#X obj 196 38 loadbang;
 #X connect 1 0 13 0;
 #X connect 2 0 9 0;
 #X connect 3 0 9 0;
@@ -2572,8 +2406,9 @@ P16;
 #X connect 25 0 11 0;
 #X connect 27 0 11 0;
 #X connect 27 0 28 0;
-#X restore 226 -77 pd synth-page2;
-#X obj 56 77 r reverb1;
+#X connect 30 0 2 0;
+#X restore 217 129 pd synth-page2;
+#X obj 47 283 r reverb1;
 #N canvas 0 0 467 524 Quantiz 0;
 #X obj 44 151 inlet~;
 #X obj 48 360 outlet~;
@@ -2596,13 +2431,12 @@ P16;
 #X connect 7 0 3 0;
 #X connect 8 0 9 0;
 #X connect 9 0 6 0;
-#X restore 32 46 pd Quantiz;
-#X obj 58 20 r quantize1;
-#N canvas 329 9 855 620 Quantiz 0;
+#X restore 23 252 pd Quantiz;
+#X obj 49 226 r quantize1;
+#N canvas 864 267 855 620 Quantiz 0;
 #X obj 435 256 inlet~;
 #X obj 387 534 outlet~;
-#X msg 534 515 dry 0.2 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback
-0.99 \, dell 2 \, delr 3 \,;
+#X msg 534 515 dry 0.2 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback 0.99 \, dell 2 \, delr 3 \,;
 #X msg 551 446 help;
 #X obj 418 446 e_dubdel mydubdel;
 #X msg 578 387 save;
@@ -2675,8 +2509,8 @@ P16;
 #X restore 248 318 pd bypass~;
 #X msg 159 190 0;
 #X msg 192 189 1;
-#X msg 419 70 dry 0.5 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback
-0.99 \, dell 0.51 \, delr 0.252 \,;
+#X msg 419 70 dry 0.5 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback 0.99 \, dell 0.51 \, delr 0.252 \,;
+#X floatatom 366 192 5 0 0 0 - - - 0;
 #X connect 0 0 32 0;
 #X connect 3 0 4 2;
 #X connect 4 0 1 0;
@@ -2696,6 +2530,7 @@ P16;
 #X connect 26 0 2 0;
 #X connect 28 0 29 0;
 #X connect 28 0 31 0;
+#X connect 28 0 36 0;
 #X connect 29 0 4 2;
 #X connect 30 0 19 1;
 #X connect 31 0 33 0;
@@ -2707,13 +2542,13 @@ P16;
 #X connect 33 0 32 1;
 #X connect 34 0 32 1;
 #X connect 35 0 19 0;
-#X restore 129 47 pd Quantiz;
-#X obj 227 110 ch-reverb;
-#X obj 155 21 r quantize2;
-#X obj 160 78 r reverb2;
-#X obj 253 20 r quantize3;
-#X obj 253 88 r reverb3;
-#X obj 227 -10 *~;
+#X restore 120 253 pd Quantiz;
+#X obj 218 316 ch-reverb;
+#X obj 146 227 r quantize2;
+#X obj 151 284 r reverb2;
+#X obj 244 226 r quantize3;
+#X obj 272 290 r reverb3;
+#X obj 218 196 *~;
 #N canvas 0 0 450 300 line 0;
 #X obj 369 73 / 100;
 #X obj 369 94 t f b;
@@ -2727,9 +2562,9 @@ P16;
 #X connect 2 0 4 1;
 #X connect 3 0 0 0;
 #X connect 4 0 5 0;
-#X restore 241 -31 pd line;
-#X obj 241 -53 r vol3;
-#X obj 129 -12 *~;
+#X restore 232 175 pd line;
+#X obj 232 153 r vol3;
+#X obj 120 194 *~;
 #N canvas 0 0 450 300 line 0;
 #X obj 369 73 / 100;
 #X obj 369 94 t f b;
@@ -2743,8 +2578,8 @@ P16;
 #X connect 2 0 4 1;
 #X connect 3 0 0 0;
 #X connect 4 0 5 0;
-#X restore 143 -33 pd line;
-#X obj 33 -14 *~;
+#X restore 134 173 pd line;
+#X obj 24 192 *~;
 #N canvas 0 0 450 300 line 0;
 #X obj 369 73 / 100;
 #X obj 369 94 t f b;
@@ -2758,34 +2593,34 @@ P16;
 #X connect 2 0 4 1;
 #X connect 3 0 0 0;
 #X connect 4 0 5 0;
-#X restore 47 -35 pd line;
-#X obj 47 -57 r vol1;
-#X obj 143 -55 r vol2;
-#X obj 192 210 r~ metro-audio;
-#N canvas 462 205 378 317 init-reset 0;
-#X obj 126 -140 loadbang;
-#X obj 126 -18 s \$0-loadbang;
-#X obj 161 -117 r wordbutton-Reset;
-#X msg 161 -89 0;
-#X obj 161 -52 s null;
-#X obj 204 -52 s nothing;
-#X obj 264 -52 s nada;
-#X obj 306 -52 s nichts;
-#X obj 6 -187 declare -path rj;
-#X obj 126 4 s init;
-#X msg 9 -123 \; bpm 60 \; vel 127 \; A 10 \; D 80 \; decay 8 \; quantize1.r
-16 \; quantize2.r 16 \; quantize3.r 16 \; vol1.r 100 \; vol2.r 100
-\; vol3.r 100 \; pd dsp 1 \;;
-#X connect 0 0 1 0;
-#X connect 0 0 3 0;
-#X connect 0 0 10 0;
-#X connect 0 0 9 0;
+#X restore 38 171 pd line;
+#X obj 38 149 r vol1;
+#X obj 134 151 r vol2;
+#X obj 183 416 r~ metro-audio;
+#N canvas 333 460 409 306 init-reset 0;
+#X obj 168 219 s \$0-loadbang;
+#X obj 186 120 r wordbutton-Reset;
+#X msg 186 148 0;
+#X obj 186 185 s null;
+#X obj 229 185 s nothing;
+#X obj 289 185 s nada;
+#X obj 331 185 s nichts;
+#X obj 31 50 declare -path rj;
+#X obj 151 241 s init;
+#X obj 151 26 loadbang;
+#X obj 151 56 del 500;
+#X msg 34 114 \; bpm 60 \; vel 127 \; A 10 \; D 80 \; decay 8 \; quantize1.r 0.5 \; quantize2.r 0.5 \; quantize3.r 0.5 \; vol1.r 100 \; vol2.r 100 \; vol3.r 100 \; pd dsp 1 \;;
+#X connect 1 0 2 0;
 #X connect 2 0 3 0;
-#X connect 3 0 4 0;
-#X connect 3 0 5 0;
-#X connect 3 0 6 0;
-#X connect 3 0 7 0;
-#X restore 33 -195 pd init-reset;
+#X connect 2 0 4 0;
+#X connect 2 0 5 0;
+#X connect 2 0 6 0;
+#X connect 9 0 10 0;
+#X connect 10 0 0 0;
+#X connect 10 0 2 0;
+#X connect 10 0 11 0;
+#X connect 10 0 8 0;
+#X restore 24 11 pd init-reset;
 #N canvas 7 194 450 300 objects_send_receives_names 0;
 #X text 35 34 taplist 50 20 rien play-pause Play Stop;
 #X text 508 295 "numberbox 80 30 numreceive numsend 0 10";
@@ -2793,13 +2628,10 @@ P16;
 #X text 28 157 wordbutton 50 20 Drums-reset;
 #X text 28 171 wordbutton 50 20 Synth-reset;
 #X text 32 188 wordbutton 50 20 Touch-reset;
-#X text 35 51 taplist 50 20 soundpack.r soundpack SB1 SB2 SB3 SB4 SB5
-;
-#X text 35 69 taplist 50 20 synthpreset.r synthpreset P1 P2 P3 P4 P5
-P6 P7 P8 P9 P10 P11;
-#X text 34 95 taplist 50 20 synth1preset.r synth1preset P1 P2 P3 P4
-P5 P6 P7 P8 P9 P10 P11 P12 P13 P14 P15 P16;
-#X restore 32 -105 pd objects_send_receives_names;
+#X text 35 51 taplist 50 20 soundpack.r soundpack SB1 SB2 SB3 SB4 SB5;
+#X text 35 69 taplist 50 20 synthpreset.r synthpreset P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11;
+#X text 34 95 taplist 50 20 synth1preset.r synth1preset P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11 P12 P13 P14 P15 P16;
+#X restore 23 101 pd objects_send_receives_names;
 #N canvas 436 123 745 372 TOGGLES-receive_send 0;
 #X obj 40 142 note-onoff c;
 #X obj 35 28 note-onoff hihat;
@@ -2829,23 +2661,16 @@ P5 P6 P7 P8 P9 P10 P11 P12 P13 P14 P15 P16;
 #X obj 158 312 note-onoff a-1;
 #X obj 158 332 note-onoff asharp-1;
 #X obj 158 351 note-onoff b-1;
-#X text 222 11 ces abstractions ont pour objet de recevoir un message
-des toggles de l'interface par exemple t1 \, elles vont alors envoyer
-un message de type t1.b \, elles vont recevoir la durée de la note
-(en fonction du bpm) et envoyer après un delais de cette durée un message
-0 à t1.r pour éteindre le toggle en question.;
-#X text 312 93 On a donc un retour visuel possible sur l'interface
-et un message permettrant d'indiquer que tel case a été touchée.;
-#X text 312 133 On récupérer les messages en \$1.b dans les pages dédiées
-à chaque instrument.;
-#X restore 33 -153 pd TOGGLES-receive_send;
-#X obj 31 111 ch-reverb;
-#X obj 129 111 ch-reverb;
+#X text 222 11 ces abstractions ont pour objet de recevoir un message des toggles de l'interface par exemple t1 \, elles vont alors envoyer un message de type t1.b \, elles vont recevoir la durée de la note (en fonction du bpm) et envoyer après un delais de cette durée un message 0 à t1.r pour éteindre le toggle en question.;
+#X text 312 93 On a donc un retour visuel possible sur l'interface et un message permettrant d'indiquer que tel case a été touchée.;
+#X text 312 133 On récupérer les messages en \$1.b dans les pages dédiées à chaque instrument.;
+#X restore 24 53 pd TOGGLES-receive_send;
+#X obj 22 317 ch-reverb;
+#X obj 120 317 ch-reverb;
 #N canvas 0 0 855 620 Quantiz 0;
 #X obj 435 256 inlet~;
 #X obj 387 534 outlet~;
-#X msg 534 515 dry 0.2 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback
-0.99 \, dell 2 \, delr 3 \,;
+#X msg 534 515 dry 0.2 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback 0.99 \, dell 2 \, delr 3 \,;
 #X msg 551 446 help;
 #X msg 578 387 save;
 #X obj 578 414 t a b;
@@ -2872,8 +2697,7 @@ et un message permettrant d'indiquer que tel case a été touchée.;
 #X obj 454 533 outlet~;
 #X obj 551 33 inlet;
 #X msg 459 191 feedback \$1;
-#X msg 419 70 dry 0.5 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback
-0.99 \, dell 0.51 \, delr 0.252 \,;
+#X msg 419 70 dry 0.5 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback 0.99 \, dell 0.51 \, delr 0.252 \,;
 #X obj 418 446 e_dubdel mydubdel;
 #X connect 0 0 30 0;
 #X connect 0 0 30 1;
@@ -2896,7 +2720,12 @@ et un message permettrant d'indiquer que tel case a été touchée.;
 #X connect 30 0 1 0;
 #X connect 30 1 26 0;
 #X connect 30 2 25 0;
-#X restore 233 49 pd Quantiz;
+#X restore 224 255 pd Quantiz;
+#X obj 229 27 declare -path droidparty-abstractions;
+#X obj 358 199 s bpm.r;
+#X obj 358 128 loadbang;
+#X obj 358 151 del 1000;
+#X msg 358 174 140;
 #X connect 2 0 20 0;
 #X connect 3 0 18 0;
 #X connect 5 0 15 0;
@@ -2926,66 +2755,44 @@ et un message permettrant d'indiquer que tel case a été touchée.;
 #X connect 28 0 1 0;
 #X connect 28 1 1 1;
 #X connect 29 0 1 0;
-#X connect 29 1 1 1;
 #X connect 30 0 10 0;
 #X connect 30 1 10 1;
+#X connect 33 0 34 0;
+#X connect 34 0 35 0;
+#X connect 35 0 32 0;
 #X restore 347 340 pd audio;
-#X obj 439 52 vsl 20 65 8 16 0 0 quantize1 quantize1.r empty 0 -9 0
-10 -262144 -1 -1 6400 1;
-#X obj 464 52 vsl 20 65 0 95 0 0 reverb1 reverb1.r empty 0 -9 0 10
--262144 -1 -1 0 1;
-#X obj 439 148 vsl 20 65 0 1 0 0 quantize2 quantize2.r empty 0 -9 0
-10 -262144 -1 -1 6400 1;
-#X obj 465 148 vsl 20 65 0 95 0 0 reverb2 reverb2.r empty 0 -9 0 10
--262144 -1 -1 0 1;
-#X obj 439 248 vsl 20 65 0 1 0 0 quantize3 quantize3.r empty 0 -9 0
-10 -262144 -1 -1 6400 1;
-#X obj 465 248 vsl 20 65 0 95 0 0 reverb3 reverb3.r empty 0 -9 0 10
--262144 -1 -1 0 1;
-#X obj 337 171 hsl 95 20 0 60 0 0 vol2 vol2.r vol-inst1 0 9 0 10 -262144
--1 -1 9400 1;
-#X obj 338 74 hsl 95 20 0 12 0 0 vol1 vol1.r vol-drums 0 9 0 10 -262144
--1 -1 9400 1;
-#X obj 337 268 hsl 95 20 0 10 0 0 vol3 vol3.r vol-inst2 0 9 0 10 -262144
--1 -1 9400 1;
-#X obj 1 -3 cnv 15 495 35 empty empty empty 20 12 0 14 -191407 -66577
-0;
+#X obj 439 52 vsl 20 65 8 16 0 0 quantize1 quantize1.r empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 464 52 vsl 20 65 0 95 0 0 reverb1 reverb1.r empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 439 148 vsl 20 65 0 1 0 0 quantize2 quantize2.r empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 465 148 vsl 20 65 0 95 0 0 reverb2 reverb2.r empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 439 248 vsl 20 65 0 1 0 0 quantize3 quantize3.r empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 465 248 vsl 20 65 0 95 0 0 reverb3 reverb3.r empty 0 -9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 337 171 hsl 95 20 0 60 0 0 vol2 vol2.r vol-inst1 0 9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 338 74 hsl 95 20 0 12 0 0 vol1 vol1.r vol-drums 0 9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 337 268 hsl 95 20 0 10 0 0 vol3 vol3.r vol-inst2 0 9 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 1 -3 cnv 15 495 35 empty empty empty 20 12 0 14 #b8b8b8 #404040 0;
 #X obj 14 5 taplist 50 20 rien play-pause Play Stop;
 #X obj 291 5 taplist 20 20 beat nothing 1 2 3 4;
 #X obj 361 5 taplist 20 20 bar nothing 1 2 3 4;
 #X obj 334 245 wordbutton 100 20 Synth1-reset;
-#X obj 390 194 tgl 20 0 train1 train1.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 414 194 tgl 20 0 markovplay1 markovplay1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 391 291 tgl 20 0 train2 train2.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 415 291 tgl 20 0 markovplay2 markovplay2.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 334 125 tgl 20 0 loop1 loop1.r empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X obj 334 223 tgl 20 0 loop2 loop2.r empty 17 7 0 10 -262144 -1 -1
-0 1;
+#X obj 390 194 tgl 20 0 train1 train1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 414 194 tgl 20 0 markovplay1 markovplay1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 391 291 tgl 20 0 train2 train2.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 415 291 tgl 20 0 markovplay2 markovplay2.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 334 125 tgl 20 0 loop1 loop1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 334 223 tgl 20 0 loop2 loop2.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 334 147 wordbutton 100 20 Synth-reset;
 #X obj 335 50 wordbutton 100 20 Drums-reset;
 #X obj 414 5 wordbutton 70 20 Reset;
 #X obj 311 5 wordbutton 50 20 bar;
 #X obj 241 5 wordbutton 50 20 beat;
 #X obj 84 5 wordbutton 50 20 bpm;
-#X obj 357 125 tgl 20 0 write1 write1.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 380 125 tgl 20 0 playback1 playback1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 357 223 tgl 20 0 write2 write2.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 380 223 tgl 20 0 playback2 playback2.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 221 5 tgl 20 0 metro-on empty empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X obj 336 98 taplist 50 20 soundpack.r soundpack SB1 SB2 SB3 SB4 SB5
-;
-#X obj 335 194 taplist 50 20 synthpreset.r synthpreset P1 P2 P3 P4
-P5 P6 P7 P8 P9 P10 P11;
-#X obj 335 291 taplist 50 20 synth1preset.r synth1preset P1 P2 P3 P4
-P5 P6 P7 P8 P9;
+#X obj 357 125 tgl 20 0 write1 write1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 380 125 tgl 20 0 playback1 playback1.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 357 223 tgl 20 0 write2 write2.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 380 223 tgl 20 0 playback2 playback2.r empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 221 5 tgl 20 0 metro-on empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 336 98 taplist 50 20 soundpack.r soundpack SB1 SB2 SB3 SB4 SB5;
+#X obj 335 194 taplist 50 20 synthpreset.r synthpreset P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11;
+#X obj 335 291 taplist 50 20 synth1preset.r synth1preset P1 P2 P3 P4 P5 P6 P7 P8 P9;
 #X obj 134 5 numberbox 58 20 bpm.r bpm 0 840 0;

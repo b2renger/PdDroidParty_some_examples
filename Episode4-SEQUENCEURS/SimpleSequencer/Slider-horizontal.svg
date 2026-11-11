@@ -266,7 +266,7 @@
    id="namedview8152"
    showgrid="false"
    inkscape:zoom="2"
-   inkscape:cx="105.95113"
+   inkscape:cx="58.257693"
    inkscape:cy="64.992218"
    inkscape:window-x="-8"
    inkscape:window-y="-8"
@@ -288,20 +288,8 @@
 </g>
 
 <path
-   style="fill:#008080;fill-opacity:1;stroke:none"
+   style="fill:#808080;fill-opacity:1;stroke:none"
    d="m 10,0 236,0 c 5.54,0 10,4.46 10,10 l 0,44 c 0,5.54 -4.46,10 -10,10 L 10,64 C 4.46,64 0,59.54 0,54 L 0,10 C 0,4.46 4.46,0 10,0 z"
    id="rect3543"
-   inkscape:connector-curvature="0"
-   sodipodi:nodetypes="sssssssss" /><path
-   sodipodi:nodetypes="sssssssss"
-   inkscape:connector-curvature="0"
-   id="open"
-   d="M 10,0 246,0 C 251.54,0 256,4.46 256,10 L 256,54 C 256,59.54 251.54,64 246,64 L 10,64 C 4.46,64 0,59.54 0,54 L 0,10 C 0,4.46 4.46,0 10,0 z"
-   style="fill:#c0c0c0;fill-opacity:1;stroke:none"
-   inkscape:label="#path3329" /><path
-   inkscape:label="#path3329"
-   style="fill:#dcdcdc;fill-opacity:1;stroke:none"
-   d="M 10,0 14,0 C 19.54,0 24,4.46 24,10 L 24,54 C 24,59.54 19.54,64 14,64 L 10,64 C 4.46,64 0,59.54 0,54 L 0,10 C 0,4.46 4.46,0 10,0 z"
-   id="closed"
    inkscape:connector-curvature="0"
    sodipodi:nodetypes="sssssssss" /></svg>

@@ -1,7 +1,8 @@
-#N struct 1003template-marker float a float b;
-#N canvas 508 252 407 252 10;
-#N canvas 608 19 1185 659 programme 0;
-#N canvas 0 0 450 300 random-band-pass 0;
+#N canvas 507 130 536 258 10;
+#X declare -path droidparty-abstractions;
+#X declare -path moonlib;
+#N canvas 430 80 1312 765 programme 0;
+#N canvas 22 381 471 300 random-band-pass 0;
 #X obj 167 -122 inlet;
 #X obj -22 -66 inlet~;
 #X text 209 -122 stream of incoming data values (0 - 100);
@@ -29,16 +30,14 @@
 #X text -32 359 apply a bandpass filter to an input signal;
 #X text -16 374 (creating a resonance around a center frequency);
 #X text -31 346 sfx-randombpass~.pd;
-#X text -34 408 one user-specified values: on/off key assignment (\$1)
-;
+#X text -34 408 one user-specified values: on/off key assignment (\$1);
 #X obj 205 -38 t f b f;
 #X obj 276 38 random 750;
 #X obj 276 59 / 100;
 #X obj 276 81 + 0.5;
 #X obj 276 127 t f f f;
 #X text -13 389 with randomly changing Q/resonance factor;
-#X text -34 436 one inlet: values interpreted as MIDI note numbers
-;
+#X text -34 436 one inlet: values interpreted as MIDI note numbers;
 #X obj 303 -6 s pitch-report;
 #N canvas 0 22 450 300 bypass~ 0;
 #X obj 35 32 inlet~;
@@ -82,6 +81,7 @@
 #X connect 19 0 12 0;
 #X restore -25 129 pd bypass~;
 #X obj 11 72 r BP;
+#X floatatom 328 -40 5 0 0 0 - - - 0;
 #X connect 0 0 7 0;
 #X connect 1 0 36 0;
 #X connect 7 0 28 0;
@@ -102,6 +102,7 @@
 #X connect 28 0 16 0;
 #X connect 28 1 29 0;
 #X connect 28 2 35 0;
+#X connect 28 2 38 0;
 #X connect 29 0 30 0;
 #X connect 30 0 31 0;
 #X connect 31 0 32 0;
@@ -112,15 +113,14 @@
 #X connect 36 1 11 0;
 #X connect 36 1 9 0;
 #X connect 37 0 36 1;
-#X restore 181 -54 pd random-band-pass;
+#X restore 435 260 pd random-band-pass;
 #N canvas 0 0 450 300 ring-modulation 0;
 #X obj 273 -106 inlet;
 #X obj 56 44 inlet~;
 #X text 105 44 audio input;
 #X text 53 393 one inlet~: audio data for processing;
 #X text 53 421 one outlet~: processed audio;
-#X text 53 407 one inlet: values interpreted as MIDI pitches (0-100)
-;
+#X text 53 407 one inlet: values interpreted as MIDI pitches (0-100);
 #X obj 56 321 outlet~;
 #X obj 221 218 line~;
 #X obj 221 199 pack;
@@ -194,7 +194,7 @@
 #X connect 21 0 6 0;
 #X connect 21 1 15 0;
 #X connect 22 0 21 1;
-#X restore 181 40 pd ring-modulation;
+#X restore 435 354 pd ring-modulation;
 #N canvas 0 0 450 300 random-delay 0;
 #X obj 266 42 inlet;
 #X obj 56 44 inlet~;
@@ -202,8 +202,7 @@
 #X text 105 44 audio input;
 #X text 53 511 one inlet~: audio data for processing;
 #X text 53 555 one outlet~: processed audio;
-#X text 53 525 one inlet: values interpreted as MIDI pitches (0-100)
-;
+#X text 53 525 one inlet: values interpreted as MIDI pitches (0-100);
 #X obj 266 328 *~;
 #X obj 56 421 outlet~;
 #X obj 266 215 line~;
@@ -224,8 +223,7 @@
 #X obj 332 152 random 500;
 #X obj 332 171 + 400;
 #X obj 266 62 clip 0 100;
-#X text 54 495 one user-specified value: on/off key assignment (\$1)
-;
+#X text 54 495 one user-specified value: on/off key assignment (\$1);
 #X text 53 449 sfx-randomdelay~.pd;
 #N canvas 0 22 450 300 bypass~ 0;
 #X obj 35 32 inlet~;
@@ -268,8 +266,7 @@
 #X connect 19 0 5 0;
 #X connect 19 0 12 0;
 #X restore 60 251 pd bypass~;
-#X obj 165 12 nbx 3 13 0 100 0 0 \$0rdelyadizan \$0rdeodn empty 0 -8
-0 9 -262144 -1 -1 0 256;
+#X obj 165 12 nbx 3 13 0 100 0 0 \$0rdelyadizan \$0rdeodn empty 0 -8 0 9 #fcfcfc #000000 #000000 0 256;
 #X obj 26 -107 r DEL;
 #X connect 0 0 26 0;
 #X connect 1 0 29 0;
@@ -296,44 +293,39 @@
 #X connect 29 1 20 0;
 #X connect 30 0 22 0;
 #X connect 31 0 29 1;
-#X restore 181 133 pd random-delay;
-#N canvas 0 0 450 300 random-comb-filter 0;
-#X obj 248 -77 inlet;
-#X obj -23 50 inlet~;
-#X text 290 -77 stream of incoming data values (0 - 100);
-#X text 26 50 audio input;
-#X text -26 517 one inlet~: audio data for processing;
-#X text -26 561 one outlet~: processed audio;
-#X text -26 531 one inlet: values interpreted as MIDI pitches (0-100)
-;
-#X obj 126 426 delwrite~ \$0-comb 100;
-#X obj 215 358 *~;
-#X obj -23 427 outlet~;
-#X obj 215 274 vd~ \$0-comb 100;
-#X obj 215 248 line~;
-#X obj 215 229 pack;
-#X msg 238 184 5;
-#X obj 187 181 /;
-#X msg 187 157 22050;
-#X obj 187 204 * 0.022675;
-#X obj 187 108 mtof;
-#X obj 248 -57 clip 0 100;
-#X text 34 426 audio output;
-#X text -27 469 apply a comb filter to an input signal;
-#X obj 333 274 line~;
-#X obj 333 252 pack;
-#X msg 356 183 5;
-#X obj 280 182 random 200;
-#X obj 280 220 / 1000;
-#X obj 280 201 + 800;
-#X text -8 486 with randomly varying feedback;
-#X text -4 547 and triggering new random feedback values;
-#X obj 187 88 t f f;
-#X obj 187 129 trigger b f b b b;
-#X text -25 501 one user-specified value: on/off key assignment (\$1)
-;
-#X text -26 455 sfx-randomcomb~.pd;
-#X obj 222 108 s pitch-report;
+#X restore 435 447 pd random-delay;
+#N canvas 0 0 506 584 random-comb-filter 0;
+#X obj 194 60 inlet;
+#X obj 26 34 inlet~;
+#X text 236 60 stream of incoming data values (0 - 100);
+#X text 23 14 audio input;
+#X text 28 502 one inlet~: audio data for processing;
+#X text 28 546 one outlet~: processed audio;
+#X text 28 516 one inlet: values interpreted as MIDI pitches (0-100);
+#X obj 27 413 outlet~;
+#X obj 194 293 line~;
+#X obj 194 270 pack;
+#X msg 245 222 5;
+#X obj 194 219 /;
+#X msg 194 195 22050;
+#X obj 194 242 * 0.022675;
+#X obj 194 146 mtof;
+#X obj 194 83 clip 0 100;
+#X text 84 412 audio output;
+#X text 27 454 apply a comb filter to an input signal;
+#X obj 306 291 line~;
+#X obj 306 269 pack;
+#X msg 382 203 5;
+#X obj 306 202 random 200;
+#X obj 306 240 / 1000;
+#X obj 306 221 + 800;
+#X text 46 471 with randomly varying feedback;
+#X text 50 532 and triggering new random feedback values;
+#X obj 194 126 t f f;
+#X obj 194 167 trigger b f b b b, f 26;
+#X text 29 486 one user-specified value: on/off key assignment (\$1);
+#X text 28 440 sfx-randomcomb~.pd;
+#X obj 229 146 s pitch-report;
 #N canvas 0 22 450 300 bypass~ 0;
 #X obj 35 32 inlet~;
 #X obj 251 35 inlet;
@@ -374,41 +366,58 @@
 #X connect 16 1 11 0;
 #X connect 19 0 5 0;
 #X connect 19 0 12 0;
-#X restore -1 254 pd bypass~;
-#X obj 165 12 nbx 3 13 0 100 0 0 \$0rdelyadizan \$0rdeodn empty 0 -8
-0 9 -262144 -1 -1 0 256;
-#X obj 14 118 r COMB;
-#X connect 0 0 18 0;
-#X connect 1 0 34 0;
+#X restore 26 254 pd bypass~;
+#X obj 194 107 nbx 3 13 0 100 0 0 \$0rdelyadizan \$0rdeodn empty 0 -8 0 9 #fcfcfc #000000 #000000 0 256;
+#X obj 83 228 r COMB;
+#N canvas 795 349 450 300 comb 0;
+#X obj 166 44 inlet~;
+#X obj 33 44 inlet~;
+#X text 32 27 audio;
+#X obj 261 47 inlet~;
+#X text 163 27 time;
+#X text 258 30 feedback;
+#X obj 32 207 delwrite~ \$0-comb 100;
+#X obj 167 128 *~, f 16;
+#X obj 167 86 vd~ \$0-comb 100;
+#X obj 214 203 outlet~;
+#X obj 296 179 block~ 4;
+#X connect 0 0 8 0;
+#X connect 1 0 6 0;
+#X connect 3 0 7 1;
+#X connect 7 0 6 0;
 #X connect 8 0 7 0;
-#X connect 10 0 8 0;
-#X connect 10 0 9 0;
-#X connect 11 0 10 0;
+#X connect 8 0 9 0;
+#X restore 82 317 pd comb;
+#X f 38;
+#X connect 0 0 15 0;
+#X connect 1 0 31 0;
+#X connect 8 0 34 1;
+#X connect 9 0 8 0;
+#X connect 10 0 9 1;
+#X connect 11 0 13 0;
 #X connect 12 0 11 0;
-#X connect 13 0 12 1;
-#X connect 14 0 16 0;
-#X connect 15 0 14 0;
-#X connect 16 0 12 0;
-#X connect 17 0 30 0;
-#X connect 18 0 35 0;
-#X connect 21 0 8 1;
-#X connect 22 0 21 0;
-#X connect 23 0 22 1;
-#X connect 24 0 26 0;
-#X connect 25 0 22 0;
-#X connect 26 0 25 0;
-#X connect 29 0 17 0;
-#X connect 29 1 33 0;
-#X connect 30 0 15 0;
-#X connect 30 1 14 1;
-#X connect 30 2 13 0;
-#X connect 30 3 24 0;
-#X connect 30 4 23 0;
-#X connect 34 0 9 0;
-#X connect 34 1 7 0;
-#X connect 35 0 29 0;
-#X connect 36 0 34 1;
-#X restore 181 226 pd random-comb-filter;
+#X connect 13 0 9 0;
+#X connect 14 0 27 0;
+#X connect 15 0 32 0;
+#X connect 18 0 34 2;
+#X connect 19 0 18 0;
+#X connect 20 0 19 1;
+#X connect 21 0 23 0;
+#X connect 22 0 19 0;
+#X connect 23 0 22 0;
+#X connect 26 0 14 0;
+#X connect 26 1 30 0;
+#X connect 27 0 12 0;
+#X connect 27 1 11 1;
+#X connect 27 2 10 0;
+#X connect 27 3 21 0;
+#X connect 27 4 20 0;
+#X connect 31 0 7 0;
+#X connect 31 1 34 0;
+#X connect 32 0 26 0;
+#X connect 33 0 31 1;
+#X connect 34 0 7 0;
+#X restore 435 540 pd random-comb-filter;
 #N canvas 0 0 450 300 reverb 0;
 #X obj 276 -66 inlet;
 #X obj 56 44 inlet~;
@@ -419,8 +428,7 @@
 #X obj 56 421 outlet~;
 #X obj 276 -46 clip 0 100;
 #X text 113 420 audio output;
-#X text 54 483 one user-specified value: on/off key assignment (\$1)
-;
+#X text 54 483 one user-specified value: on/off key assignment (\$1);
 #X text 54 468 apply reverberation to input signal;
 #N canvas 179 36 500 386 rev3-hacked~ 0;
 #X obj 39 58 inlet;
@@ -845,8 +853,7 @@
 #X restore 91 240 pd bypass~;
 #X obj 228 252 / 4;
 #X obj 231 284 + 75;
-#X obj 165 12 nbx 3 13 0 100 0 0 \$0rdelyadizan \$0rdeodn empty 0 -8
-0 9 -262144 -1 -1 0 256;
+#X obj 165 12 nbx 3 13 0 100 0 0 \$0rdelyadizan \$0rdeodn empty 0 -8 0 9 #fcfcfc #000000 #000000 0 256;
 #X obj 107 109 r VERB;
 #X connect 0 0 7 0;
 #X connect 1 0 14 0;
@@ -858,130 +865,115 @@
 #X connect 16 0 11 1;
 #X connect 17 0 15 0;
 #X connect 18 0 14 1;
-#X restore 181 324 pd reverb;
-#X obj 180 354 dac~;
-#X obj 182 -250 noise~;
-#X obj 251 -250 adc~;
-#X obj 182 -176 *~;
-#X obj 251 -174 *~;
-#X obj 197 -305 r Noise;
-#X obj 265 -305 r Mic;
-#X obj 673 -202 r XY;
-#X obj 673 -180 unpack;
-#X obj 673 -131 s X;
-#X obj 716 -131 s Y;
-#X obj 713 -156 * 100;
-#X obj 673 -156 * 100;
-#X obj 292 -71 spigot;
-#X obj 369 -71 spigot;
-#X obj 459 -111 +;
-#X obj 459 -71 spigot;
-#X obj 459 -91 / 2;
-#X obj 492 -92 r BP_x+y;
-#X obj 325 -90 r BP_x;
-#X obj 402 -91 r BP_y;
-#X obj 292 -128 r X;
-#X obj 369 -128 r Y;
-#X obj 286 23 spigot;
-#X obj 363 23 spigot;
-#X obj 453 -17 +;
-#X obj 453 23 spigot;
-#X obj 453 3 / 2;
-#X obj 286 -34 r X;
-#X obj 363 -34 r Y;
-#X obj 319 3 r RM_x;
-#X obj 396 3 r RM_y;
-#X obj 486 2 r RM_x+y;
-#X obj 268 116 spigot;
-#X obj 345 116 spigot;
-#X obj 435 76 +;
-#X obj 435 116 spigot;
-#X obj 435 96 / 2;
-#X obj 268 59 r X;
-#X obj 345 59 r Y;
-#X obj 301 97 r RD_x;
-#X obj 378 96 r RD_y;
-#X obj 468 95 r RD_x+y;
-#X obj 304 209 spigot;
-#X obj 381 209 spigot;
-#X obj 471 169 +;
-#X obj 471 209 spigot;
-#X obj 471 189 / 2;
-#X obj 304 152 r X;
-#X obj 381 152 r Y;
-#X obj 337 190 r CF_x;
-#X obj 414 189 r CF_y;
-#X obj 504 188 r CF_x+y;
-#X obj 232 307 spigot;
-#X obj 309 307 spigot;
-#X obj 399 267 +;
-#X obj 399 307 spigot;
-#X obj 399 287 / 2;
-#X obj 232 249 r X;
-#X obj 309 250 r Y;
-#X obj 265 287 r RE_x;
-#X obj 342 287 r RE_y;
-#X obj 432 286 r RE_x+y;
-#X obj 305 -177 *~;
-#X obj 319 -308 r OSC;
-#X obj 305 -253 osc~ 440;
-#X obj 181 -216 *~ 0.5;
-#X obj 250 -214 *~ 0.5;
-#X obj 304 -217 *~ 0.5;
-#X text 383 -307 Gérer l'activation des différentes sources \, en récupérant
-les informations de l'interface.;
-#X text 169 -272 bruit blanc;
-#X text 250 -272 Micro;
-#X text 321 -272 Oscillateur à 440Hz;
-#X text 337 -192 Si on multiplie un signal par 1 \, il reste inchangé
-;
-#X text 337 -178 Si on multiplie un signal par 0 \, il est bloqué;
-#X text 726 -181 On sépare X et Y;
-#X text 751 -158 On les multiplie par 100 car l'abstraction [touch]
-envoie des valeurs comprises entre 0 et 1 alors que nos effets on des
-valeurs de controle allant de 0 à 100;
-#X text 663 -277 On récupère les valeurs du Pad XY crée dans l'interface
-avec l'abstraction [touch] \, on a en fait crée un objet appelé [touch
-160 160 XY] 160 étant la taille en pixel de chacune des dimension de
-la surface et XY étant le nom employé pour envoyer ces informations
-;
-#X text 563 -63 [spigot] permet de choisir si un valeur passe ou non.
-S'il reçoit un 0 en argument rien ne passe \, s'il reçoit un un tout
-passe \, c'est donc un interrupteur pour le passage de données;
-#X text 566 -20 En fonction des choix faits dans l'interface utilisateur
-certaines données vont passer ou non et modifier les paramètres de
-controle des différents effets.;
-#X text 672 -111 On envoit X et Y séparément. On va ensuite créer une
-valeur x+y en additionnant les deux puis en divisant par 2;
-#X text -173 42 Modulation en anneau : fréquence de modulation interprétée
-à partir d'une valeur midi;
-#X text -170 -56 Filtre passe-bande : argument = fréquence de coupure
-;
-#X text -175 133 Délais pseudo-aléatoire générant de nouvelles valeurs
-de feedback à chaque changement de longueur de délais.;
-#X text -171 225 Filtre en peigne;
-#X text -169 322 Reverb;
-#X text -226 -295 Dans ce patch on créer une sorte de Kaoss pad. Le
-principe est simple. On va pouvoir choisir entre trois sources sonores
-qui vont être acheminées à travers une chaine d'effets. On va pouvoir
-controler ces effets à partir d'une surface 2D et d'une matrice d'assignation.
-;
-#X text -227 -237 Par exemple si je coche BP_On \, BP_x alors lorsque
-je déplacerai mon doigt (ou ma souris) sur la surface je modifierai
-le filtre passe bande en fonction de mes déplacement horizontaux. Si
-je coche RE_x+y alors la quantité de reverb sera modifié par le déplacement
-en x+y/2 et ainsi de suite...;
-#X text -172 358 Sortie audio;
-#X text -226 -168 Les effets de ce patch proviennent de la bibliothèque
-créer par l2ork qui est le laptop orchestra de Virginia Tech;
-#X text -222 -140 Vous pourrez trouver leurs abstractions à l'adresse
-suivante http://l2ork.music.vt.edu/main/?page_id=256;
+#X restore 435 638 pd reverb;
+#X obj 429 719 dac~;
+#X obj 436 64 noise~;
+#X obj 505 64 adc~;
+#X obj 436 138 *~;
+#X obj 505 140 *~;
+#X obj 451 9 r Noise;
+#X obj 519 9 r Mic;
+#X obj 927 112 r XY;
+#X obj 927 134 unpack;
+#X obj 927 183 s X;
+#X obj 970 183 s Y;
+#X obj 967 158 * 100;
+#X obj 927 158 * 100;
+#X obj 546 243 spigot;
+#X obj 623 243 spigot;
+#X obj 713 203 +;
+#X obj 713 243 spigot;
+#X obj 713 223 / 2;
+#X obj 746 222 r BP_x+y;
+#X obj 579 224 r BP_x;
+#X obj 656 223 r BP_y;
+#X obj 546 186 r X;
+#X obj 623 186 r Y;
+#X obj 540 337 spigot;
+#X obj 617 337 spigot;
+#X obj 707 297 +;
+#X obj 707 337 spigot;
+#X obj 707 317 / 2;
+#X obj 540 280 r X;
+#X obj 617 280 r Y;
+#X obj 573 317 r RM_x;
+#X obj 650 317 r RM_y;
+#X obj 740 316 r RM_x+y;
+#X obj 522 430 spigot;
+#X obj 599 430 spigot;
+#X obj 689 390 +;
+#X obj 689 430 spigot;
+#X obj 689 410 / 2;
+#X obj 522 373 r X;
+#X obj 599 373 r Y;
+#X obj 555 411 r RD_x;
+#X obj 632 410 r RD_y;
+#X obj 722 409 r RD_x+y;
+#X obj 558 523 spigot;
+#X obj 635 523 spigot;
+#X obj 725 483 +;
+#X obj 725 523 spigot;
+#X obj 725 503 / 2;
+#X obj 558 466 r X;
+#X obj 635 466 r Y;
+#X obj 591 504 r CF_x;
+#X obj 668 503 r CF_y;
+#X obj 758 502 r CF_x+y;
+#X obj 486 621 spigot;
+#X obj 563 621 spigot;
+#X obj 653 581 +;
+#X obj 653 621 spigot;
+#X obj 653 601 / 2;
+#X obj 486 563 r X;
+#X obj 563 564 r Y;
+#X obj 519 601 r RE_x;
+#X obj 596 601 r RE_y;
+#X obj 686 600 r RE_x+y;
+#X obj 559 137 *~;
+#X obj 573 6 r OSC;
+#X obj 559 61 osc~ 440;
+#X obj 435 98 *~ 0.5;
+#X obj 504 100 *~ 0.5;
+#X obj 558 97 *~ 0.5;
+#X text 637 7 Gérer l'activation des différentes sources \, en récupérant les informations de l'interface.;
+#X text 423 42 bruit blanc;
+#X text 504 42 Micro;
+#X text 575 42 Oscillateur à 440Hz;
+#X text 591 122 Si on multiplie un signal par 1 \, il reste inchangé;
+#X text 591 136 Si on multiplie un signal par 0 \, il est bloqué;
+#X text 980 133 On sépare X et Y;
+#X text 1005 156 On les multiplie par 100 car l'abstraction [touch] envoie des valeurs comprises entre 0 et 1 alors que nos effets on des valeurs de controle allant de 0 à 100;
+#X text 917 37 On récupère les valeurs du Pad XY crée dans l'interface avec l'abstraction [touch] \, on a en fait crée un objet appelé [touch 160 160 XY] 160 étant la taille en pixel de chacune des dimension de la surface et XY étant le nom employé pour envoyer ces informations;
+#X text 817 251 [spigot] permet de choisir si un valeur passe ou non. S'il reçoit un 0 en argument rien ne passe \, s'il reçoit un un tout passe \, c'est donc un interrupteur pour le passage de données;
+#X text 820 294 En fonction des choix faits dans l'interface utilisateur certaines données vont passer ou non et modifier les paramètres de controle des différents effets.;
+#X text 926 203 On envoit X et Y séparément. On va ensuite créer une valeur x+y en additionnant les deux puis en divisant par 2;
+#X text 81 356 Modulation en anneau : fréquence de modulation interprétée à partir d'une valeur midi;
+#X text 84 258 Filtre passe-bande : argument = fréquence de coupure;
+#X text 79 447 Délais pseudo-aléatoire générant de nouvelles valeurs de feedback à chaque changement de longueur de délais.;
+#X text 83 539 Filtre en peigne;
+#X text 85 636 Reverb;
+#X text 28 19 Dans ce patch on créer une sorte de Kaoss pad. Le principe est simple. On va pouvoir choisir entre trois sources sonores qui vont être acheminées à travers une chaine d'effets. On va pouvoir controler ces effets à partir d'une surface 2D et d'une matrice d'assignation.;
+#X text 28 90 Par exemple si je coche BP_On \, BP_x alors lorsque je déplacerai mon doigt (ou ma souris) sur la surface je modifierai le filtre passe bande en fonction de mes déplacement horizontaux. Si je coche RE_x+y alors la quantité de reverb sera modifié par le déplacement en x+y/2 et ainsi de suite...;
+#X text 82 672 Sortie audio;
+#X text 28 172 Les effets de ce patch proviennent de la bibliothèque créer par l2ork qui est le laptop orchestra de Virginia Tech;
+#X text 27 198 Vous pourrez trouver leurs abstractions à l'adresse suivante http://l2ork.music.vt.edu/main/?page_id=256;
+#X obj 944 410 declare -path droidparty-abstractions;
+#X obj 969 493 loadbang;
+#X msg 969 516 \; pd dsp 1;
+#X obj 944 434 declare -path moonlib;
+#X obj 435 661 *~, f 56;
+#X obj 767 564 r volume;
+#X obj 767 587 pow 2;
+#X msg 767 610 \$1 10;
+#X obj 767 633 line~;
+#X obj 901 564 r open-web;
+#X msg 901 587 gotoUrl https://github.com/b2renger/PdDroidParty_some_examples;
+#X obj 901 623 s sys-rcv;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
-#X connect 4 0 5 0;
-#X connect 4 0 5 1;
+#X connect 4 0 100 0;
 #X connect 6 0 71 0;
 #X connect 7 0 72 0;
 #X connect 7 1 72 0;
@@ -1060,77 +1052,69 @@ suivante http://l2ork.music.vt.edu/main/?page_id=256;
 #X connect 71 0 8 0;
 #X connect 72 0 9 0;
 #X connect 73 0 68 0;
-#X restore 324 229 pd programme;
-#X obj 9 21 tgl 20 0 Mic empty empty 17 7 0 10 -262144 -1 -1 0 1;
+#X connect 97 0 98 0;
+#X connect 100 0 5 0;
+#X connect 100 0 5 1;
+#X connect 101 0 102 0;
+#X connect 102 0 103 0;
+#X connect 103 0 104 0;
+#X connect 104 0 100 1;
+#X connect 105 0 106 0;
+#X connect 106 0 107 0;
+#X restore 234 252 pd programme;
+#X obj 9 21 tgl 20 0 Mic empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 37 23 Micro;
-#X obj 74 21 tgl 20 0 Noise empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
+#X obj 74 21 tgl 20 0 Noise empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 102 23 Bruit blanc;
 #X text 7 43 PAD XY;
-#X obj 230 88 tgl 20 0 BP_x empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
+#X obj 230 88 tgl 20 0 BP_x empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 251 90 BP-X;
-#X obj 285 88 tgl 20 0 BP_y empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
+#X obj 285 88 tgl 20 0 BP_y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 306 90 BP-Y;
-#X obj 338 89 tgl 20 0 BP_x+y empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 338 89 tgl 20 0 BP_x+y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 359 91 BP-X+Y;
-#X obj 231 116 tgl 20 0 RM_x empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 286 116 tgl 20 0 RM_y empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 339 117 tgl 20 0 RM_x+y empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+#X obj 231 116 tgl 20 0 RM_x empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 286 116 tgl 20 0 RM_y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 339 117 tgl 20 0 RM_x+y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 170 70 ASSIGNATIONS;
 #X text 252 117 RM-X;
 #X text 307 117 RM-Y;
 #X text 360 118 RM-X+Y;
-#X obj 232 144 tgl 20 0 RD_x empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 287 144 tgl 20 0 RD_y empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 340 145 tgl 20 0 RD_x+y empty empty 17 7 0 10 -262144 -1 -1
-0 1;
-#X obj 232 171 tgl 20 0 CF_x empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 287 171 tgl 20 0 CF_y empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 340 172 tgl 20 0 CF_x+y empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+#X obj 232 144 tgl 20 0 RD_x empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 287 144 tgl 20 0 RD_y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 340 145 tgl 20 0 RD_x+y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 232 171 tgl 20 0 CF_x empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 287 171 tgl 20 0 CF_y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 340 172 tgl 20 0 CF_x+y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 252 144 RD-X;
 #X text 307 144 RD-Y;
 #X text 360 145 RD-X+Y;
 #X text 252 172 CF-X;
 #X text 307 172 CF-Y;
 #X text 360 173 CF-X+Y;
-#X obj 232 199 tgl 20 0 RE_x empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 287 199 tgl 20 0 RE_y empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 340 200 tgl 20 0 RE_x+y empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+#X obj 232 199 tgl 20 0 RE_x empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 287 199 tgl 20 0 RE_y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 340 200 tgl 20 0 RE_x+y empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 252 200 RE-X;
 #X text 307 200 RE-Y;
 #X text 360 201 RE-X+Y;
-#X text 13 224 BP=Passe-band \, RM=Ring-Modulation \, RD=Random-Delay
-\, CF=Comb-Filter \, RE=Reverb;
-#X obj 173 89 tgl 20 0 BP empty empty 17 7 0 10 -262144 -1 -1 0 1;
+#X text 13 224 BP=Passe-band \, RM=Ring-Modulation \, RD=Random-Delay \, CF=Comb-Filter \, RE=Reverb, f 77;
+#X obj 173 89 tgl 20 0 BP empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 194 91 BP-ON;
-#X obj 174 116 tgl 20 0 RMod empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 174 116 tgl 20 0 RMod empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 195 117 RM-ON;
-#X obj 175 143 tgl 20 0 DEL empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
+#X obj 175 143 tgl 20 0 DEL empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 195 143 RD-ON;
-#X obj 175 170 tgl 20 0 COMB empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 175 170 tgl 20 0 COMB empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 195 171 CF-ON;
-#X obj 175 199 tgl 20 0 VERB empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 175 199 tgl 20 0 VERB empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 195 200 RE-ON;
 #X text 7 2 SOURCES;
 #X obj 8 60 touch 160 160 XY;
-#X obj 178 22 tgl 20 0 OSC empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
+#X obj 178 22 tgl 20 0 OSC empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X text 206 24 Oscillateur;
+#X obj 272 53 hsl 100 25 0 1 0 0 volume empty volume 4 12 0 12 #fcfcfc #000000 #000000 0 1;
+#X obj 455 5 bng 18 250 50 0 open-web empty website 20 9 0 10 #fcfcfc #000000 #000000;
+#X obj 216 276 droidsystem sys;
+#X text 340 5 b2renger 2015-2016;
+#X text 340 19 ant1r 2026;
