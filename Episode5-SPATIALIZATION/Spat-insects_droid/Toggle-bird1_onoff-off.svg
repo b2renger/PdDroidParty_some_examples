@@ -2,22 +2,43 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="64"
    height="64"
    viewBox="0 0 64 64"
    id="Layer_1"
-   xml:space="preserve"><metadata
+   xml:space="preserve"
+   sodipodi:docname="Toggle-bird1_onoff-off.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><sodipodi:namedview
+   id="namedview79"
+   pagecolor="#505050"
+   bordercolor="#eeeeee"
+   borderopacity="1"
+   inkscape:showpageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#505050"
+   showgrid="false"
+   inkscape:zoom="3.6875"
+   inkscape:cx="16"
+   inkscape:cy="33.084746"
+   inkscape:window-width="1440"
+   inkscape:window-height="849"
+   inkscape:window-x="0"
+   inkscape:window-y="27"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" /><metadata
    id="metadata8156"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
    id="defs8154"><inkscape:path-effect
      effect="skeletal"
      id="path-effect3844" /><inkscape:path-effect
@@ -269,15 +290,7 @@
      xlink:href="#SVGID_1_"
      gradientUnits="userSpaceOnUse"
      gradientTransform="matrix(0.62827903,0,0,0.62827903,92.822952,22.225755)" /></defs>
-<g
-   transform="translate(0,-436)"
-   id="max_width__x2F__height"
-   style="display:none">
-	<path
-   d="M 499.001,1 V 499 H 1 V 1 h 498.001 m 1,-1 H 0 V 500 H 500.001 V 0 l 0,0 z"
-   id="path8137"
-   style="display:inline" />
-</g>
+
 
 <path
    d="m 10,0 44,0 c 5.54,0 10,4.46 10,10 l 0,44 c 0,5.54 -4.46,10 -10,10 L 10,64 C 4.46,64 0,59.54 0,54 L 0,10 C 0,4.46 4.46,0 10,0 z"

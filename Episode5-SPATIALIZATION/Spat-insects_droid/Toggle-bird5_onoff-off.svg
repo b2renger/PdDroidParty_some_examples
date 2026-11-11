@@ -269,15 +269,6 @@
      xlink:href="#SVGID_1_"
      gradientUnits="userSpaceOnUse"
      gradientTransform="matrix(0.62827903,0,0,0.62827903,92.822952,22.225755)" /></defs>
-<g
-   transform="translate(0,-436)"
-   id="max_width__x2F__height"
-   style="display:none">
-	<path
-   d="M 499.001,1 V 499 H 1 V 1 h 498.001 m 1,-1 H 0 V 500 H 500.001 V 0 l 0,0 z"
-   id="path8137"
-   style="display:inline" />
-</g>
 
 <path
    d="m 10,0 44,0 c 5.54,0 10,4.46 10,10 l 0,44 c 0,5.54 -4.46,10 -10,10 L 10,64 C 4.46,64 0,59.54 0,54 L 0,10 C 0,4.46 4.46,0 10,0 z"
